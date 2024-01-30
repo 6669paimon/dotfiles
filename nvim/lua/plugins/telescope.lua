@@ -6,9 +6,9 @@ local M = {
 		{ "nvim-telescope/telescope-file-browser.nvim" },
 	},
 	keys = {
-		{ "<A-f>", "<CMD>Telescope find_files<CR>", desc = "Find files" },
-		{ "<A-g>", "<CMD>Telescope live_grep<CR>", desc = "Find Text" },
-		{ "<A-e>", "<CMD>Telescope file_browser<CR>", desc = "File Browser" },
+		{ "<leader>ff", "<CMD>Telescope find_files<CR>", desc = "Find files" },
+		{ "<leader>fg", "<CMD>Telescope live_grep<CR>", desc = "Find Text" },
+		{ "<leader>fe", "<CMD>Telescope file_browser<CR>", desc = "File Browser" },
 	},
 }
 
