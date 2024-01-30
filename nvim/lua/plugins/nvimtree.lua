@@ -7,6 +7,9 @@ function M.config()
 	vim.g.loaded_netrw = 1
 	vim.g.loaded_netrwPlugin = 1
 
+	local api = require("nvim-tree.api")
+	vim.keymap.set("n", "<leader>e", api.tree.toggle)
+
 	local function my_on_attach(bufnr)
 		local function opts(desc)
 			return {
@@ -18,7 +21,6 @@ function M.config()
 			}
 		end
 
-		local api = require("nvim-tree.api")
 		-- default mappings
 		api.config.mappings.default_on_attach(bufnr)
 
