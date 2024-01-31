@@ -5,13 +5,13 @@
 --   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
 --   augroup END
 -- ]]
-vim.api.nvim_create_autocmd('TextYankPost',{
-	callback=function()
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
 		vim.highlight.on_yank({
-			higroup="IncSearch",
-			timeout=200
+			higroup = "IncSearch",
+			timeout = 200,
 		})
-	end
+	end,
 })
 
 -- Turn off paste mode when leaving insert
@@ -21,21 +21,26 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 })
 
 -- relative number toggle insert
--- vim.cmd [[
---   augroup numbertoggle
---     autocmd!
---     autocmd BufEnter,FocusGained,InsertLeave * set rnu
---     autocmd BufLeave,FocusLost,InsertEnter * set nornu
---   augroup END
--- ]]
+vim.cmd([[
+  augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set rnu
+    autocmd BufLeave,FocusLost,InsertEnter * set nornu
+  augroup END
+]])
 
 -- not auto comment
-vim.cmd [[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]]
+vim.cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]])
+
+-- Disable line number Terminal
+vim.api.nvim_command("autocmd TermOpen * startinsert")
+vim.api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber")
+-- vim.api.nvim_command("autocmd TermOpen * setlocal signcolumn=no")
 
 -- local fn = vim.fn
 -- local autocmd = vim.api.nvim_create_autocmd
 -- local augroup = vim.api.nvim_create_augroup
--- 
+--
 -- autocmd("BufEnter", {
 --   callback = function()
 --     vim.opt.formatoptions:remove {"c","r","o"}
@@ -52,7 +57,7 @@ vim.cmd [[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatop
 --   group = general,
 --   desc = "Set shiftwidth to 4 in these filetypes",
 -- })
--- 
+--
 -- autocmd({ "FocusLost", "BufLeave", "BufWinLeave", "InsertLeave" }, {
 --   callback = function()
 --     if vim.bo.filetype ~= "" and vim.bo.buftype == "" then
@@ -62,7 +67,7 @@ vim.cmd [[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatop
 --   group = general,
 --   desc = "Auto Save",
 -- })
--- 
+--
 -- autocmd("FocusGained", {
 --   callback = function()
 --     vim.cmd "checktime"
@@ -70,7 +75,7 @@ vim.cmd [[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatop
 --   group = general,
 --   desc = "Update file when there are changes",
 -- })
--- 
+--
 -- autocmd("VimResized", {
 --   callback = function()
 --     vim.cmd "wincmd ="
