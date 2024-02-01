@@ -1,7 +1,7 @@
 local opt = vim.opt
 
-vim.wo.number = true
--- opt.number=true
+-- vim.wo.number = true
+opt.number = true
 opt.relativenumber = true
 
 opt.encoding = "utf-8"

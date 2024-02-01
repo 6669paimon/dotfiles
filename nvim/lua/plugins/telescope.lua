@@ -9,6 +9,10 @@ local M = {
 		{ "<leader>ff", "<CMD>Telescope find_files<CR>", desc = "Find files" },
 		{ "<leader>fg", "<CMD>Telescope live_grep<CR>", desc = "Find Text" },
 		{ "<leader>fe", "<CMD>Telescope file_browser<CR>", desc = "File Browser" },
+		{ "<leader>fb", "<CMD>Telescope buffers<CR>", desc = "List open buffer" },
+		{ "<leader>fd", "<CMD>Telescope dianostics<CR>", desc = "List Dianostics" },
+		{ "<leader>ft", "<CMD>Telescope treesitter<CR>", desc = "List Function names, variables, from Treesitter" },
+		{ "<leader>fk", "<CMD>Telescope keymaps<CR>", desc = "List keymaps" },
 	},
 }
 
