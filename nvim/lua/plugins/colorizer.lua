@@ -20,6 +20,9 @@ function M.config()
 			rgb_fn = true,
 			hsl_fn = true,
 			tailwind = "both",
+			-- Available modes for `mode`: foreground, background,  virtualtext
+			-- virtualtext = "■",
+			-- mode = "virtualtext", -- Set the display mode.
 		},
 		buftypes = {},
 	})

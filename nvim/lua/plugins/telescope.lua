@@ -10,9 +10,11 @@ local M = {
 		{ "<leader>fg", "<CMD>Telescope live_grep<CR>", desc = "Find Text" },
 		{ "<leader>fe", "<CMD>Telescope file_browser<CR>", desc = "File Browser" },
 		{ "<leader>fb", "<CMD>Telescope buffers<CR>", desc = "List open buffer" },
-		{ "<leader>fd", "<CMD>Telescope dianostics<CR>", desc = "List Dianostics" },
+		{ "<leader>fd", "<CMD>Telescope diagnostics<CR>", desc = "List Dianostics" },
 		{ "<leader>ft", "<CMD>Telescope treesitter<CR>", desc = "List Function names, variables, from Treesitter" },
 		{ "<leader>fk", "<CMD>Telescope keymaps<CR>", desc = "List keymaps" },
+		{ "<leader>fn", "<CMD>Telescope noice<CR>", desc = "Help tags" },
+		{ "<leader>fh", "<CMD>Telescope help_tags<CR>", desc = "Help tags" },
 	},
 }
 
@@ -33,7 +35,13 @@ function M.config()
 			selection_strategy = "reset",
 			path_display = { "smart" },
 			color_devicons = true,
-			-- dynamic_preview_title = true,
+			dynamic_preview_title = true,
+			layout_config = {
+				horizontal = {
+					preview_cutoff = 100,
+					preview_width = 0.5,
+				},
+			},
 			vimgrep_arguments = {
 				"rg",
 				"--color=never",
@@ -60,12 +68,6 @@ function M.config()
 					["q"] = actions.close,
 				},
 			},
-			layout_config = {
-				horizontal = {
-					preview_cutoff = 100,
-					preview_width = 0.5,
-				},
-			},
 		},
 		pickers = {
 			live_grep = {
@@ -77,13 +79,11 @@ function M.config()
 			},
 
 			find_files = {
+				theme = "dropdown",
 				wrap_results = true,
-				layout_strategy = "horizontal",
-				sorting_strategy = "ascending",
-				winblend = 0,
 				hidden = true,
 				no_ignore = false,
-				previewer = true,
+				previewer = false,
 				layout_config = {
 					prompt_position = "top",
 					width = 0.7,
@@ -94,6 +94,10 @@ function M.config()
 				theme = "dropdown",
 				previewer = false,
 				initial_mode = "normal",
+				layout_config = {
+					prompt_position = "top",
+					width = 0.7,
+				},
 				mappings = {
 					i = {
 						["<C-d>"] = actions.delete_buffer,

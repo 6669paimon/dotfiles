@@ -14,8 +14,12 @@ keymap.set("n", "j", [[v:count?'j':'gj']], { noremap = true, expr = true })
 keymap.set("n", "k", [[v:count?'k':'gk']], { noremap = true, expr = true })
 
 -- Terminal
-vim.keymap.set("n", "<C-t>", "<CMD>tabnew | term<CR>", opts)
-vim.keymap.set("t", "<esc>", "<C-\\><C-n>", opts)
+keymap.set("n", "<C-t>", "<CMD>tabnew | term<CR>", opts)
+keymap.set("t", "<esc>", "<C-\\><C-n>", opts)
+
+-- Buffer
+keymap.set("n", "[b", "<CMD>bprevious<CR>", opts)
+keymap.set("n", "]b", "<CMD>bprevious<CR>", opts)
 
 -- Move Firts&End line
 keymap.set("", "H", "^")
@@ -60,11 +64,3 @@ keymap.set("n", "<C-down>", "<C-w>-", opts)
 -- New line above
 keymap.set("n", "<C-p>", "m`O<Esc>``")
 keymap.set("n", "<C-n>", "m`o<Esc>``")
-
--- Zend Mode
--- local api = vim.api
--- api.nvim_set_keymap("n", "<leader>zn", ":TZNarrow<CR>", {})
--- api.nvim_set_keymap("v", "<leader>zn", ":TZNarrow<CR>", {})
--- api.nvim_set_keymap("n", "<leader>zf", ":TZFocus<CR>", {})
--- api.nvim_set_keymap("n", "<leader>zm", ":TZMinimalist<CR>", {})
--- api.nvim_set_keymap("n", "<leader>za", ":TZAtaraxis<CR>", {})

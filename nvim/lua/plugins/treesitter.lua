@@ -83,13 +83,11 @@ function M.config()
 					["[f"] = { query = "@function.outer", desc = "Previous function" },
 					["[c"] = { query = "@class.outer", desc = "Previous class" },
 					["[p"] = { query = "@parameter.inner", desc = "Previous parameter" },
-					["[w"] = { query = "@parameter.inner", desc = "Previous parameter" },
 				},
 				goto_next_start = {
 					["]f"] = { query = "@function.outer", desc = "Next function" },
 					["]c"] = { query = "@class.outer", desc = "Next class" },
 					["]p"] = { query = "@parameter.inner", desc = "Next parameter" },
-					["]w"] = { query = "@parameter.inner", desc = "Next parameter" },
 				},
 			},
 			swap = {

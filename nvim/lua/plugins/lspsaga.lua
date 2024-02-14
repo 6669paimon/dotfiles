@@ -4,25 +4,25 @@ return {
 		local keymap = vim.keymap
 
 		require("lspsaga").setup({
-			-- ui = {
-			-- 	theme = "round",
-			-- 	border = "rounded",
-			-- 	winblend = 0,
-			-- 	expand = "",
-			-- 	collaspe = "",
-			-- 	preview = " ",
-			-- 	code_action = "󱧣 ",
-			-- 	diagnostic = "🐞",
-			-- 	hover = " ",
-			-- 	kind = {},
-			-- },
 			ui = {
-				border = "single",
-				-- border = 'rounded',
+				theme = "round",
+				border = "rounded",
+				winblend = 0,
 			},
 			lightbulb = {
 				enable = false,
+				enable_in_insert = false,
 			},
+			-- Breadcrumbs
+			symbol_in_winbar = {
+				enable = true,
+				hide_keyword = true,
+				show_file = true,
+				folder_level = 0,
+			},
+			-- symbol_in_winbar = { enable = false },
+			-- beacon = { enable = false },
+			-- implement = { enable = false },
 		})
 
 		keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")

@@ -72,14 +72,32 @@ return {
 			filetypes = { "sh", "aliasrc", "zsh" },
 		})
 
+		-- css_ls
+		lspconfig.cssls.setup({
+			capabilities = capabilities,
+		})
+
+		lspconfig.eslint.setup({
+			capabilities = capabilities,
+		})
+
+		lspconfig.html.setup({
+			capabilities = capabilities,
+			configurationSection = { "html", "css", "javascript" },
+			embeddedLanguages = {
+				css = true,
+				javascript = true,
+			},
+		})
+
 		-- typescriptreact, javascriptreact, css, sass, scss, less, svelte, vue
 		lspconfig.emmet_ls.setup({
 			capabilities = capabilities,
 			filetypes = {
 				"typescriptreact",
 				"javascriptreact",
-				"javascript",
-				"css",
+				-- "javascript",
+				-- "css",
 				"sass",
 				"scss",
 				"less",
@@ -96,23 +114,6 @@ return {
 			},
 		})
 
-		lspconfig.html.setup({
-			capabilities = capabilities,
-			configurationSection = { "html", "css", "javascript" },
-			embeddedLanguages = {
-				css = true,
-				javascript = true,
-			},
-		})
-		-- css_ls
-		lspconfig.cssls.setup({
-			capabilities = capabilities,
-		})
-
-		lspconfig.eslint.setup({
-			capabilities = capabilities,
-		})
-
 		-- C/C++
 		lspconfig.clangd.setup({
 			capabilities = capabilities,
@@ -124,7 +125,7 @@ return {
 
 		vim.diagnostic.config({
 			virtual_text = { prefix = "●" },
-			-- update_in_insert = false,
+			update_in_insert = false,
 			-- underline = true,
 			severity_sort = true,
 			-- float = {
