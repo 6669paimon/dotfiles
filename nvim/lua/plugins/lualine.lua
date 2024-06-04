@@ -1,0 +1,111 @@
+local M = {
+  "nvim-lualine/lualine.nvim",
+}
+
+function M.config()
+  local conditions = {
+    hide_in_width = function()
+      return vim.fn.winwidth(0) > 80
+    end,
+  }
+
+  local color = {
+    bg0 = "#04121D",
+    bg1 = "#081c30",
+    fg0 = "#aad2ee",
+    fg1 = "#66b6e1",
+    red0 = "#D94E4C",
+    red1 = "#E48679",
+  }
+
+  local my_status = {
+    normal = {
+      b = { bg = color.bg1, fg = color.fg1 },
+      c = { bg = color.bg0, fg = color.fg0 },
+    },
+    visual = {
+      b = { bg = color.red0, fg = color.bg0 },
+      c = { bg = color.bg0, fg = color.red1 },
+    },
+  }
+
+  require("lualine").setup({
+    options = {
+      theme = my_status,
+      section_separators = { left = "", right = "" },
+      component_separators = { left = "", right = "" },
+      ignore_focus = { "NvimTree" },
+    },
+    sections = {
+      lualine_a = {},
+      lualine_b = {
+        {
+          --      󰷫 󰏪 󰃉 󰙈 󰙏  󰘳 󱏎
+          "mode",
+          fmt = function(str)
+            local mode = str:sub(1, 1)
+            if "N" == mode then
+              return " "
+            elseif "I" == mode then
+              return " "
+            elseif "V" == mode then
+              return " "
+            elseif "C" == mode then
+              -- return " "
+              return " "
+            end
+          end,
+        },
+      },
+      lualine_c = {
+        {
+          "branch",
+          icon = "",
+          cond = conditions.hide_in_width,
+        },
+        {
+          "diagnostics",
+        },
+        -- function()
+        -- 	return "%="
+        -- end,
+      },
+      lualine_x = {
+        { --  
+          function()
+            local ln = vim.fn.line(".")
+            local col = vim.fn.virtcol(".")
+            return string.format("Ln%3d,Col %-2d", ln, col)
+          end,
+        },
+        {
+          "encoding",
+          fmt = string.upper,
+        },
+        "filetype",
+        {
+          function()
+            local msg = " No Active"
+            local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+            local clients = vim.lsp.get_active_clients()
+            if next(clients) == nil then
+              return msg
+            end
+            for _, client in ipairs(clients) do
+              local filetypes = client.config.filetypes
+              if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                return "󰄭 " .. client.name
+              end
+            end
+            return msg
+          end,
+          -- cond = conditions.hide_in_width,
+        },
+      },
+      lualine_y = { "progress" },
+      lualine_z = {},
+    },
+  })
+end
+
+return M
