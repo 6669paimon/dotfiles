@@ -1,0 +1,147 @@
+* {
+  font-family: "SF Pro Display", "Iosevka Nerd Font";
+  font-size: 17px;
+  color: rgba(196, 229, 242, 0.8);
+}
+
+window#waybar {
+  background-color: rgba(3, 18, 28, 1);
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.1;
+}
+
+/* Font bold */
+#window,
+#workspaces,
+#clock {
+  font-weight: bold;
+}
+
+#cpu,
+#memory,
+#disk,
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#temperature {
+  padding: 0px 10px;
+  border-bottom: 1px solid #0965ba;
+}
+
+#processing {
+  margin-left: 8px;
+}
+
+#custom-logo {
+  text-shadow: 0px 0px 6px #c4e5f2;
+  color: #0965ba;
+  margin: 0 20px 0 18px;
+}
+
+/* -----------------------------------------------------
+ * Workspaces 
+ * ----------------------------------------------------- */
+
+#workspaces {
+  margin: 0 4px 0;
+  background-color: rgba(14, 45, 74, 0.5);
+  border: 1px solid #0965ba;
+  border-radius: 15px;
+  font-style: normal;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  /* padding: 0 9px; */
+  margin: 0 1px;
+  border: none;
+  color: #c4e5f2;
+  /* text-shadow: 0px 0px 2px #c4e5f2; */
+  text-shadow: 0px 0px 4px #c4e5f2;
+  opacity: 0.7;
+}
+
+#workspaces button.empty {
+  text-shadow: none;
+  color: #c4e5f2;
+  opacity: 0.5;
+}
+
+#workspaces button.active {
+  text-shadow: 0px 0px 4px #c4e5f2;
+  opacity: 1;
+}
+
+#workspaces button:hover {
+  text-shadow: 0px 0px 4px #c4e5f2;
+  opacity: 0.7;
+}
+
+#network.disconnected {
+  color: #eb4d4b;
+}
+
+#pulseaudio.muted {
+  color: #eb4d4b;
+}
+
+#battery.critical {
+  color: #eb4d4b;
+}
+
+#window {
+  padding: 0px 10px;
+  border-top: 1px solid #0965ba;
+}
+
+#custom-power-menu {
+  color: #eb4d4b;
+  margin-right: 8px;
+  padding: 0px 10px;
+}
+
+#custom-separator {
+  color: #0965ba;
+  border-bottom: 1px solid #0965ba;
+}
+
+@keyframes blink {
+  to {
+    background-color: rgba(30, 34, 42, 0.5);
+    color: #abb2bf;
+  }
+}
+
+tooltip {
+  border-radius: 4px;
+  border: 1px solid #0965ba;
+  padding: 4px;
+  background-color: rgba(3, 18, 28, 1);
+}
+
+tooltip label {
+  padding: 5px;
+}
+
+#tray {
+  padding: 0px 5px 0px;
+  background-color: rgba(14, 45, 74, 0.5);
+  border: 1px solid #0965ba;
+  margin-left: 14px;
+  border-radius: 15px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+}
