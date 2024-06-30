@@ -1,0 +1,186 @@
+/* Google page and search page */
+@-moz-document domain(google.com.br), domain(google.com) {
+  body.srp {
+    background-color: var(--gnome-window-background) !important;
+  }
+
+  .sfbg {
+    background-color: var(--gnome-window-background) !important;
+    border-bottom: 1px solid var(--gnome-border-color) !important;
+  }
+
+  .Lu57id,
+  .BaegVc:hover {
+    background-color: var(--gnome-tabbar-tab-active-background) !important;
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  a {
+    color: var(--gnome-window-color) !important;
+  }
+
+  [selected].YmvwI {
+    border-bottom: 3px solid var(--gnome-accent) !important;
+  }
+
+  .Ww4FFb {
+    background: transparent !important;
+  }
+
+  .MjjYud .Ww4FFb {
+    /* background: transparent !important; */
+    border: 1px solid var(--gnome-border-color) !important;
+    border-radius: 0.5rem !important;
+    padding: 1rem;
+  }
+
+  .Ww4FFb.vt6azd.obcontainer.wDYxhc {
+    border: none !important;
+  }
+
+  .RNNXgb {
+    background-color: rgba(7, 26, 38, 1) !important;
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  .aajZCb,
+  .fKmH1e,
+  .aajZCb {
+    background-color: rgba(7, 26, 38, 1) !important;
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  .xtSCL,
+  .cjSy4c.p8Ujvb {
+    border-top: 1px solid var(--gnome-border-color) !important;
+  }
+
+  .r025kc.lVm3ye {
+    /* color: var(--gnome-window-color) !important; */
+    color: #e8e8e8 !important;
+  }
+
+  .KLEmSd,
+  .uU7dJb,
+  .iRPzcb {
+    border-bottom: 1px solid var(--gnome-border-color) !important;
+  }
+
+  #appbar {
+    background: transparent !important;
+    /* border: 1px solid var(--gnome-border-color) !important; */
+  }
+
+  hr {
+    background-color: var(--gnome-border-color) !important;
+
+  }
+
+  .akqY6 {
+    background: var(--gnome-border-color) !important;
+  }
+
+  .KcXNxb,
+  .f6F9Be,
+  .wH6SXe {
+    background-color: var(--gnome-window-background) !important;
+
+  }
+
+  .ZFiwCf,
+  .S8ee5,
+  .dG2XIf,
+  .b2Rnsc,
+  .GKS7s,
+  .WZH4jc .GNJvt,
+  .lJ9FBc input[type="submit"],
+  #tw-target {
+    outline: none;
+    background-color: rgba(7, 26, 38, 1) !important;
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  .j1iyq,
+  .ffmmcd {
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  #rhs .u7yw9 .cLjAic {
+    border-bottom: 1px solid var(--gnome-border-color) !important;
+  }
+
+  #rhs .ss6qqb {
+    border-left: 1px solid var(--gnome-border-color) !important;
+  }
+
+  .eFM0qc.BCF2pd {
+    background-color: var(--gnome-selected-color) !important;
+  }
+
+  .YfftMc {
+    background-color: var(--gnome-selected-color) !important;
+  }
+
+  .eFM0qc.BCF2pd a {
+    color: var(--gnome-window-color) !important;
+  }
+
+  .BA0zte {
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  .JiJthb {
+    background-color: var(--gnome-selected-color) !important;
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  .F9Idpe {
+    background: linear-gradient(to right, transparent 0%, var(--gnome-window-background) 60%, var(--gnome-window-background)) !important;
+  }
+
+  .JiJthb .F9Idpe {
+    background: linear-gradient(to right, transparent 0%, var(--gnome-selected-color) 60%, var(--gnome-selected-color)) !important;
+  }
+
+  #gb,
+  .c93Gbe {
+    background: var(--gnome-window-background) !important;
+  }
+
+  /* color picker */
+  .P2c8Dd,
+  .B678Hb,
+  .XRVJtc.CLLuUd {
+    background-color: rgba(7, 26, 38, 1) !important;
+  }
+
+  .R9RxHd {
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  .F9SH7d {
+    border-color: var(--gnome-accent) !important;
+  }
+
+  .Q0y6Td {
+    border-bottom: 1px solid var(--gnome-border-color) !important;
+  }
+
+  g-fab {
+    background-color: var(--gnome-window-background) !important;
+    color: var(--gnome-accent) !important;
+  }
+
+  .sbct:hover {
+    background: var(--gnome-selected-color) !important;
+    color: var(--gnome-window-color) !important;
+    border: 1px solid var(--gnome-menu-border-color) !important;
+  }
+
+  .sbct.sbhl {
+    background: var(--gnome-selected-color) !important;
+    color: var(--gnome-window-color) !important;
+    border: 1px solid var(--gnome-menu-border-color) !important;
+  }
+
+}

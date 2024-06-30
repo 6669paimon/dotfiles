@@ -40,8 +40,10 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 -- Add line
-keymap.set("n", "<S-A-k>", "m`O<Esc>``")
-keymap.set("n", "<S-A-j>", "m`o<Esc>``")
+keymap.set("n", "<C-k>", "m`O<Esc>``")
+keymap.set("n", "<C-j>", "m`o<Esc>``")
+-- keymap.set("n", "<S-A-k>", "m`O<Esc>``")
+-- keymap.set("n", "<S-A-j>", "m`o<Esc>``")
 -- Delete line Up/Down current cursor
 keymap.set("n", "K", "kdd")
 keymap.set("n", "J", "mzJ`z")

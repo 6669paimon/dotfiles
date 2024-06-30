@@ -1,0 +1,26 @@
+/* ปรับแต่งสีพื้นหลังของ History view */
+#history-panel {
+  background-color: var(--gnome-window-background) !important;
+  /* border: 1px solid var(--gnome-menu-border-color) !important; */
+}
+
+/* ปรับแต่งสีพื้นหลังของรายการใน History view */
+#history-panel .sidebar-placesTreechildren {
+  background-color: var(--gnome-window-background) !important;
+}
+
+/* ปรับแต่งสีข้อความในรายการของ History view */
+/* #history-panel .sidebar-placesTreechildren treechildren::-moz-tree-cell-text { */
+/*   color: var(--gnome-window-color) !important; */
+/* } */
+
+/* ปรับแต่งสีพื้นหลังของรายการที่ถูกเลือก */
+/* #history-panel .sidebar-placesTreechildren treechildren::-moz-tree-row(selected) { */
+/*   background-color: var(--gnome-selected-color) !important; */
+/*   border: 1px solid var(--gnome-menu-border-color) !important; */
+/* } */
+
+/* ปรับแต่งสีข้อความในรายการที่ถูกเลือก */
+/* #history-panel .sidebar-placesTreechildren treechildren::-moz-tree-cell-text(selected) { */
+/*   color: var(--gnome-window-color) !important; */
+/* } */

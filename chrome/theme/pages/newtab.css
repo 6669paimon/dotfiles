@@ -1,0 +1,49 @@
+/* about:newtab */
+
+@-moz-document url("about:newtab"), url("about:home") {
+  body {
+    --newtab-background-color: var(--gnome-window-background) !important;
+    /* --newtab-background-color-secondary: rgba(19, 60, 99, 0.35) !important; */
+    --newtab-primary-action-background: var(--gnome-accent) !important;
+  }
+
+  /* ปรับแต่งสีพื้นหลังภายใน Search bar */
+  .search-wrapper .search-handoff-button {
+    background-color: rgba(7, 26, 38, 1) !important;
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  /* ปรับแต่งสีของไอคอน shortcut เมื่อ Hover */
+  .top-site-outer:hover {
+    background-color: var(--gnome-hover-color) !important;
+    /* background-color: transparent !important; */
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  /* ปรับแต่งสีของข้อความในไอคอน shortcut เมื่อ Hover */
+  /* .top-site-outer:hover .top-site-title { */
+  /*   color: var(--gnome-window-color) !important; */
+  /* } */
+
+  .top-site-outer .tile,
+  .top-site-outer .top-site-icon {
+    background-color: transparent !important;
+  }
+
+  .top-site-outer .tile {
+    box-shadow: none !important;
+    border: 1px solid var(--gnome-border-color) !important;
+    background-color: rgba(7, 26, 38, 1) !important;
+    border-radius: 50% !important;
+  }
+
+  /* .top-site-outer .tile:hover { */
+  /*   background-color: var(--gnome-hover-color) !important; */
+  /*   border: 1px solid var(--gnome-border-color) !important; */
+  /* } */
+
+  .top-site-outer .title {
+    color: var(--gnome-window-color) !important;
+  }
+
+}

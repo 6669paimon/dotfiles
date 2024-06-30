@@ -125,8 +125,6 @@
   },
   "network": {
     "format-wifi": "   {ifname}",
-    // "format-wifi": "󰖩   {ifname}",
-    //"format-wifi": "{icon}",
     "format-ethernet": "󰈁 ",
     "format-disconnected": "󰖪",
     "tooltip-format": "{essid}",
@@ -137,9 +135,9 @@
     "format": "{icon} {volume}%",
     "format-muted": "󰖁",
     "format-icons": {
-      "headphone": " ",
-      "hands-free": " ",
-      "headset": " ",
+      "headphone": "  ",
+      "hands-free": "  ",
+      "headset": "  ",
       "phone": " ",
       "portable": " ",
       "car": " ",
@@ -162,6 +160,7 @@
   },
   "custom/power-menu": {
     "format": "  ",
+    // "format": " X",
     "on-click": "wlogout",
     "tooltip": false
   },

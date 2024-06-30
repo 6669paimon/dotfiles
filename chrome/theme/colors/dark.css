@@ -1,0 +1,105 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Variables that start with --gnome- are added by me and are assigned
+ * to elements somewhere in this code. The rest of the variables are
+ * built-in in Firefox, so you need to add an !important if you wanna
+ * override them. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Accent */
+    --gnome-accent-bg: var(--gnome-palette-blue-3);
+    --gnome-accent: #0965ba;
+
+    --gnome-toolbar-star-button: var(--gnome-accent);
+    /* --gnome-toolbar-star-button: var(--gnome-palette-yellow-1); */
+
+    --gnome-border-color: #133c63;
+    /* Menu border */
+    --gnome-menu-border-color: var(--gnome-border-color);
+    --gnome-menu-separator-color: var(--gnome-border-color);
+
+    /* Window */
+    --gnome-window-background: rgba(3, 18, 28, 1);
+    --gnome-window-color: rgba(196, 229, 242, 0.8);
+    --gnome-view-background: #1e1e1e;
+    --gnome-sidebar-background: #303030;
+    --gnome-secondary-sidebar-background: #2a2a2a;
+
+    /* Card */
+    --gnome-card-background: rgba(255, 255, 255, 0.08);
+    --gnome-card-shade-color: color-mix(in srgb, black 36%, transparent);
+
+    /* Menu */
+    --gnome-menu-background: rgba(0, 16, 29, 0.9);
+
+    --gnome-selected-color: #092033;
+    --gnome-selected-hover-color: rgba(19, 60, 99, 1);
+
+    --gnome-hover-color: rgba(19, 60, 99, 0.35);
+    /* Header bar */
+    --gnome-headerbar-background: rgba(3, 18, 28, 1);
+    --gnome-headerbar-shade-color: #133c63;
+
+    /* Toolbars */
+    /* --gnome-toolbar-icon-fill: rgba(196, 229, 242, 0.8); */
+    /* --gnome-toolbar-icon-fill: #aad2ee; */
+    --gnome-toolbar-icon-fill: #c4e5f2;
+
+    /* Tabs */
+    --gnome-tabbar-tab-hover-background: rgba(19, 60, 99, 0.35);
+    /* Hardcoded color */
+    --gnome-tabbar-tab-active-background: #092033;
+    /* Hardcoded color */
+    --gnome-tabbar-tab-active-background-contrast: rgba(3, 18, 28, 1);
+    /* Hardcoded color */
+    --gnome-tabbar-tab-active-hover-background: rgba(19, 60, 99, 0.6);
+    /* Hardcoded color */
+    --gnome-tabbar-tab-separator-color: var(--gnome-border-color);
+
+    --gnome-tabbar-identity-color-green: var(--gnome-palette-green-1);
+    --gnome-tabbar-identity-color-yellow: var(--gnome-palette-yellow-2);
+    --gnome-tabbar-identity-color-orange: var(--gnome-palette-orange-3);
+    --gnome-tabbar-identity-color-red: var(--gnome-palette-red-1);
+    --gnome-tabbar-identity-color-purple: var(--gnome-palette-purple-1);
+
+    /* Text color for Firefox Logo in new private tab */
+    --gnome-private-wordmark: #FBFBFE;
+    /* New private tab background */
+    --gnome-private-in-content-page-background: rgba(3, 18, 28, 1);
+    /* Private browsing info box */
+    --gnome-private-text-primary-color: #FBFBFE;
+  }
+
+  /* Backdrop colors */
+  :root:-moz-window-inactive {
+    --gnome-tabbar-tab-hover-background: rgba(3, 18, 28, 1);
+    /* Hardcoded color */
+    --gnome-tabbar-tab-active-background: #092033;
+    /* Hardcoded color */
+  }
+
+  /* Private colors */
+  :root[privatebrowsingmode="temporary"] {
+    --gnome-accent-fg: #0965ba;
+    /* Headerbar */
+    --gnome-headerbar-background: #252F49 !important;
+    /* Tabs */
+    --gnome-tabbar-tab-hover-background: #343e56;
+    /* Hardcoded color */
+    --gnome-tabbar-tab-active-background: #343e56;
+    /* Hardcoded color */
+    --gnome-tabbar-tab-active-background-contrast: #495675;
+    /* Hardcoded color */
+    --gnome-tabbar-tab-active-hover-background: #414a61;
+    /* Hardcoded color */
+  }
+
+  /* Private and backdrop colors */
+  :root[privatebrowsingmode="temporary"]:-moz-window-inactive {
+    --gnome-headerbar-background: #252F49 !important;
+    --gnome-tabbar-tab-hover-background: #242c3f;
+    /* Hardcoded color */
+    --gnome-tabbar-tab-active-background: #272e41;
+    /* Hardcoded color */
+  }
+}

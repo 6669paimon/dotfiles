@@ -10,10 +10,11 @@ function M.config()
   }
 
   local color = {
-    bg0 = "#04121D",
-    bg1 = "#081c30",
+    bg0 = "#03121c",
+    bg1 = "#092033",
     fg0 = "#aad2ee",
-    fg1 = "#66b6e1",
+    -- fg1 = "#73BCD9",
+    fg1 = "#b0ced9",
     red0 = "#D94E4C",
     red1 = "#E48679",
   }
