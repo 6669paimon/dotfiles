@@ -13,9 +13,8 @@ function M.config()
     bg0 = "#03121c",
     bg1 = "#092033",
     fg0 = "#aad2ee",
-    -- fg1 = "#73BCD9",
-    fg1 = "#b0ced9",
-    red0 = "#f73e3e",
+    fg1 = "#73BCD9",
+    red0 = "#D94E4C",
     red1 = "#E48679",
   }
 
@@ -41,7 +40,7 @@ function M.config()
       lualine_a = {},
       lualine_b = {
         {
-          --      󰘳 󱏎
+          --      󰷫 󰏪 󰃉 󰙈 󰙏  󰘳 󱏎
           "mode",
           fmt = function(str)
             local mode = str:sub(1, 1)
@@ -52,6 +51,7 @@ function M.config()
             elseif "V" == mode then
               return " "
             elseif "C" == mode then
+              -- return " "
               return " "
             end
           end,

@@ -18,11 +18,15 @@ local M = {
   },
 }
 
+
+
 function M.config()
   local icons = {
     ChevronRight = "",
-    Forward = " ",
+    -- Forward = " ",
+    Forward = "  ",
   }
+
   local actions = require("telescope.actions")
   local fb_actions = require("telescope").extensions.file_browser.actions
 
@@ -103,7 +107,7 @@ function M.config()
         layout_config = {
           prompt_position = "top",
           width = { 0.7, max = 70 },
-          height = 0.7,
+          height = { 0.7, max = 70 }
         },
       },
 
@@ -174,6 +178,7 @@ function M.config()
         layout_config = {
           prompt_position = "top",
           width = { 0.8, max = 70 },
+          height = { 0.8, max = 70 },
         },
         wrap_results = true,
         layout_strategy = "horizontal",

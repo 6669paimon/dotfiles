@@ -1,6 +1,11 @@
 import = ["/home/Arawan/.config/alacritty/color/github_dark_dimmed.toml"]
 
+# [shell]
+# program = "/usr/bin/fish"
+# args = ["--login"]
+
 [env]
+# FISH_ALACRITTY = "1"
 TERM = "xterm-256color"
 
 [window]
@@ -9,13 +14,44 @@ dynamic_padding = true
 opacity = 0.7
 
 [font]
-normal = {family="CaskaydiaCove Nerd Font",style="Regular"}
-bold = {family="CaskaydiaCove Nerd Font",style="Bold"}
-italic = {family="CaskaydiaCove Nerd Font",style="Italic"}
-bold_italic = {family="CaskaydiaCove Nerd Font",style="Bold Italic"}
+
+# #####################
+# # SF Mono Nerd Font #
+# #####################
+normal = {family="SFMono Nerd Font",style="Medium"}
+bold = {family="SFMono Nerd Font",style="Bold"}
+italic = {family="SFMono Nerd Font",style="Italic"}
+bold_italic = {family="SFMono Nerd Font",style="Bold Italic"}
+
+
+##########################
+# Liga SF Mono Nerd Font #
+##########################
+# normal = {family="Liga SFMono Nerd Font",style="Medium"}
+# bold = {family="Liga SFMono Nerd Font",style="Bold"}
+# italic = {family="Liga SFMono Nerd Font",style="Italic"}
+# bold_italic = {family="Liga SFMono Nerd Font",style="Bold Italic"}
+
+
+############################
+# JetBrains Mono Nerd Font #
+############################
+# normal = {family="JetBrains Mono Nerd Font",style="Medium"}
+# bold = {family="JetBrains Mono Nerd Font",style="Bold"}
+# italic = {family="JetBrains Mono Nerd Font",style="Italic"}
+# bold_italic = {family="JetBrains Mono Nerd Font",style="Bold Italic"}
+
+###########################
+# CaskaydiaCove Nerd Font #
+###########################
+# normal = {family="CaskaydiaCove Nerd Font",style="Regular"}
+# bold = {family="CaskaydiaCove Nerd Font",style="Bold"}
+# italic = {family="CaskaydiaCove Nerd Font",style="Italic"}
+# bold_italic = {family="CaskaydiaCove Nerd Font",style="Bold Italic"}
 
 size = 14
-offset = {x=0,y=2}
+offset = {x=-1,y=0}   # for SFMono
+# offset = {x=0,y=2}  # for CaskaydiaCove
 
 [mouse]
 hide_when_typing = true
@@ -26,5 +62,6 @@ blink_timeout=0
 blink_interval=500
 
 [colors]
+# cursor = {text="#00101d",cursor="#b0ced9"}
 cursor = {text="#00101d",cursor="#c4e5f2"}
 

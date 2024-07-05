@@ -5,7 +5,6 @@ local opts = { noremap = true, silent = true }
 keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
 -- Delete is not cut
 -- Delete, d
 -- keymap.set({ "n", "x" }, "d", '"_d')
@@ -38,7 +37,6 @@ keymap.set("n", "<leader>q", "<CMD>confirm q<CR>", opts)
 -- Move select
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
-
 -- Add line
 keymap.set("n", "<C-k>", "m`O<Esc>``")
 keymap.set("n", "<C-j>", "m`o<Esc>``")
@@ -58,7 +56,7 @@ keymap.set("n", "{", "{zz")
 keymap.set("n", "}", "}zz")
 
 -- find/replace for the word under the cursor
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Terminal
 keymap.set("t", "<esc>", "<C-\\><C-n>", opts)
