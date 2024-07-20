@@ -62,6 +62,9 @@ return {
           -- TelescopeSelectionCaret = { fg = "#092033" },
           TelescopeMatching  = { fg = "#00101d", bg = '#FFAA0B' },
 
+          InclineNormal      = { fg = "#aad2ee", bg = "#092033" },
+          InclineNA          = { fg = "#68838c", bg = "#00101d" }, -- Normal text in floating windows.
+
         }
       },
     })

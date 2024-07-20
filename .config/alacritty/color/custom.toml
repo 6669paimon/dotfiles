@@ -10,11 +10,12 @@ foreground = '#adbac7'
 [colors.normal]
 black   = '#545d68'
 red     = '#f47067'
-green   = '#57ab5a'
-yellow  = '#c69026'
-blue    = '#539bf5'
+green   = '#ea6847'
+yellow  = '#5db2f8'
+# blue    = '#2f516c'
+blue    = '#3478ad'
 magenta = '#b083f0'
-cyan    = '#39c5cf'
+cyan    = '#86dbf5'
 white   = '#909dab'
 
 # Bright colors

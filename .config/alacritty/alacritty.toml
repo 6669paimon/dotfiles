@@ -1,4 +1,6 @@
 import = ["/home/Arawan/.config/alacritty/color/github_dark_dimmed.toml"]
+# import = ["/home/Arawan/.config/alacritty/color/neofusion.toml"]
+# import = ["/home/Arawan/.config/alacritty/color/custom.toml"]
 
 # [shell]
 # program = "/usr/bin/fish"
