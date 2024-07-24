@@ -25,7 +25,6 @@ vimcmd_symbol = "[❮](green)"
 format = "[$symbol$branch]($style)"
 symbol = " "
 style = "cyan"
-# style = "bright-black"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"

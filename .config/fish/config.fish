@@ -33,4 +33,5 @@ set -Ux FZF_DEFAULT_OPTS "\
 #     tmux attach-session -t default || tmux new-session -s default
 # end
 
+zoxide init fish | source
 starship init fish | source
