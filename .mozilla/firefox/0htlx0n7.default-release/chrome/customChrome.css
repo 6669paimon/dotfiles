@@ -1,1 +1,13 @@
+:root[tabsintitlebar]:not([inFullscreen]) #nav-bar {
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+}
 
+:root[tabsintitlebar] #titlebar .titlebar-buttonbox-container {
+  appearance: none !important;
+  padding: 5px;
+  position: absolute !important;
+  right: 0;
+  top: 0;
+  display: none !important;
+}

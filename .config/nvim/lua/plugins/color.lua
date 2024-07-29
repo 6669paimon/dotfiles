@@ -43,8 +43,8 @@ return {
         --   -- ...
         -- },
       },
-      palettes = {},
-      specs = {},
+      -- palettes = {},
+      -- specs = {},
       groups = {
         all = {
           -- FloatBorder = { fg = "#73BCD9" },
@@ -54,12 +54,12 @@ return {
           PmenuSel           = { bg = "#133c63" },                 -- Popup menu: selected item.
           VertSplit          = { fg = "#133c63" },                 -- the column separating vertically split windows
           WinSeparator       = { fg = "#133c63" },                 -- (nvim >= 0.10) the column separating vertically split windows
-          Search             = { fg = "#73BCD9", bg = "#24475A" }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+          Search             = { bg = '#124066', fg = '#e2e2e2' },
+          -- Search             = { fg = "#73BCD9", bg = "#24475A" }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
           TabLineSel         = { fg = "#afb7ba", bg = "#f73e3e" }, -- tab pages line, active tab page label
+          Visual             = { bg = '#124066', fg = '#e2e2e2' },
 
           TelescopeSelection = { bg = '#124066', fg = '#e2e2e2' },
-          -- DevIconLuaSelected = { bg = '#a5c2cc', fg = '#00101d' },
-          -- TelescopeSelectionCaret = { fg = "#092033" },
           TelescopeMatching  = { fg = "#00101d", bg = '#FFAA0B' },
 
           InclineNormal      = { fg = "#aad2ee", bg = "#092033" },
