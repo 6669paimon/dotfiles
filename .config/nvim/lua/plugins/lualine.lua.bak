@@ -3,11 +3,11 @@ local M = {
 }
 
 function M.config()
-  -- local conditions = {
-  --   hide_in_width = function()
-  --     return vim.fn.winwidth(0) > 80
-  --   end,
-  -- }
+  local conditions = {
+    hide_in_width = function()
+      return vim.fn.winwidth(0) > 80
+    end,
+  }
 
   local color = {
     bg0 = "#03121c",
@@ -46,13 +46,11 @@ function M.config()
           fmt = function(str)
             local mode = str:sub(1, 1)
             if "N" == mode then
-              -- return " "
-              return "󰀘 "
+              return " "
             elseif "I" == mode then
               return " "
             elseif "V" == mode then
-              return " "
-              -- return " "
+              return " "
             elseif "C" == mode then
               return " "
             end
@@ -60,22 +58,34 @@ function M.config()
         },
       },
       lualine_c = {
-      },
-      lualine_x = {
-        {
-          "diagnostics",
-        },
-
         {
           "branch",
           icon = "",
-          -- color = { fg = "#48AEF5" },
-          -- cond = conditions.hide_in_width,
+          cond = conditions.hide_in_width,
         },
         {
+          "diagnostics",
+        },
+        -- function()
+        -- 	return "%="
+        -- end,
+      },
+      lualine_x = {
+        { --  
           function()
-            local msg = " "
-            -- local msg = " No Active"
+            local ln = vim.fn.line(".")
+            local col = vim.fn.virtcol(".")
+            return string.format("Ln%3d,Col %-2d", ln, col)
+          end,
+        },
+        {
+          "encoding",
+          fmt = string.upper,
+        },
+        "filetype",
+        {
+          function()
+            local msg = " No Active"
             local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
             local clients = vim.lsp.get_active_clients()
             if next(clients) == nil then
@@ -84,22 +94,14 @@ function M.config()
             for _, client in ipairs(clients) do
               local filetypes = client.config.filetypes
               if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                return "[" .. client.name .. "]"
+                return "󰄭 " .. client.name
               end
             end
             return msg
           end,
+          -- cond = conditions.hide_in_width,
         },
-        {
-          function()
-            return "ﲒ " .. vim.bo.shiftwidth
-          end
-
-        },
-        "filetype",
-        '%l:%c'
       },
-      -- lualine_y = { '%p%%/%L' },
       lualine_y = { "progress" },
       lualine_z = {},
     },

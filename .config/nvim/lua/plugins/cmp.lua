@@ -87,10 +87,30 @@ function M.config()
       end, { "i", "s" }),
     }),
     formatting = {
-      format = lspkind.cmp_format({
-        maxwidth = 50,
-        ellipsis_char = "...",
-      }),
+      -- format = lspkind.cmp_format({
+      --   maxwidth = 50,
+      --   ellipsis_char = "...",
+      -- }),
+
+      format = function(entry, vim_item)
+        vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = 'symbol_text' })
+
+        vim_item.menu = ({
+          buffer = "[Buffer]",
+          nvim_lsp = "[LSP]",
+          nvim_lua = "[Lua]",
+          path = "[Path]",
+          -- luasnip = "[Snippet]",
+          -- vsnip = "[Snippet]",
+        })[entry.source.name]
+
+        local max_width = 50
+        if string.len(vim_item.abbr) > max_width then
+          vim_item.abbr = string.sub(vim_item.abbr, 1, max_width) .. '...'
+        end
+
+        return vim_item
+      end,
     },
     sources = {
       { name = "nvim_lsp" },
