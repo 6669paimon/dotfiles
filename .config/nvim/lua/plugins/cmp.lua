@@ -29,7 +29,6 @@ local M = {
   },
 }
 
-
 function M.config()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
@@ -46,16 +45,15 @@ function M.config()
     completion = {
       -- completion = "menu,menuone",
       -- completion = "menu,menuone,noinsert",
-      completion = "menu,menuone,preview,noselect",
+      -- completion = "menu,menuone,preview,noselect",
     },
     mapping = cmp.mapping.preset.insert({
       ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
       ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-e>"] = cmp.mapping.close(),
-      -- ["<CR>"] = cmp.mapping.confirm({ select = false }),
       ["<CR>"] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
@@ -87,30 +85,43 @@ function M.config()
       end, { "i", "s" }),
     }),
     formatting = {
-      -- format = lspkind.cmp_format({
-      --   maxwidth = 50,
-      --   ellipsis_char = "...",
-      -- }),
 
-      format = function(entry, vim_item)
-        vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = 'symbol_text' })
+      -- lazy style
+      format = function(entry, item)
+        item.kind = lspkind.symbolic(item.kind, { mode = 'symbol_text' })
 
-        vim_item.menu = ({
-          buffer = "[Buffer]",
-          nvim_lsp = "[LSP]",
-          nvim_lua = "[Lua]",
-          path = "[Path]",
-          -- luasnip = "[Snippet]",
-          -- vsnip = "[Snippet]",
-        })[entry.source.name]
+        local widths = {
+          abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
+          menu = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 30,
+        }
 
-        local max_width = 50
-        if string.len(vim_item.abbr) > max_width then
-          vim_item.abbr = string.sub(vim_item.abbr, 1, max_width) .. '...'
+        for key, width in pairs(widths) do
+          if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
+            item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
+          end
         end
 
-        return vim_item
+        return item
       end,
+
+      -- format = function(entry, vim_item)
+      --   vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = 'symbol_text' })
+      --
+      --   vim_item.menu = ({
+      --     buffer = "[Buffer]",
+      --     nvim_lsp = "[LSP]",
+      --     nvim_lua = "[Lua]",
+      --     path = "[Path]",
+      --   })[entry.source.name]
+      --
+      --   local max_width = 50
+      --   if string.len(vim_item.abbr) > max_width then
+      --     vim_item.abbr = string.sub(vim_item.abbr, 1, max_width) .. '...'
+      --   end
+      --
+      --   return vim_item
+      -- end,
+
     },
     sources = {
       { name = "nvim_lsp" },
@@ -125,13 +136,13 @@ function M.config()
     sorting = defaults.sorting,
     window = {
       completion = {
-        scrollbar = false,
-        -- winblend = 5
+        scrollbar = true,
+        -- scrollbar = false,
       },
       documentation = {
         border = border,
-        -- max_width = '60',
-        -- max_height = '15',
+        -- max_width = 50,
+        -- max_height = 'number',
       },
     },
     experimental = {

@@ -95,10 +95,10 @@ keymap.set("t", "<M-k>", "<CMD>wincmd k<CR>")
 keymap.set("t", "<M-j>", "<CMD>wincmd j<CR>")
 keymap.set("t", "<M-l>", "<CMD>wincmd l<CR>")
 -- -- tmux
-keymap.set("n", "<M-h>", "<CMD>TmuxNavigateLeft<CR>")
-keymap.set("n", "<M-k>", "<CMD>TmuxNavigateUp<CR>")
-keymap.set("n", "<M-j>", "<CMD>TmuxNavigateDown<CR>")
-keymap.set("n", "<M-l>", "<CMD>TmuxNavigateRight<CR>")
+-- keymap.set("n", "<M-h>", "<CMD>TmuxNavigateLeft<CR>")
+-- keymap.set("n", "<M-k>", "<CMD>TmuxNavigateUp<CR>")
+-- keymap.set("n", "<M-j>", "<CMD>TmuxNavigateDown<CR>")
+-- keymap.set("n", "<M-l>", "<CMD>TmuxNavigateRight<CR>")
 
 -- Resize window
 keymap.set("n", "<C-left>", "<C-w><", opts)

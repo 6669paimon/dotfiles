@@ -1,5 +1,37 @@
 return {
   "folke/noice.nvim",
+  -- commit = "d9328ef903168b6f52385a751eb384ae7e906c6f",
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    {
+      "rcarriga/nvim-notify",
+      keys = {
+        {
+          "<leader>no",
+          function()
+            require("notify").dismiss({ silent = true, pending = true })
+          end,
+          desc = "Dismiss All Notifications",
+        },
+      },
+      config = function()
+        require("notify").setup({
+          background_colour = "#000000",
+          stages = "static",
+          timeout = 2500,
+          max_height = function()
+            return math.floor(vim.o.lines * 0.75)
+          end,
+          max_width = function()
+            return math.floor(vim.o.columns * 0.50)
+          end,
+          on_open = function(win)
+            vim.api.nvim_win_set_config(win, { zindex = 100 })
+          end,
+        })
+      end,
+    },
+  },
   event = "VeryLazy",
   opts = {
     lsp = {
@@ -22,28 +54,37 @@ return {
       lsp_doc_border = false,       -- add a border to hover docs and signature help
     },
     messages = {
-      enabled = false,             -- enables the Noice messages UI
-      view = "notify",             -- default view for messages
-      view_error = "notify",       -- view for errors
-      view_warn = "notify",        -- view for warnings
-      view_history = "messages",   -- view for :messages
-      view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+      enabled = true,            -- enables the Noice messages UI
+      view = "notify",           -- default view for messages
+      view_error = "notify",     -- view for errors
+      view_warn = "notify",      -- view for warnings
+      view_history = "messages", -- view for :messages
+      view_search = "mini",      -- view for search count messages. Set to `false` to disable
+      -- view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
     },
-  },
-  dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim",
-    -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
-    {
-      "rcarriga/nvim-notify",
-      config = function()
-        require("notify").setup({
-          background_colour = "#000000",
-          timeout = 2500,
-        })
-      end,
+    views = {
+      mini = {
+        win_options = {
+          winblend = 15,
+          winhighlight = {
+            Normal = "NoiceMini",
+            FloatBorder = "FloatBorder"
+          }
+        }
+      },
     },
-  },
+    routes = {
+      {
+        filter = {
+          event = "msg_show",
+          any = {
+            { find = "%d+L, %d+B" },
+            { find = "; after #%d+" },
+            { find = "; before #%d+" },
+          },
+        },
+        view = "mini",
+      },
+    },
+  }
 }

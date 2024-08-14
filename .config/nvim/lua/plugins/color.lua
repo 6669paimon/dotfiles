@@ -60,10 +60,13 @@ return {
           Visual             = { bg = '#124066', fg = '#e2e2e2' },
 
           TelescopeSelection = { bg = '#124066', fg = '#e2e2e2' },
-          TelescopeMatching  = { fg = "#00101d", bg = '#FFAA0B' },
+          TelescopeMatching  = { fg = "#fd5e3a" },
+          -- TelescopeMatching  = { fg = "#00101d", bg = '#FFAA0B' },
 
           InclineNormal      = { fg = "#aad2ee", bg = "#092033" },
           InclineNA          = { fg = "#68838c", bg = "#00101d" }, -- Normal text in floating windows.
+
+          NoiceMini          = { fg = "#73BCD9", bg = "#092033" },
 
         }
       },

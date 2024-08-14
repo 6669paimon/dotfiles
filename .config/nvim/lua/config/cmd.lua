@@ -1,10 +1,4 @@
 -- highlight yanked text for 200ms using the "Visual" highlight group
--- vim.cmd [[
---   augroup highlight_yank
---   autocmd!
---   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
---   augroup END
--- ]]
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank({
@@ -31,7 +25,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 -- ]])
 
 -- not auto comment
-vim.cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]])
+vim.cmd([[autocmd FileType * setlocal formatoptions-=cro]])
 
 -- Disable line number Terminal
 vim.api.nvim_command("autocmd TermOpen * startinsert")
