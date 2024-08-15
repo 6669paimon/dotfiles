@@ -40,7 +40,7 @@ modified = "!${count}"
 staged = "+${count}"
 renamed = " ${count}"
 # renamed = "»${count}"
-deleted = "󱂦 ${count}"
+deleted = "[󱂦 ${count}](red)"
 # deleted = " ${count}"
 
 [git_commit]
