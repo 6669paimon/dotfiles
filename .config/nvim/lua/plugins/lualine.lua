@@ -60,6 +60,12 @@ function M.config()
         },
       },
       lualine_c = {
+        {
+          "branch",
+          icon = "",
+          -- color = { fg = "#092033" },
+          -- cond = conditions.hide_in_width,
+        },
       },
       lualine_x = {
         {
@@ -67,14 +73,8 @@ function M.config()
         },
 
         {
-          "branch",
-          icon = "",
-          -- color = { fg = "#48AEF5" },
-          -- cond = conditions.hide_in_width,
-        },
-        {
           function()
-            local msg = " "
+            local msg = "[No Active]"
             -- local msg = " No Active"
             local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
             local clients = vim.lsp.get_active_clients()

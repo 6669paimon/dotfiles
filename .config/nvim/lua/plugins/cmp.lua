@@ -53,32 +53,21 @@ function M.config()
       ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-      ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm({
+      ["<C-c>"] = cmp.mapping.close(),
+      ["<C-y>"] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
       }),
-      -- ["<C-e>"] = cmp.mapping.confirm({
-      --   behavior = cmp.ConfirmBehavior.Insert,
-      --   select = true,
-      -- }),
       ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif require("luasnip").expand_or_jumpable() then
-          vim.fn.feedkeys(
-            vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-            ""
-          )
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
         else
           fallback()
         end
       end, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif require("luasnip").jumpable(-1) then
-          vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
         else
           fallback()
         end
@@ -137,7 +126,6 @@ function M.config()
     window = {
       completion = {
         scrollbar = true,
-        -- scrollbar = false,
       },
       documentation = {
         border = border,

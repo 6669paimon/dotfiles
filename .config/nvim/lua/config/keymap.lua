@@ -27,7 +27,7 @@ keymap.set("n", "db", 'vbd')
 -- keymap.set("n", "<c-a>", "ggVG")
 
 keymap.set("n", "<leader>w", "<CMD>w<CR>", opts)
-keymap.set("n", "<leader>x", "<CMD>x<CR>", opts)
+keymap.set("n", "<leader>x", "<CMD>qa<CR>", opts)
 keymap.set("n", "<leader>q", "<CMD>confirm q<CR>", opts)
 -- keymap.set("n", "<leader>h", "<CMD>noh<CR>", opts)
 
