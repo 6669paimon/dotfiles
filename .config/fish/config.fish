@@ -6,7 +6,9 @@ alias vi=nvim
 alias vim=nvim
 alias ls="eza --icons"
 alias tree="eza --icons --tree"
-# alias lt="eza --icons --tree"
+alias gs="git status"
+alias ga="git add"
+alias gm="git commit -m"
 
 set -gx EDITOR nvim
 # set BAT_CONFIG_PATH "/home/Arawan/.config/bat/config"
