@@ -66,8 +66,7 @@ function M.config()
   local function term_status()
     local buftype = vim.api.nvim_buf_get_option(0, 'buftype')
     if buftype == 'terminal' then
-      -- return " "
-      return " "
+      return " "
     end
     return ''
   end
