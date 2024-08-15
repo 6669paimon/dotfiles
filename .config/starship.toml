@@ -22,12 +22,12 @@ vimcmd_symbol = "[❮](green)"
 [git_branch]
 format = "[$symbol$branch]($style)"
 symbol = " "
-style = "cyan"
+style = "bright-yellow"
 
 [git_status]
 # format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-format = "[ $all_status$ahead_behind]($style)"
-style = "yellow"
+format = "[ $all_status$ahead_behind](#73BCD9)"
+# style = "yellow"
 conflicted = "="
 ahead =	"⇡${count}"
 behind = "⇣${count}"
@@ -79,17 +79,6 @@ symbol = " "
 
 [dart]
 symbol = " "
-
-# [directory]
-
-[docker_context]
-symbol = " "
-format = "via [$symbol$context]($style) "
-style = "blue bold"
-only_with_files = true
-detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
-detect_folders = []
-disabled = false
 
 [elixir]
 symbol = " "
