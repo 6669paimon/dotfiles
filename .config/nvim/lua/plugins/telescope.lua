@@ -1,9 +1,16 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    { "nvim-telescope/telescope-fzf-native.nvim",  build = "make", lazy = true },
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope-file-browser.nvim" },
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      -- lazy = true,
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
+    },
   },
   keys = {
     { "<leader>ff", "<CMD>Telescope find_files<CR>",   desc = "Find files" },
@@ -23,6 +30,7 @@ local M = {
 function M.config()
   local icons = {
     ChevronRight = "",
+    -- ChevronRight = "",
     -- Forward = " ",
     Forward = "  ",
   }
@@ -77,10 +85,10 @@ function M.config()
       live_grep = {
         -- layout_strategy = "vertical",
         layout_config = {
-          width = 0.7,
+          width = 0.8,
           -- width = { 0.8, max = 70 },
-          height = 0.8,
-          -- height = { 0.8, max = 100 },
+          -- height = 0.8,
+          height = { 0.8, max = 70 },
           -- preview_cutoff = 1,    -- ปิด preview โดยค่าเริ่มต้น
           -- horizontal = {
           --   preview_width = 0.5, -- ขนาดของ preview
@@ -99,17 +107,35 @@ function M.config()
       },
 
       find_files = {
-        theme = "dropdown",
-        wrap_results = true,
-        hidden = true,
-        no_ignore = false,
-        previewer = false,
+        find_command = { "rg", "--files", "--glob", "!**/{.git,node_modules}/*", "-L" },
         layout_config = {
-          prompt_position = "top",
-          width = { 0.7, max = 70 },
-          height = { 0.7, max = 70 }
+          width = 0.8,
+          -- height = 0.7
+          -- width = { 0.8, max = 70 },
+          height = { 0.8, max = 70 }
         },
       },
+      -- find_files = {
+      --   find_command = { "rg", "--files", "--glob", "!**/{.git,node_modules}/*", "-L" },
+      --   layout_strategy = "vertical",
+      --   -- theme = "dropdown",
+      --   -- wrap_results = true,
+      --   -- hidden = true,
+      --   -- no_ignore = false,
+      --   -- previewer = false,
+      --   layout_config = {
+      --     vertical = {
+      --       preview_height = 0.3,
+      --       results_height = 0.7,
+      --     },
+      --     prompt_position = "top",
+      --     -- width = { 0.8, max = 70 },
+      --     -- height = { 0.7, max = 70 }
+      --     -- height = function(_, _, max_lines)
+      --     --   return max_lines * 0.5
+      --     -- end,
+      --   },
+      -- },
 
       buffers = {
         theme = "dropdown",

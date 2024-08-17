@@ -3,6 +3,7 @@
 SETUVAR FZF_DEFAULT_COMMAN:fd\x20\x2d\x2dtype\x20f\x20\x2d\x2dhidden\x20\x2d\x2dfollow\x20\x2d\x2dexclude\x20\x2egit\x20\x2d\x2dexclude\x20\x2ecache\x20\x2d\x2dexclude\x20\x2env\x20\x2d\x2dexclude\x20\x2elocal\x20\x2d\x2dexclude\x20\x2emozilla
 SETUVAR FZF_DEFAULT_COMMAND:fd\x20\x2d\x2dtype\x20f\x20\x2d\x2dhidden\x20\x2d\x2dfollow\x20\x2d\x2dexclude\x20\x2egit\x20\x2d\x2dexclude\x20\x2ecache\x20\x2d\x2dexclude\x20\x2env\x20\x2d\x2dexclude\x20\x2elocal\x20\x2d\x2dexclude\x20\x2emozilla\x20\x2d\x2dexclude\x20\x2ecargo
 SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dcolor\x3dbg\x2b\x3a\x23031B26\x2cbg\x3a\x2306101e\x2cspinner\x3a\x23fd5e3a\x2chl\x3a\x23e2d9c5\x20\x2d\x2dcolor\x3dfg\x3a\x2308435E\x2cheader\x3a\x23e2d9c5\x2cinfo\x3a\x2335b5ff\x2cpointer\x3a\x23fa7a61\x20\x2d\x2dcolor\x3dmarker\x3a\x23fd5e3a\x2cfg\x2b\x3a\x2366def9\x2cprompt\x3a\x2335b5ff\x2chl\x2b\x3a\x23fd5e3a
+SETUVAR --export --path VAULT_PATH:/home/Arawan/Documents/Obsidian\x20Vault/
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_list\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish
