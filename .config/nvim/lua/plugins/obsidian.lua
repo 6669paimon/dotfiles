@@ -47,14 +47,6 @@ return {
         return out
       end,
 
-      -- Optional, for templates (see below).
-      -- templates = {
-      --   folder = "templates",
-      --   date_format = "%d-%m-%Y",
-      --   time_format = "%H:%M",
-      --   -- A map for custom variables, the key should be the variable and the value a function
-      --   substitutions = {},
-      -- },
       completion = {
         nvim_cmp = true,
         min_chars = 2,

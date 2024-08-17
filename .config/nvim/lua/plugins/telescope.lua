@@ -22,6 +22,35 @@ local M = {
     { "<leader>fk", "<CMD>Telescope keymaps<CR>",      desc = "List keymaps" },
     { "<leader>fn", "<CMD>Telescope noice<CR>",        desc = "Help tags" },
     { "<leader>fh", "<CMD>Telescope help_tags<CR>",    desc = "Help tags" },
+    {
+      "<leader>fo",
+      function()
+        local obsidian_vault_path = "~/Documents/Obsidian Vault/"
+        require('telescope.builtin').find_files({
+          prompt_title = "Obsidian Vault",
+          cwd = obsidian_vault_path,
+          initial_mode = "normal",
+        })
+      end,
+      desc = "Obsidian Vault"
+    },
+    {
+      "<leader>oe",
+      function()
+        local obsidian_vault_path = "~/Documents/Obsidian Vault/"
+        local telescope = require("telescope")
+        telescope.extensions.file_browser.file_browser({
+          prompt_title = "Obsidian Vault",
+          path = obsidian_vault_path,
+          cwd = obsidian_vault_path,
+          respect_gitignore = false,
+          hidden = false,
+          grouped = true,
+          initial_mode = "normal",
+        })
+      end,
+      desc = "File browser Obsidian"
+    },
   },
 }
 
@@ -31,7 +60,6 @@ function M.config()
   local icons = {
     ChevronRight = "",
     -- ChevronRight = "",
-    -- Forward = " ",
     Forward = "  ",
   }
 
@@ -199,12 +227,14 @@ function M.config()
         respect_gitignore = false,
         hidden = true,
         grouped = true,
-        previewer = false,
+        -- previewer = false,
         initial_mode = "normal",
         layout_config = {
           prompt_position = "top",
-          width = { 0.8, max = 70 },
-          height = { 0.8, max = 70 },
+          width = 0.8,
+          height = 0.8,
+          -- width = { 0.8, max = 70 },
+          -- height = { 0.8, max = 70 },
         },
         wrap_results = true,
         layout_strategy = "horizontal",
