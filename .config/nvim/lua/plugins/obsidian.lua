@@ -27,7 +27,8 @@ return {
       -- Optional, alternatively you can customize the frontmatter data.
       ---@return table
       note_frontmatter_func = function(note)
-        local date = os.date("%d-%m-%Y %H:%M:%S")
+        -- local date = os.date("%d/%m/%Y, %H:%M:%S")
+        local date = os.date("%Y/%m/%d, %H:%M:%S")
         local out = {
           id = note.id,
           tags = note.tags,
