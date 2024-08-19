@@ -54,7 +54,7 @@ return {
           CmpBorder          = { fg = "#0965ba" },
           Pmenu              = { fg = "#a5c2cc", bg = "#0C1E2C" }, -- Popup menu: normal item.
           PmenuSel           = { bg = "#133c63" },                 -- Popup menu: selected item.
-          PmenuThumb         = { bg = "#092033" },                 -- Popup menu: Thumb of the scrollbar.
+          PmenuThumb         = { bg = "#133c63" },                 -- Popup menu: Thumb of the scrollbar.
           VertSplit          = { fg = "#133c63" },                 -- the column separating vertically split windows
           WinSeparator       = { fg = "#133c63" },                 -- (nvim >= 0.10) the column separating vertically split windows
           Search             = { bg = '#124066', fg = '#e2e2e2' },

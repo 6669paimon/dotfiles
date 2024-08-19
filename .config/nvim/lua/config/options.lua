@@ -49,7 +49,7 @@ opt.winblend = 0
 opt.completeopt = { "menu", "menuone", "noselect" }
 -- opt.wildoptions = 'pum'
 -- opt.pumblend = 5
--- opt.pumheight = 10
+opt.pumheight = 15
 --opt.signcolumn="yes"
 -- opt.list = true
 -- opt.listchars:append("eol:↴")
