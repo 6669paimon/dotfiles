@@ -6,6 +6,13 @@ return {
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
     -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+    lspconfig.tsserver.setup({ capabilities = capabilities })
+    lspconfig.prismals.setup({ capabilities = capabilities })
+    lspconfig.bashls.setup({ capabilities = capabilities, filetypes = { "sh", "aliasrc", "zsh" } })
+    lspconfig.cssls.setup({ capabilities = capabilities })
+    lspconfig.jsonls.setup({ capabilities = capabilities, filetypes = { "json", "jsonc" } })
+    lspconfig.marksman.setup({ capabilities = capabilities })
+
     -- graphql
     lspconfig.graphql.setup({
       capabilities = capabilities,
@@ -14,6 +21,7 @@ return {
         "gql",
       },
     })
+
 
     -- lua
     lspconfig.lua_ls.setup({
@@ -27,16 +35,6 @@ return {
       },
     })
 
-    -- prisma
-    lspconfig.prismals.setup({
-      capabilities = capabilities,
-    })
-
-    -- json
-    lspconfig.jsonls.setup({
-      capabilities = capabilities,
-      filetypes = { "json", "jsonc" },
-    })
 
     -- python
     lspconfig.pyright.setup({
@@ -54,32 +52,6 @@ return {
       },
     })
 
-    -- typescript
-    lspconfig.tsserver.setup({
-      capabilities = capabilities,
-      -- filetypes = {
-      -- 	"typescript",
-      -- 	"javascript",
-      -- 	"typescriptreact",
-      -- 	"javascriptreact",
-      -- },
-      -- root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
-    })
-
-    -- bash
-    lspconfig.bashls.setup({
-      capabilities = capabilities,
-      filetypes = { "sh", "aliasrc", "zsh" },
-    })
-
-    -- css_ls
-    lspconfig.cssls.setup({
-      capabilities = capabilities,
-    })
-
-    lspconfig.eslint.setup({
-      capabilities = capabilities,
-    })
 
     lspconfig.html.setup({
       capabilities = capabilities,

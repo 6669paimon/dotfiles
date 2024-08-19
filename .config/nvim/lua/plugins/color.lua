@@ -63,14 +63,21 @@ return {
 
           TelescopeSelection = { bg = '#124066', fg = '#e2e2e2' },
           TelescopeMatching  = { fg = "#fd5e3a" },
-          TelescopeBorder    = { fg = "#0965ba" },
+          -- TelescopeBorder    = { fg = "#61affa" },
 
           InclineNormal      = { fg = "#aad2ee", bg = "#092033" },
           InclineNA          = { fg = "#68838c", bg = "#00101d" }, -- Normal text in floating windows.
 
           NoiceMini          = { fg = "#73BCD9", bg = "#092033" },
 
-          MarkviewCode       = { bg = "#0C1E2C" },
+          MarkviewCode       = { bg = "#071521" },
+          -- MarkviewCode       = { bg = "#0C1E2C" },
+
+          NotifyINFOBorder   = { fg = "#73BCD9" },
+          NotifyINFOIcon     = { fg = "#73BCD9" },
+          NotifyINFOTitle    = { fg = "#73BCD9" },
+
+          DiagnosticSignInfo = { fg = "#61affa" },
 
         }
       },
