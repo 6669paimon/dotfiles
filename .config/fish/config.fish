@@ -39,14 +39,19 @@ zoxide init fish | source
 starship init fish | source
 
 
-# Create new note
-function note
-  set today_date (date +"%d-%m-%Y")
-  cd "$VAULT_PATH"
 
-  if test (count $argv) -eq 1
-    set note_group "$VAULT_PATH/daily"
-    set note_path "$note_group/$today_date-$argv[1].md"
+#####################
+### Take new note ###
+#####################
+
+function note
+  cd "$VAULT_PATH"
+  set -l today_date (date +"%d-%m-%Y")
+
+  # note 
+  if test (count $argv) -eq 0
+    set -l note_group "$VAULT_PATH/daily"
+    set -l note_path "$note_group/$today_date.md"
     if test -f $note_path
         nvim $note_path
     else
@@ -57,14 +62,37 @@ tags: [daily]
       nvim $note_path
     end
 
-  else if test (count $argv) -eq 2
-    set note_group "$VAULT_PATH/$argv[1]"
-
-    if not test -d $note_group
-      mkdir -p $note_group
+  # note filename
+  else if test (count $argv) -eq 1
+    set -l note_group "$VAULT_PATH/notes"
+    set -l note_path "$note_group/$today_date-$argv[1].md"
+    if test -f $note_path
+        nvim $note_path
+    else
+      echo "---
+tags: [note]
+---
+">$note_path
+      nvim $note_path
     end
 
-    set note_path "$note_group/$argv[2].md"
+  # note folder filename
+  else if test (count $argv) -eq 2
+    set -l note_group "$VAULT_PATH/$argv[1]"
+    
+    # Check exists directory
+    if not test -d $note_group
+      read -l -P "Can't find the directory you want to create? (y/N)" confirm
+      switch $confirm
+        case y Y
+          mkdir -p $note_group
+          echo "Create directory to $note_group"
+        case '' n N
+          return 1
+      end
+    end
+
+    set -l note_path "$note_group/$argv[2].md"
 
     if test -f $note_path
         nvim $note_path
@@ -81,7 +109,11 @@ tags: [$argv[1]]
   end
 end
 
-# toggle backup
+
+#####################
+### Toggle backup ###
+#####################
+
 function bak
     set -l file_path $argv[1]
     

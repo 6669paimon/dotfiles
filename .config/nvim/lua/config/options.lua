@@ -60,7 +60,7 @@ opt.laststatus = 3
 
 
 -- conceallevel
-vim.o.conceallevel = 2
+-- vim.o.conceallevel = 2
 
 -- vim.opt.guicursor = {
 --   "n-v-c:block",                                 -- Normal, visual, command-line: block cursor
