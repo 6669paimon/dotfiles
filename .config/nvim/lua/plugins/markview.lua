@@ -20,8 +20,8 @@ return {
       },
 
 
-      modes = { "n", "no", "c" }, -- Change these modes
-      hybrid_modes = { "n" },     -- Uses this feature on
+      modes = { "n", "i", "no", "c" }, -- Change these modes
+      hybrid_modes = { "n", "i" },     -- Uses this feature on
       callbacks = {
         on_enable = function(_, win)
           vim.wo[win].conceallevel = 2

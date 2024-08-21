@@ -11,6 +11,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias frc="nvim ~/.dotfiles/.config/fish/config.fish"
 alias hrc="nvim ~/.dotfiles/.config/hypr/hyprland.conf"
+alias oo="cd ~/Documents/Obsidian\ Vault/"
 
 set -gx EDITOR nvim
 # set BAT_CONFIG_PATH "/home/Arawan/.config/bat/config"
