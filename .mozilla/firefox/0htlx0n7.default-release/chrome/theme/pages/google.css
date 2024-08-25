@@ -1,5 +1,9 @@
 /* Google page and search page */
 @-moz-document domain(google.com.br), domain(google.com) {
+  body {
+    background-color: var(--gnome-window-background) !important;
+  }
+
   body.srp {
     background-color: var(--gnome-window-background) !important;
   }

@@ -11,7 +11,8 @@ return {
     lspconfig.bashls.setup({ capabilities = capabilities, filetypes = { "sh", "aliasrc", "zsh" } })
     lspconfig.cssls.setup({ capabilities = capabilities })
     lspconfig.jsonls.setup({ capabilities = capabilities, filetypes = { "json", "jsonc" } })
-    lspconfig.marksman.setup({ capabilities = capabilities })
+    -- lspconfig.marksman.setup({ capabilities = capabilities })
+    lspconfig.markdown_oxide.setup({ capabilities = capabilities, filetypes = { "markdown" } })
 
     -- graphql
     lspconfig.graphql.setup({

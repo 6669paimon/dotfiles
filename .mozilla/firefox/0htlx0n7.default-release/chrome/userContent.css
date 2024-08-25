@@ -3,6 +3,7 @@
 
 @import "theme/pages/newtab.css";
 @import "theme/pages/google.css";
+@import "theme/pages/chatgpt.css";
 @import "theme/pages/privatebrowsing.css";
 
 @import "theme/parts/video-player.css";
