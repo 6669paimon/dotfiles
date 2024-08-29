@@ -1,12 +1,12 @@
 return {
   "vim-tmux-navigator",
-  dir = "~/.dotfiles/.config/nvim/custom-plugins/vim-tmux-navigator",
+  dir = "~/.dotfiles/.config/nvim/lua/custom-plugins/vim-tmux-navigator/",
   cmd = {
     "TmuxNavigateLeft",
     "TmuxNavigateDown",
     "TmuxNavigateUp",
     "TmuxNavigateRight",
-    "TmuxNavigatePrevious",
+    -- "TmuxNavigatePrevious",
   },
   keys = {
     { "<M-h>", "<cmd>TmuxNavigateLeft<cr>" },
