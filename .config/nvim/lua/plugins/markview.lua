@@ -29,5 +29,6 @@ return {
         end
       },
     })
+    vim.cmd('hi MarkviewCode guibg=#071521')
   end
 }
