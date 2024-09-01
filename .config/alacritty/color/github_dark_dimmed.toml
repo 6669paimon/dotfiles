@@ -2,7 +2,7 @@
 
 # Default colors
 [colors.primary]
-# background = '#070f1c'    # color for wallpaper background
+# background = '#040D19'
 background = '#040B15'
 foreground = '#adbac7'
 

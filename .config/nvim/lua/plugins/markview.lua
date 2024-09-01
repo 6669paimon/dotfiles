@@ -29,6 +29,8 @@ return {
         end
       },
     })
-    vim.cmd('hi MarkviewCode guibg=#071521')
+    vim.cmd('hi MarkviewCode guibg=#0a131f')
+    -- vim.cmd('hi MarkviewCode guibg=#0d1826')
+    -- vim.cmd('hi MarkviewCode guibg=#071521')
   end
 }
