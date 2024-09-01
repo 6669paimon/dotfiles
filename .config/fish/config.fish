@@ -1,6 +1,7 @@
 # === Alias === #
 alias vi=nvim
 alias vim=nvim
+alias py=python
 alias ls="eza --icons"
 alias tree="eza --icons --tree"
 alias gs="git status"

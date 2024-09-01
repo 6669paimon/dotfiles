@@ -20,6 +20,8 @@ error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
 [git_branch]
+# format = "[$symbol$branch](#2070b3)"
+# format = "[$symbol$branch](#1185f2)"
 format = "[$symbol$branch]($style)"
 symbol = " "
 style = "bright-yellow"

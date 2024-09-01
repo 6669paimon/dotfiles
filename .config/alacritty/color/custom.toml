@@ -3,19 +3,24 @@
 # Default colors
 [colors.primary]
 # background = '#070f1c'    # color for wallpaper background
+# background = '#040D19'    # color for wallpaper background
 background = '#040B15'
 foreground = '#adbac7'
-
+#2c89a0
 # Normal colors
 [colors.normal]
 black   = '#545d68'
-red     = '#f47067'
-green   = '#ea6847'
-yellow  = '#5db2f8'
-# blue    = '#2f516c'
-blue    = '#3478ad'
+red     = '#fd5e3a'
+green   = '#73BCD9'
+# green   = '#277A8C'
+# green   = '#57ab5a'
+# yellow  = '#1185f2'
+yellow  = '#1c5280'
+# yellow  = '#005580'
+# blue    = '#1d6db3'
+blue    = '#539bf5'
 magenta = '#b083f0'
-cyan    = '#86dbf5'
+cyan    = '#39c5cf'
 white   = '#909dab'
 
 # Bright colors
