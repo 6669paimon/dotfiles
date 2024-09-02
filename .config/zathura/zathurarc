@@ -1,0 +1,63 @@
+#open files in maximized window
+# set window-height 3000
+# set window-width 3000
+
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
+
+# One page per row by default
+set pages-per-row 1
+
+set font "CaskaydiaCove Nerd Font 12"
+
+# copy selection to system clipboard
+set selection-clipboard clipboard 
+
+#stop at page boundries
+set scroll-page-aware "true"
+set smooth-scroll "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+
+#setup dark theme
+set default-bg "#03121c"
+set default-fg "#aad2ee"
+
+set statusbar-bg "#03121c"
+set statusbar-fg "#73BCD9"
+# set statusbar-bg "#092033"
+# set statusbar-fg "#73BCD9"
+
+set inputbar-bg "#092033"
+set inputbar-fg "#73BCD9"
+
+set notification-error-bg "#fd5e3a"
+set notification-error-fg "#000000"
+
+set notification-warning-bg "#fd5e3a"
+set notification-warning-fg "#000000"
+
+# set highlight-color "#fd5e3a"
+# set highlight-active-color "#000000"
+
+set completion-highlight-fg "#000000"
+set completion-highlight-bg "#fd5e3a"
+
+set completion-bg "#020d14"
+# set completion-bg "#01080d"
+set completion-fg "#aad2ee"
+
+set notification-bg "#fd5e3a"
+set notification-fg "#000000"
+
+set recolor "true"
+# set recolor-lightcolor "#000000"
+# set recolor-lightcolor "#020d14"
+set recolor-lightcolor "#03121c"
+set recolor-darkcolor "#a5c2cc"
+# set recolor-darkcolor "#c4e5f2"
+# set recolor-darkcolor "#E0E0E0"
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+
+set render-loading "false"
