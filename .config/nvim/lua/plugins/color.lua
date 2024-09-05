@@ -79,6 +79,9 @@ return {
 
           DiagnosticSignInfo = { fg = "#61affa" },
 
+          NvimTreeFolderIcon = { fg = "#539bf5" },
+
+
         }
       },
     })

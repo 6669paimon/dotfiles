@@ -20,4 +20,3 @@ local plugins = "plugins"
 local opts = {}
 
 require("lazy").setup(plugins, opts)
-
