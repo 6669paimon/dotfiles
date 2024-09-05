@@ -12,9 +12,9 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("config.options")
-require("config.mappings")
-require("config.autocmds")
+require("core.options")
+require("core.mappings")
+require("core.autocmds")
 
 local plugins = "plugins"
 local opts = {}
