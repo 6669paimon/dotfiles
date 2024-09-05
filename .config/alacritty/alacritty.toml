@@ -16,7 +16,6 @@ dynamic_padding = true
 opacity = 0.7
 
 [font]
-
 # #####################
 # # SF Mono Nerd Font #
 # #####################
@@ -24,16 +23,6 @@ normal = {family="SFMono Nerd Font",style="Medium"}
 bold = {family="SFMono Nerd Font",style="Bold"}
 italic = {family="SFMono Nerd Font",style="Italic"}
 bold_italic = {family="SFMono Nerd Font",style="Bold Italic"}
-
-
-##########################
-# Liga SF Mono Nerd Font #
-##########################
-# normal = {family="Liga SFMono Nerd Font",style="Medium"}
-# bold = {family="Liga SFMono Nerd Font",style="Bold"}
-# italic = {family="Liga SFMono Nerd Font",style="Italic"}
-# bold_italic = {family="Liga SFMono Nerd Font",style="Bold Italic"}
-
 
 ############################
 # JetBrains Mono Nerd Font #

@@ -82,7 +82,8 @@ function M.config()
             symlink_open = "",
           },
           git = {
-            unstaged = "",
+            -- unstaged = "",
+            unstaged = " ",
             staged = "S",
             unmerged = "",
             renamed = " ",

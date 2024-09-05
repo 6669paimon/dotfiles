@@ -24,6 +24,11 @@ function M.config()
     },
   }
 
+  -- local conditions = {
+  --   hide_in_width = function()
+  --     return vim.fn.winwidth(0) > 80
+  --   end,
+  -- }
 
   local function lsp_status()
     local msg = "[No Active]"
@@ -40,12 +45,6 @@ function M.config()
     end
     return msg
   end
-
-  -- local conditions = {
-  --   hide_in_width = function()
-  --     return vim.fn.winwidth(0) > 80
-  --   end,
-  -- }
 
   local mode_icons = {
     "mode",
@@ -78,7 +77,12 @@ function M.config()
     -- cond = conditions.hide_in_width,
   }
 
-  local function tab_status()
+  local diff = {
+    "diff",
+    symbols = { added = " ", modified = " ", removed = " " }
+  }
+
+  local function shiftwidth()
     return "ﲒ " .. vim.bo.shiftwidth
   end
 
@@ -92,8 +96,8 @@ function M.config()
     sections = {
       lualine_a = {},
       lualine_b = { mode_icons, term_status },
-      lualine_c = { branch },
-      lualine_x = { "diagnostics", lsp_status, tab_status, "filetype", '%l:%c' },
+      lualine_c = { branch, diff },
+      lualine_x = { "diagnostics", lsp_status, shiftwidth, "filetype", '%l:%c' },
       lualine_y = { "progress" },
       lualine_z = {},
     },

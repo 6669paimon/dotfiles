@@ -81,7 +81,9 @@ return {
 
           NvimTreeFolderIcon = { fg = "#539bf5" },
 
-
+          LuaLineDiffAdd     = { fg = "#768390", bg = "NONE" },
+          LuaLineDiffChange  = { fg = "#768390", bg = "NONE" },
+          LuaLineDiffDelete  = { fg = "#768390", bg = "NONE" },
         }
       },
     })
