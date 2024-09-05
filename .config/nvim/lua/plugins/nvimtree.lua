@@ -34,7 +34,7 @@ function M.config()
     hijack_netrw = false,
     sync_root_with_cwd = true,
     view = {
-      width = 25,
+      width = 24,
       preserve_window_proportions = true,
     },
     on_attach = my_on_attach,
@@ -67,13 +67,6 @@ function M.config()
           folder = {
             arrow_closed = "",
             arrow_open = "",
-            -- default = "󰉋 ",
-            -- open = " ",
-            -- empty = " ",
-            -- empty_open = " ",
-            -- symlink = " ",
-            -- symlink_open = " ",
-
             default = "",
             empty = "",
             empty_open = "",
@@ -82,7 +75,6 @@ function M.config()
             symlink_open = "",
           },
           git = {
-            -- unstaged = "",
             unstaged = " ",
             staged = "S",
             unmerged = "",

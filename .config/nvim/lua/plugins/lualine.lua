@@ -4,23 +4,22 @@ local M = {
 
 function M.config()
   local color = {
-    bg0 = "#03121c",
+    bg = "#03121c",
     bg1 = "#092033",
-    fg0 = "#aad2ee",
-    -- fg1 = "#73BCD9",
+    fg = "#aad2ee",
     fg1 = "#b0ced9",
-    red0 = "#f73e3e",
+    red = "#f73e3e",
     red1 = "#E48679",
   }
 
   local custom_theme = {
     normal = {
       b = { bg = color.bg1, fg = color.fg1 },
-      c = { bg = color.bg0, fg = color.fg0 },
+      c = { bg = color.bg, fg = color.fg },
     },
     visual = {
-      b = { bg = color.red0, fg = color.bg0 },
-      c = { bg = color.bg0, fg = color.red1 },
+      b = { bg = color.red, fg = color.bg },
+      c = { bg = color.bg, fg = color.red1 },
     },
   }
 
@@ -73,7 +72,7 @@ function M.config()
   local branch = {
     "branch",
     icon = "",
-    -- color = { fg = "#092033" },
+    -- color = { fg = "" },
     -- cond = conditions.hide_in_width,
   }
 
