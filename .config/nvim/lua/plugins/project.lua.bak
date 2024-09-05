@@ -4,7 +4,6 @@ return {
     projects = { -- define project roots
       '~/workspace/*',
       '~/projects/*',
-      '~/.config/*',
       '~/code/*',
     },
   },

@@ -3,6 +3,7 @@ local M = {
   event = "VeryLazy",
 }
 
+
 function M.config()
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
@@ -33,8 +34,8 @@ function M.config()
     hijack_netrw = false,
     sync_root_with_cwd = true,
     view = {
-      width = 22,
-      -- relativenumber = true,
+      width = 25,
+      preserve_window_proportions = true,
     },
     on_attach = my_on_attach,
     renderer = {
@@ -66,12 +67,19 @@ function M.config()
           folder = {
             arrow_closed = "",
             arrow_open = "",
-            default = "󰉋 ",
-            open = " ",
-            empty = " ",
-            empty_open = " ",
+            -- default = "󰉋 ",
+            -- open = " ",
+            -- empty = " ",
+            -- empty_open = " ",
+            -- symlink = " ",
+            -- symlink_open = " ",
+
+            default = "",
+            empty = "",
+            empty_open = "",
+            open = "",
             symlink = " ",
-            symlink_open = " ",
+            symlink_open = "",
           },
           git = {
             unstaged = "",

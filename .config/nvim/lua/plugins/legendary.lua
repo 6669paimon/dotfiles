@@ -38,18 +38,18 @@ return {
         "<CMD>VisualDuplicate +1<CR>",
       },
       -- project
-      {
-        description = "find a project based on patterns",
-        mode = { "n" },
-        "<leader>pd",
-        "<CMD>Telescope neovim-project discover<CR>",
-      },
-      {
-        description = "select a project from your recent history",
-        mode = { "n" },
-        "<leader>ph",
-        "<CMD>Telescope neovim-project history<CR>",
-      },
+      -- {
+      --   description = "find a project based on patterns",
+      --   mode = { "n" },
+      --   "<leader>pd",
+      --   "<CMD>Telescope neovim-project discover<CR>",
+      -- },
+      -- {
+      --   description = "select a project from your recent history",
+      --   mode = { "n" },
+      --   "<leader>ph",
+      --   "<CMD>Telescope neovim-project history<CR>",
+      -- },
     })
   end,
 }

@@ -1,13 +1,27 @@
 local opt = vim.opt
 
--- vim.wo.number = true
+opt.mouse = ""
+opt.encoding = "utf-8"
+opt.shortmess:append "sI" -- Disable nvim intro
+opt.clipboard = "unnamedplus"
+opt.hidden = true
+opt.wrap = false
+opt.backup = false
+opt.swapfile = false
+opt.cmdheight = 0
+opt.showcmd = false
+opt.showmode = false
+opt.laststatus = 3
+opt.background = "dark"
+opt.termguicolors = true
+-- opt.cursorline = true
+--opt.signcolumn="yes"
+-- opt.colorcolumn = "80"
+
+-- Line nubmer
 opt.nu = true
 opt.relativenumber = true
-
-opt.encoding = "utf-8"
-
-opt.scrolloff = 8
-opt.sidescrolloff = 8
+opt.ruler = false
 
 -- Search
 opt.hlsearch = true
@@ -15,53 +29,27 @@ opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 
-opt.mouse = ""
-opt.clipboard = "unnamed,unnamedplus"
-
+-- Tab indent
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
-
--- opt.autoindent = true
+opt.autoindent = true
 opt.smartindent = true
 
-opt.wrap = false
+-- Scroll
+opt.scrolloff = 8
+opt.sidescrolloff = 8
 
-opt.swapfile = false
-opt.backup = false
--- opt.autoread = true
--- vim.bo.autoread = true
-
+-- Split
 opt.splitbelow = true
 opt.splitright = true
 
--- opt.background = "dark"
--- opt.cursorline = true
-opt.termguicolors = true
-
-opt.hidden = true
-opt.showmode = false
-opt.cmdheight = 0
-opt.showcmd = false
-opt.ruler = false
-opt.winblend = 0
-opt.completeopt = { "menu", "menuone", "noselect" }
--- opt.wildoptions = 'pum'
--- opt.pumblend = 5
+-- Popup menu
 opt.pumheight = 15
---opt.signcolumn="yes"
--- opt.list = true
--- opt.listchars:append("eol:↴")
+opt.completeopt = { "menu", "menuone", "noselect" }
 
-opt.laststatus = 3
--- Place a column line
--- opt.colorcolumn = "80"
-
-
--- conceallevel
--- vim.o.conceallevel = 2
-
+-- Cursor Blinking
 -- vim.opt.guicursor = {
 --   "n-v-c:block",                                 -- Normal, visual, command-line: block cursor
 --   "i-ci-ve:ver25",                               -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
