@@ -8,6 +8,7 @@ function M.config()
     bg1 = "#092033",
     fg = "#aad2ee",
     fg1 = "#b0ced9",
+    fg2 = "#73BCD9",
     red = "#f73e3e",
     red1 = "#E48679",
   }
@@ -15,6 +16,10 @@ function M.config()
   local custom_theme = {
     normal = {
       b = { bg = color.bg1, fg = color.fg1 },
+      c = { bg = color.bg, fg = color.fg },
+    },
+    insert = {
+      b = { bg = color.fg2, fg = color.bg },
       c = { bg = color.bg, fg = color.fg },
     },
     visual = {
@@ -52,11 +57,12 @@ function M.config()
       if "N" == mode then
         return "󰀘 "
       elseif "I" == mode then
-        return " "
+        return "ﭲ "
+        -- return " "
       elseif "V" == mode then
         return " "
       elseif "C" == mode then
-        return " "
+        return " "
       end
     end
   }
