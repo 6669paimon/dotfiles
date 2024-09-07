@@ -27,7 +27,7 @@ return {
 
     keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
     keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>")
-    keymap.set("n", "<leader>ol", "<cmd>Lspsaga outline<cr>")
+    keymap.set("n", "<leader>lo", "<cmd>Lspsaga outline<cr>")
 
     local builtin = require("telescope.builtin")
 

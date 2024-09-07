@@ -22,36 +22,8 @@ local M = {
     { "<leader>ft", "<CMD>Telescope treesitter<CR>",                                           desc = "List Function names, variables, from Treesitter" },
     { "<leader>fk", "<CMD>Telescope keymaps<CR>",                                              desc = "List keymaps" },
     { "<leader>fn", "<CMD>Telescope noice<CR>",                                                desc = "Help tags" },
-    { "<leader>fh", "<CMD>Telescope help_tags<CR>",                                            desc = "Help tags" },
-    -- {
-    --   "<leader>fo",
-    --   function()
-    --     local obsidian_vault_path = "~/Documents/Obsidian Vault/"
-    --     require('telescope.builtin').find_files({
-    --       prompt_title = "Obsidian Vault",
-    --       cwd = obsidian_vault_path,
-    --       initial_mode = "normal",
-    --     })
-    --   end,
-    --   desc = "Obsidian Vault"
-    -- },
-    -- {
-    --   "<leader>oe",
-    --   function()
-    --     local obsidian_vault_path = "~/Documents/Obsidian Vault/"
-    --     local telescope = require("telescope")
-    --     telescope.extensions.file_browser.file_browser({
-    --       prompt_title = "Obsidian Vault",
-    --       path = obsidian_vault_path,
-    --       cwd = obsidian_vault_path,
-    --       respect_gitignore = false,
-    --       hidden = false,
-    --       grouped = true,
-    --       initial_mode = "normal",
-    --     })
-    --   end,
-    --   desc = "File browser Obsidian"
-    -- },
+    { "<leader>fh", "<CMD>Telescope highlights<CR>",                                           desc = "Help tags" },
+    { "<leader>f?", "<CMD>Telescope help_tags<CR>",                                            desc = "Help tags" },
   },
 }
 
@@ -72,7 +44,7 @@ function M.config()
       prompt_prefix = icons.ChevronRight .. " ",
       selection_caret = icons.Forward .. " ",
       entry_prefix = "   ",
-      initial_mode = "insert",
+      initial_mode = "normal",
       selection_strategy = "reset",
       path_display = { "smart" },
       color_devicons = true,
@@ -111,60 +83,55 @@ function M.config()
       },
     },
     pickers = {
-      live_grep = {
-        -- layout_strategy = "vertical",
-        layout_config = {
-          width = 0.8,
-          -- width = { 0.8, max = 70 },
-          -- height = 0.8,
-          height = { 0.8, max = 70 },
-          -- preview_cutoff = 1,    -- ปิด preview โดยค่าเริ่มต้น
-          -- horizontal = {
-          --   preview_width = 0.5, -- ขนาดของ preview
-          --     preview_height = 0.5,     -- ขนาดของ preview
-          --     results_height = 0.5,     -- ขนาดของผลลัพธ์
-          --     results_width = 0.5,      -- ขนาดของผลลัพธ์
-          --     -- preview location
-          --     preview_position = "top", -- แสดง preview ข้างบน
-          -- },
-        },
-      },
-
-
-      grep_string = {
-        theme = "dropdown",
-      },
 
       find_files = {
         find_command = { "rg", "--files", "--glob", "!**/{.git,node_modules}/*", "-L" },
         layout_config = {
           width = 0.8,
-          -- height = 0.7
-          -- width = { 0.8, max = 70 },
           height = { 0.8, max = 70 }
         },
       },
-      -- find_files = {
-      --   find_command = { "rg", "--files", "--glob", "!**/{.git,node_modules}/*", "-L" },
-      --   layout_strategy = "vertical",
-      --   -- theme = "dropdown",
-      --   -- wrap_results = true,
-      --   -- hidden = true,
-      --   -- no_ignore = false,
-      --   -- previewer = false,
-      --   layout_config = {
-      --     vertical = {
-      --       preview_height = 0.3,
-      --       results_height = 0.7,
-      --     },
-      --     prompt_position = "top",
-      --     -- width = { 0.8, max = 70 },
-      --     -- height = { 0.7, max = 70 }
-      --     -- height = function(_, _, max_lines)
-      --     --   return max_lines * 0.5
-      --     -- end,
+
+      live_grep = {
+        initial_mode = "insert",
+        layout_strategy = "horizontal",
+        layout_config = {
+          width = 0.8,
+          height = { 0.8, max = 70 },
+        },
+
+      },
+
+      -- preview top
+      -- live_grep = {
+      -- initial_mode = "insert",
+      -- layout_strategy = "vertical",
+      -- layout_config = {
+      --   vertical = {
+      --     preview_height = 0.3,
+      --     results_height = 0.7,
       --   },
+      --   prompt_position = "top",
+      --   width = { 0.8, max = 70 },
       -- },
+      -- -- wrap_results = true,
+      -- sorting_strategy = "ascending",
+      -- },
+
+      highlights = {
+        layout_strategy = "vertical",
+        layout_config = {
+          vertical = {
+            preview_height = 0.1,
+            -- results_height = 0.7,
+          },
+          prompt_position = "top",
+          width = { 0.8, max = 70 },
+          -- height = { 0.7, max = 70 },
+        },
+        sorting_strategy = "ascending",
+      },
+
 
       buffers = {
         theme = "dropdown",
@@ -193,24 +160,24 @@ function M.config()
         enable_preview = true,
       },
 
+      grep_string = {
+        theme = "dropdown",
+      },
+
       lsp_references = {
         theme = "dropdown",
-        initial_mode = "normal",
       },
 
       lsp_definitions = {
         theme = "dropdown",
-        initial_mode = "normal",
       },
 
       lsp_declarations = {
         theme = "dropdown",
-        initial_mode = "normal",
       },
 
       lsp_implementations = {
         theme = "dropdown",
-        initial_mode = "normal",
       },
     },
     extensions = {
@@ -234,13 +201,12 @@ function M.config()
           prompt_position = "top",
           width = 0.8,
           height = 0.8,
-          -- width = { 0.8, max = 70 },
-          -- height = { 0.8, max = 70 },
         },
-        wrap_results = true,
+
+        -- wrap_results = true,
         layout_strategy = "horizontal",
         sorting_strategy = "ascending",
-        winblend = 0,
+        -- winblend = 0,
         mappings = {
           -- your custom insert mode mappings
           ["n"] = {
