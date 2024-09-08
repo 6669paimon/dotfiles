@@ -22,42 +22,24 @@ vim.api.nvim_command("autocmd TermOpen * startinsert")
 vim.api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber")
 -- vim.api.nvim_command("autocmd TermOpen * setlocal signcolumn=no")
 
--- Relative number toggle insert
--- vim.cmd([[
---   augroup numbertoggle
---     autocmd!
---     autocmd BufEnter,FocusGained,InsertLeave * set rnu
---     autocmd BufLeave,FocusLost,InsertEnter * set nornu
---   augroup END
--- ]])
 
--- local fn = vim.fn
--- local autocmd = vim.api.nvim_create_autocmd
--- local augroup = vim.api.nvim_create_augroup
---
--- autocmd("BufEnter", {
---   callback = function()
---     vim.opt.formatoptions:remove {"c","r","o"}
---   end,
---   group = general,
---   desc = "Disable New Line Comment",
--- })
+-- Quick compile and run
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.api.nvim_set_keymap('n', '<leader>cc',
+      '<cmd>12split<bar>terminal python %<cr>',
+      { noremap = true, silent = true })
+  end
+})
 
--- autocmd("FileType", {
---   pattern = { "c", "cpp", "py", "java", "cs" },
---   callback = function()
---     vim.bo.shiftwidth = 4
---   end,
---   group = general,
---   desc = "Set shiftwidth to 4 in these filetypes",
--- })
---
--- autocmd({ "FocusLost", "BufLeave", "BufWinLeave", "InsertLeave" }, {
---   callback = function()
---     if vim.bo.filetype ~= "" and vim.bo.buftype == "" then
---       vim.cmd "silent! w"
---     end
---   end,
---   group = general,
---   desc = "Auto Save",
--- })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  callback = function()
+    vim.api.nvim_set_keymap('n', '<F9>', '<cmd>!g++ -std=c++17 % -o %:r<cr>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<F10>', '<cmd>12split<bar>terminal ./%:r<cr>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>cc',
+      '<cmd>w<cr><cmd>!g++ -std=c++17 % -o %:r<cr><cmd>12split<bar>terminal ./%:r<cr>',
+      { noremap = true, silent = true })
+  end
+})

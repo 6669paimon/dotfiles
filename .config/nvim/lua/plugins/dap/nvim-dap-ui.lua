@@ -15,8 +15,8 @@ return {
           "stacks",
           "watches",
         },
-        size = 40, -- 40 columns
-        position = "right",
+        size = 32, -- 40 columns
+        position = "left",
       },
       {
         elements = {

@@ -96,19 +96,19 @@ function M.config()
       end,
     },
   }
-  vim.cmd [[
-  augroup terminal_setup | au!
-  autocmd TermOpen * nnoremap <buffer><LeftRelease> <LeftRelease>i
-  autocmd TermEnter * startinsert!
-  augroup end
-  ]]
-
-  vim.api.nvim_create_autocmd({ "TermEnter" }, {
-    pattern = { "*" },
-    callback = function()
-      vim.cmd "startinsert"
-    end,
-  })
+  -- vim.cmd [[
+  -- augroup terminal_setup | au!
+  -- autocmd TermOpen * nnoremap <buffer><LeftRelease> <LeftRelease>i
+  -- autocmd TermEnter * startinsert!
+  -- augroup end
+  -- ]]
+  --
+  -- vim.api.nvim_create_autocmd({ "TermEnter" }, {
+  --   pattern = { "*" },
+  --   callback = function()
+  --     vim.cmd "startinsert"
+  --   end,
+  -- })
 end
 
 return M

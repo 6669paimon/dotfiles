@@ -8,7 +8,7 @@ function M.config()
     bg1 = "#092033",
     fg = "#aad2ee",
     fg1 = "#b0ced9",
-    fg2 = "#73BCD9",
+    fg2 = "#618cb0",
     red = "#f73e3e",
     red1 = "#E48679",
   }
@@ -67,14 +67,6 @@ function M.config()
     end
   }
 
-  local function term_status()
-    local buftype = vim.api.nvim_buf_get_option(0, 'buftype')
-    if buftype == 'terminal' then
-      return " "
-    end
-    return ''
-  end
-
   local branch = {
     "branch",
     icon = "",
@@ -100,7 +92,7 @@ function M.config()
     },
     sections = {
       lualine_a = {},
-      lualine_b = { mode_icons, term_status },
+      lualine_b = { mode_icons },
       lualine_c = { branch, diff },
       lualine_x = { "diagnostics", lsp_status, shiftwidth, "filetype", '%l:%c' },
       lualine_y = { "progress" },
