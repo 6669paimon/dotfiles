@@ -85,6 +85,7 @@ function M.config()
     pickers = {
 
       find_files = {
+        initial_mode = "insert",
         find_command = { "rg", "--files", "--glob", "!**/{.git,node_modules}/*", "-L" },
         layout_config = {
           width = 0.8,

@@ -3,7 +3,7 @@ local dap = require "dap"
 dap.adapters.cppdbg = {
   id = "cppdbg",
   type = "executable",
-  command = "OpenDebugAD7",
+  command = vim.fn.stdpath("data") .. '/mason/bin/OpenDebugAD7',
   options = {
     detached = false,
   },
@@ -18,7 +18,8 @@ dap.configurations.cpp = {
       return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
     end,
     cwd = "${workspaceFolder}",
-    stopAtEntry = true,
+    -- stopAtEntry = true,
+    stopOnEntry = true,
   },
 }
 

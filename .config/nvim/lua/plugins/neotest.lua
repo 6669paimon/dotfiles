@@ -17,15 +17,15 @@ local M = {
 }
 
 M.keys = {
-  { "<leader>tr", function() require("neotest").run.run() end,                                        desc = "Run Nearest" },
-  { "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end,                      desc = "Run File" },
-  { "<leader>ta", function() require("neotest").run.run(vim.uv.cwd()) end,                            desc = "Run All Test Files" },
-  { "<leader>tl", function() require("neotest").run.run_last() end,                                   desc = "Run Last" },
-  { "<leader>ts", function() require("neotest").summary.toggle() end,                                 desc = "Toggle Summary" },
-  { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end, desc = "Show Output" },
-  { "<leader>tO", function() require("neotest").output_panel.toggle() end,                            desc = "Toggle Output Panel" },
-  { "<leader>tS", function() require("neotest").run.stop() end,                                       desc = "Stop" },
-  { "<leader>tw", function() require("neotest").watch.toggle(vim.fn.expand("%")) end,                 desc = "Toggle Watch" },
+  { "<leader>tr", function() require("neotest").run.run() end,                                        desc = "TEST | Run Nearest" },
+  { "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end,                      desc = "TEST | Run File" },
+  { "<leader>ta", function() require("neotest").run.run(vim.uv.cwd()) end,                            desc = "TEST | Run All Test Files" },
+  { "<leader>tl", function() require("neotest").run.run_last() end,                                   desc = "TEST | Run Last" },
+  { "<leader>ts", function() require("neotest").summary.toggle() end,                                 desc = "TEST | Toggle Summary" },
+  { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end, desc = "TEST | Show Output" },
+  { "<leader>tO", function() require("neotest").output_panel.toggle() end,                            desc = "TEST | Toggle Output Panel" },
+  { "<leader>tS", function() require("neotest").run.stop() end,                                       desc = "TEST | Stop" },
+  { "<leader>tw", function() require("neotest").watch.toggle(vim.fn.expand("%")) end,                 desc = "TEST | Toggle Watch" },
 }
 
 function M.config()
@@ -35,6 +35,7 @@ function M.config()
       require "neotest-python" {
         dap = { justMyCode = false }
         -- runner = "pytest"
+        -- python = ".venv/bin/python"
       },
       require "neotest-vitest",
       require "neotest-gtest",

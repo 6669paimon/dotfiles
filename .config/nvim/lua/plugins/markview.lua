@@ -3,7 +3,7 @@ return {
   lazy = false,    -- Recommended
   ft = "markdown", -- If you decide to lazy-load anyway
   keys = {
-    { "<leader>v", "<cmd>Markview<cr>", desc = "Markview toggle" },
+    { "<leader>v", "<cmd>Markview<cr>", desc = "Markview toggle", ft = "markdown" },
   },
   config = function()
     local markview = require("markview")
