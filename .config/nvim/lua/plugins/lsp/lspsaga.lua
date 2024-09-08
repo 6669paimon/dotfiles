@@ -39,13 +39,13 @@ return {
 
         local opts = { buffer = ev.buf }
         vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
-        vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set({ "n", "v" }, "<space>ca", "<cmd>Lspsaga code_action<cr>", opts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+        vim.keymap.set({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<cr>", opts)
         vim.keymap.set("n", "gr", builtin.lsp_references, opts)
       end,
     })
 
-    vim.keymap.set("n", "<space>k", "<cmd>Lspsaga hover_doc<cr>", { silent = true })
+    vim.keymap.set("n", "<leader>k", "<cmd>Lspsaga hover_doc<cr>", { silent = true })
 
     -- diagnostic signs icons
     local signs = { Error = "", Warn = "", Hint = "󰌵", Info = "" }

@@ -19,7 +19,6 @@
   "incline.nvim": { "branch": "main", "commit": "16fc9c073e3ea4175b66ad94375df6d73fc114c0" },
   "indent_blankline": { "branch": "master", "commit": "18603eb949eba08300799f64027af11ef922283f" },
   "lazy.nvim": { "branch": "main", "commit": "48b52b5cfcf8f88ed0aff8fde573a5cc20b1306d" },
-  "legendary.nvim": { "branch": "master", "commit": "8ed193e3793514cb9d9e37109e105e88b1c74327" },
   "lsp_signature.nvim": { "branch": "master", "commit": "a38da0a61c172bb59e34befc12efe48359884793" },
   "lspkind.nvim": { "branch": "master", "commit": "cff4ae321a91ee3473a92ea1a8c637e3a9510aec" },
   "lspsaga.nvim": { "branch": "main", "commit": "4ce44df854f447cf0a8972e5387b3aeb5efc798b" },
