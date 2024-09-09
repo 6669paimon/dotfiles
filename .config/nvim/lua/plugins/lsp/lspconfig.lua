@@ -4,17 +4,13 @@ return {
     local lspconfig = require("lspconfig")
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-    -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    lspconfig.tsserver.setup({ capabilities = capabilities })
-    lspconfig.prismals.setup({ capabilities = capabilities })
+    lspconfig.ts_ls.setup({ capabilities = capabilities })
     lspconfig.bashls.setup({ capabilities = capabilities, filetypes = { "sh", "aliasrc", "zsh" } })
     lspconfig.cssls.setup({ capabilities = capabilities })
     lspconfig.jsonls.setup({ capabilities = capabilities, filetypes = { "json", "jsonc" } })
-    -- lspconfig.marksman.setup({ capabilities = capabilities })
     lspconfig.markdown_oxide.setup({ capabilities = capabilities, filetypes = { "markdown" } })
 
-    -- graphql
     lspconfig.graphql.setup({
       capabilities = capabilities,
       filetypes = {
@@ -23,8 +19,6 @@ return {
       },
     })
 
-
-    -- lua
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
       settings = {
@@ -36,8 +30,6 @@ return {
       },
     })
 
-
-    -- python
     lspconfig.pyright.setup({
       capabilities = capabilities,
       settings = {
@@ -52,7 +44,6 @@ return {
         },
       },
     })
-
 
     lspconfig.html.setup({
       capabilities = capabilities,
