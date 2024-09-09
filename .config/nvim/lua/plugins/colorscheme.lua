@@ -33,7 +33,6 @@ return {
 
           NoiceMini          = { fg = "#73BCD9", bg = "#092033" },
 
-          MarkviewCode       = { bg = "#071521" },
           RenderMarkdownCode = { bg = "#071521" },
 
           NotifyINFOBorder   = { fg = "#73BCD9" },
