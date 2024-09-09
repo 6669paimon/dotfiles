@@ -11,6 +11,14 @@ return {
     lspconfig.jsonls.setup({ capabilities = capabilities, filetypes = { "json", "jsonc" } })
     lspconfig.markdown_oxide.setup({ capabilities = capabilities, filetypes = { "markdown" } })
 
+    lspconfig.clangd.setup({
+      capabilities = capabilities,
+      cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
+      },
+    })
+
     lspconfig.graphql.setup({
       capabilities = capabilities,
       filetypes = {
@@ -88,15 +96,6 @@ return {
         syntaxProfiles = {},
         --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
         variables = {},
-      },
-    })
-
-    -- C/C++
-    lspconfig.clangd.setup({
-      capabilities = capabilities,
-      cmd = {
-        "clangd",
-        "--offset-encoding=utf-16",
       },
     })
 
