@@ -14,11 +14,11 @@ opt.showmode = false
 opt.laststatus = 3
 opt.background = "dark"
 opt.termguicolors = true
--- opt.cursorline = true
---opt.signcolumn="yes"
 -- opt.colorcolumn = "80"
+-- opt.cursorline = true
 
 -- Line nubmer
+-- opt.signcolumn = "yes:1"
 opt.nu = true
 opt.relativenumber = true
 opt.ruler = false
