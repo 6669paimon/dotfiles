@@ -11,6 +11,8 @@ $line_break\
 $python\
 $character"""
 
+# right_format = """TEST"""
+
 [directory]
 style = "bright-blue"
 
@@ -20,20 +22,18 @@ error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
 [git_branch]
-# format = "[$symbol$branch](#2070b3)"
-# format = "[$symbol$branch](#1185f2)"
 format = "[$symbol$branch]($style)"
 symbol = " "
 style = "bright-yellow"
 
 [git_status]
-# format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-format = "[ $all_status$ahead_behind](#73BCD9)"
+format = "[ $ahead_behind (\\[ $all_status\\]) ](#73BCD9)"
+# format = "[ $all_status$ahead_behind](#73BCD9)"
 conflicted = "="
 ahead =	"⇡${count} "
 behind = "⇣${count} "
 diverged = "⇕⇡${ahead_count}⇣${behind_count} "
-up_to_date = " 󰄸 "
+up_to_date = "󰄸 "
 stashed = "≡ "
 
 # untracked = "?${count}"
@@ -48,6 +48,9 @@ modified = "[󱋢 ${count} ](#37c2de)"
 staged = "[󰻭 ${count} ](green)"
 renamed = "[󰬳 ${count} ](purple)"
 deleted = "[󱪢 ${count} ](red)"
+
+[git_status.all_status]
+format = "$all_status"
 
 [git_commit]
 format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"
