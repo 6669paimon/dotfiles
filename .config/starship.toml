@@ -15,7 +15,7 @@ $character"""
 # right_format = """TEST"""
 
 # [fill]
-# symbol = '-'
+# symbol = '─'
 
 [directory]
 style = "bright-blue"
