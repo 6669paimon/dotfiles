@@ -51,7 +51,7 @@ stashed = "≡ "
 untracked ="[󱀶 ${count} ](bright-black)"
 modified = "[󱋢 ${count} ](#37c2de)"
 staged = "[󰻭 ${count} ](green)"
-renamed = "[󰬳 ${count} ](purple)"
+renamed = "[󰬳 ${count} ](#539bf5)"
 deleted = "[󱪢 ${count} ](red)"
 
 [git_commit]
