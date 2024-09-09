@@ -17,6 +17,7 @@ window#waybar.hidden {
 /* Font bold */
 #window,
 #workspaces,
+#custom-clock,
 #clock {
   font-weight: bold;
 }
@@ -25,12 +26,17 @@ window#waybar.hidden {
 #memory,
 #disk,
 #clock,
+#custom-clock,
 #battery,
 #network,
 #pulseaudio,
 #temperature {
   padding: 0px 10px;
   border-bottom: 1px solid #0965ba;
+}
+
+#language {
+  padding: 0px 5px;
 }
 
 #processing {
@@ -110,12 +116,12 @@ window#waybar.hidden {
   border-bottom: 1px solid #0965ba;
 }
 
-@keyframes blink {
+/* @keyframes blink {
   to {
     background-color: rgba(30, 34, 42, 0.5);
     color: #abb2bf;
   }
-}
+} */
 
 tooltip {
   border-radius: 4px;

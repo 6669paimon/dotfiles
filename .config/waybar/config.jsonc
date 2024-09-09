@@ -8,6 +8,7 @@
     "hyprland/window"
   ],
   "modules-right": [
+    "hyprland/language",
     "custom/separator",
     "battery",
     "custom/separator",
@@ -15,7 +16,8 @@
     "custom/separator",
     "pulseaudio",
     "custom/separator",
-    "clock",
+    "custom/clock",
+    // "clock",
     "custom/separator",
     "tray",
     "custom/power-menu"
@@ -150,23 +152,34 @@
     "on-click": "pavucontrol",
     "scroll-step": 5
   },
-  "clock": {
+  "custom/clock": {
+    "exec": "~/scripts/clock.sh",
     "interval": 60,
-    "align": 0,
-    "rotate": 0,
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "{:%d %b, %H:%M}",
-    "format-alt": "{:%a %b %d, %G}"
+    "format": "{}"
   },
+  // "clock": {
+  //   "interval": 60,
+  //   "align": 0,
+  //   "rotate": 0,
+  //   "format": "{:%d %b, %H:%M}",
+  //   "format-alt": "{:%a %b %d, %G}",
+  //   "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+  //   "timezone": "Asia/Bangkok"
+  // },
   "custom/power-menu": {
     "format": "  ",
     // "format": " X",
     "on-click": "wlogout",
     "tooltip": false
   },
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": " ",
+    // "format-en": " 🇺🇸  ",
+    "format-th": " 🇹🇭  "
+  },
   // System tray
   "tray": {
-    // "icon-size": 21,
     "icon-size": 18,
     "spacing": 10
   }
