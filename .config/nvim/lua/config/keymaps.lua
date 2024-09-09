@@ -68,8 +68,8 @@ map("n", "[b", "<CMD>bprevious<CR>", opts, { desc = "move previous buffer" })
 map("n", "]b", "<CMD>bnext<CR>", opts, { desc = "move next buffer" })
 
 -- Comment
-map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
-map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
+-- map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
+-- map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
 
 -- Split window
 map("n", "<leader>\\", "<CMD>split<CR>")
@@ -87,3 +87,34 @@ map("n", "<leader>te", "<CMD>tabedit<CR>")
 
 -- Terminal
 map("t", "<Esc>", "<C-\\><C-n>", opts)
+
+
+-- Quick compile and run
+-- python
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, 'n', '<leader>cc', '',
+      {
+        noremap = true,
+        silent = true,
+        callback = function()
+          local venv_python = vim.fn.getcwd() .. "/venv/bin/python"
+          local python_cmd = vim.fn.filereadable(venv_python) == 1 and venv_python or "test"
+          local file_path = vim.fn.expand("%:p")
+          vim.cmd("12split | terminal " .. python_cmd .. " " .. file_path)
+        end
+      })
+  end
+})
+-- c++
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  callback = function()
+    vim.api.nvim_set_keymap('n', '<F9>', '<cmd>!g++ -std=c++17 % -o %:r<cr>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<F10>', '<cmd>12split<bar>terminal ./%:r<cr>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>cc',
+      '<cmd>w<cr><cmd>!g++ -std=c++17 % -o %:r<cr><cmd>12split<bar>terminal ./%:r<cr>',
+      { noremap = true, silent = true })
+  end
+})
