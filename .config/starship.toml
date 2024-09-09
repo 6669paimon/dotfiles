@@ -31,7 +31,7 @@ symbol = " "
 style = "bright-yellow"
 
 [git_status]
-format = "[ $ahead_behind (\\[ $all_status\\]) ](#73BCD9)"
+format = "[ $ahead_behind(\\[ $all_status\\]) ](#73BCD9)"
 # format = "[ $all_status$ahead_behind](#73BCD9)"
 # format = "[ $ahead_behind $all_status](#73BCD9)"
 conflicted = "="
