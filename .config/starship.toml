@@ -34,27 +34,20 @@ ahead =	"⇡${count} "
 behind = "⇣${count} "
 diverged = "⇕⇡${ahead_count}⇣${behind_count} "
 up_to_date = " 󰄸 "
-# untracked ="[󰩌 ${count} ](bright-black)"
-untracked ="[󱀶 ${count} ](bright-black)"
-# untracked ="󰡯 ${count}"
-# untracked = "?${count}"
 stashed = "≡ "
 
+# untracked = "?${count}"
 # modified = "[!${count}](yellow)"
 # staged = "+${count}"
 # renamed = "»${count}"
 # deleted = "[-${count}](red)"
 
-modified = "[󱋢 ${count} ](yellow)"
+# outline file icon
+untracked ="[󱀶 ${count} ](bright-black)"
+modified = "[󱋢 ${count} ](#37c2de)"
 staged = "[󰻭 ${count} ](green)"
 renamed = "[󰬳 ${count} ](purple)"
 deleted = "[󱪢 ${count} ](red)"
-
-# renamed = "󱀱 ${count} "
-# renamed = "󰕁 ${count} "
-# renamed = " ${count}"
-# deleted = "[󱂦 ${count} ](red)"
-# deleted = "[ ${count} ](red)"
 
 [git_commit]
 format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"
