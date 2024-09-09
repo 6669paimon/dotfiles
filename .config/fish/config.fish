@@ -118,45 +118,71 @@ end
 ### backup restore ###
 ######################
 
-function bak
-  set file $argv[1]
-
-  # Check if the string ends with .bak
-  if string match -r '\.bak$' -- $file
-    # If the file is a backup (.bak), rename it back to the original file
-    set originalFile (string replace ".bak" "" -- $file)
-    if test -e $originalFile
-      # Prompt the user for confirmation to replace the existing original file
-      read -P "File '$originalFile' already exists. Do you want to replace it? (Y/n) " response
-      if test -z "$response"; or test "$response" = "Y"; or test "$response" = "y"
-        # Remove the existing original file before renaming
-        rm -rf $originalFile
-        mv $file $originalFile
-        echo "Restored '$file' to '$originalFile'."
-      else
-        echo "Operation canceled. '$originalFile' was not replaced."
-      end
-    else
-      mv $file $originalFile
-      echo "Restored '$file' to '$originalFile'."
-    end
-  else
-    # If the file is not a .bak, create a backup
-    set backupFile "$file.bak"
-    if test -e $backupFile
-      # Prompt the user for confirmation to replace the existing backup file
-      read -P "Backup file '$backupFile' already exists. Do you want to replace it? (Y/n) " response
-      if test -z "$response"; or test "$response" = "Y"; or test "$response" = "y"
-        # Remove the existing backup file before creating a new one
-        rm -rf $backupFile
-        cp -r $file $backupFile
-        echo "Backed up '$file' to '$backupFile' (replaced existing backup)."
-      else
-        echo "Operation canceled. '$backupFile' was not replaced."
-      end
-    else
-      cp -r $file $backupFile
-      echo "Backed up '$file' to '$backupFile'."
-    end
-  end
-end
+# function bak
+#   set delete_original 0
+#   set file ""
+#
+#   # Parse arguments
+#   for arg in $argv
+#     switch $arg
+#       case '-d'
+#         set delete_original 1
+#       case '*'
+#         set file $arg
+#     end
+#   end
+#
+#   # Check if a file was provided
+#   if test -z "$file"
+#     echo "Error: No file specified."
+#     return 1
+#   end
+#
+#   # Check if the string ends with .bak
+#   if string match -r '\.bak$' -- $file
+#     # If the file is a backup (.bak), rename it back to the original file
+#     set originalFile (string replace ".bak" "" -- $file)
+#     if test -e $originalFile
+#       # Prompt the user for confirmation to replace the existing original file
+#       read -P "File '$originalFile' already exists. Do you want to replace it? (Y/n) " response
+#       if test -z "$response"; or test "$response" = "Y"; or test "$response" = "y"
+#         # Remove the existing original file before renaming
+#         rm -rf $originalFile
+#         mv $file $originalFile
+#         echo "Restored '$file' to '$originalFile'."
+#       else
+#         echo "Operation canceled. '$originalFile' was not replaced."
+#       end
+#     else
+#       mv $file $originalFile
+#       echo "Restored '$file' to '$originalFile'."
+#     end
+#   else
+#     # If the file is not a .bak, create a backup
+#     set backupFile "$file.bak"
+#     if test -e $backupFile
+#       # Prompt the user for confirmation to replace the existing backup file
+#       read -P "Backup file '$backupFile' already exists. Do you want to replace it? (Y/n) " response
+#       if test -z "$response"; or test "$response" = "Y"; or test "$response" = "y"
+#         # Remove the existing backup file before creating a new one
+#         rm -rf $backupFile
+#         cp -r $file $backupFile
+#         echo "Backed up '$file' to '$backupFile' (replaced existing backup)."
+#         if test $delete_original -eq 1
+#           rm -rf $file
+#           echo "Original file '$file' has been deleted."
+#         end
+#       else
+#         echo "Operation canceled. '$backupFile' was not replaced."
+#       end
+#     else
+#       cp -r $file $backupFile
+#       echo "Backed up '$file' to '$backupFile'."
+#       if test $delete_original -eq 1
+#         rm -rf $file
+#         echo "Original file '$file' has been deleted."
+#       end
+#     end
+#   end
+# end
+#
