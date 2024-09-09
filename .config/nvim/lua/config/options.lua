@@ -14,11 +14,12 @@ opt.showmode = false
 opt.laststatus = 3
 opt.background = "dark"
 opt.termguicolors = true
--- opt.colorcolumn = "80"
--- opt.cursorline = true
+opt.colorcolumn = "80"
+opt.cursorline = true
+-- opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldsep = " ", foldclose = "", lastline = " " } -- make EndOfBuffer invisible
 
 -- Line nubmer
--- opt.signcolumn = "yes:1"
+-- opt.signcolumn = "yes"
 opt.nu = true
 opt.relativenumber = true
 opt.ruler = false
