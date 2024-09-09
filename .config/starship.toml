@@ -54,9 +54,6 @@ staged = "[󰻭 ${count} ](green)"
 renamed = "[󰬳 ${count} ](purple)"
 deleted = "[󱪢 ${count} ](red)"
 
-[git_status.all_status]
-format = "$all_status"
-
 [git_commit]
 format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"
 style = "green"
