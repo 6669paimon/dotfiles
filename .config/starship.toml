@@ -11,7 +11,11 @@ $line_break\
 $python\
 $character"""
 
+# format = "AA $fill BB $fill CC"
 # right_format = """TEST"""
+
+# [fill]
+# symbol = '-'
 
 [directory]
 style = "bright-blue"
@@ -29,6 +33,7 @@ style = "bright-yellow"
 [git_status]
 format = "[ $ahead_behind (\\[ $all_status\\]) ](#73BCD9)"
 # format = "[ $all_status$ahead_behind](#73BCD9)"
+# format = "[ $ahead_behind $all_status](#73BCD9)"
 conflicted = "="
 ahead =	"⇡${count} "
 behind = "⇣${count} "
