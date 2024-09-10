@@ -93,31 +93,30 @@ function M.config()
         },
       },
 
-      live_grep = {
-        initial_mode = "insert",
-        layout_strategy = "horizontal",
-        layout_config = {
-          width = 0.8,
-          height = { 0.8, max = 70 },
-        },
-
-      },
+      -- live_grep = {
+      --   initial_mode = "insert",
+      --   layout_strategy = "horizontal",
+      --   layout_config = {
+      --     width = 0.8,
+      --     height = { 0.8, max = 70 },
+      --   },
+      -- },
 
       -- preview top
-      -- live_grep = {
-      -- initial_mode = "insert",
-      -- layout_strategy = "vertical",
-      -- layout_config = {
-      --   vertical = {
-      --     preview_height = 0.3,
-      --     results_height = 0.7,
-      --   },
-      --   prompt_position = "top",
-      --   width = { 0.8, max = 70 },
-      -- },
-      -- -- wrap_results = true,
-      -- sorting_strategy = "ascending",
-      -- },
+      live_grep = {
+        initial_mode = "insert",
+        layout_strategy = "vertical",
+        layout_config = {
+          vertical = {
+            preview_height = 0.3,
+            results_height = 0.7,
+          },
+          prompt_position = "top",
+          width = { 0.8, max = 70 },
+        },
+        -- wrap_results = true,
+        sorting_strategy = "ascending",
+      },
 
       highlights = {
         layout_strategy = "vertical",
