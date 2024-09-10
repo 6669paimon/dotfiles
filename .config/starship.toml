@@ -31,7 +31,7 @@ symbol = " "
 style = "bright-yellow"
 
 [git_status]
-format = "[ $ahead_behind(\\[ $all_status\\]) ](#73BCD9)"
+format = "[ $ahead_behind](#73BCD9)[(\\[ $all_status\\])](#204361) "
 # format = "[ $all_status$ahead_behind](#73BCD9)"
 # format = "[ $ahead_behind $all_status](#73BCD9)"
 conflicted = "="
@@ -48,11 +48,13 @@ stashed = "≡ "
 # deleted = "[-${count}](red)"
 
 # outline file icon
-untracked ="[󱀶 ${count} ](bright-black)"
-modified = "[󱋢 ${count} ](#37c2de)"
-staged = "[󰻭 ${count} ](green)"
+untracked ="[󱀶 ${count} ](#3c6f99)"
+modified = "[󱋢 ${count} ](#719ead)"
+staged = "[󰻭 ${count} ](#55ab89)"
+# staged = "[󰻭 ${count} ](#86afbd)"
 renamed = "[󰬳 ${count} ](#539bf5)"
-deleted = "[󱪢 ${count} ](red)"
+deleted = "[󱪢 ${count} ](#c25951)"
+
 
 [git_commit]
 format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"

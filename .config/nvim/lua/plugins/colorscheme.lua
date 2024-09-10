@@ -23,8 +23,8 @@ return {
           Search             = { bg = '#124066', fg = '#e2e2e2' },
           TabLineSel         = { fg = "#afb7ba", bg = "#f73e3e" }, -- tab pages line, active tab page label
           Visual             = { bg = "#124066", fg = '#e2e2e2' },
-          ColorColumn        = { bg = "#0b1824" },                 -- used for the columns set with 'colorcolumn'
-          CursorLine         = { bg = "#0b1824" },
+          ColorColumn        = { bg = "#041520" },                 -- used for the columns set with 'colorcolumn'
+          CursorLine         = { bg = "#041520" },
           CursorLineNr       = { fg = "#b0ced9", bg = "#00101d" }, -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
 
           TelescopeSelection = { bg = "#124066", fg = '#e2e2e2' },
