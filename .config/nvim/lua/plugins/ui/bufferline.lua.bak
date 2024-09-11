@@ -32,5 +32,6 @@ return {
         },
       },
     }
+    -- vim.cmd("set showtabline=1")
   end
 }

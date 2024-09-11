@@ -18,10 +18,11 @@ local M = {
     { "<leader>fg", "<CMD>Telescope live_grep<CR>",                                            desc = "Find Text" },
     { "<leader>fe", "<CMD>Telescope file_browser<CR>",                                         desc = "File Browser" },
     { "<leader>fb", "<CMD>Telescope buffers<CR>",                                              desc = "List open buffer" },
+    { "<leader>b",  "<CMD>Telescope buffers<CR>",                                              desc = "List open buffer" },
     { "<leader>fd", "<CMD>Telescope diagnostics<CR>",                                          desc = "List Dianostics" },
     { "<leader>ft", "<CMD>Telescope treesitter<CR>",                                           desc = "List Function names, variables, from Treesitter" },
     { "<leader>fk", "<CMD>Telescope keymaps<CR>",                                              desc = "List keymaps" },
-    { "<leader>fn", "<CMD>Telescope noice<CR>",                                                desc = "Help tags" },
+    -- { "<leader>fn", "<CMD>Telescope noice<CR>",                                                desc = "Help tags" },
     { "<leader>fh", "<CMD>Telescope highlights<CR>",                                           desc = "Help tags" },
     { "<leader>f?", "<CMD>Telescope help_tags<CR>",                                            desc = "Help tags" },
   },
@@ -30,20 +31,15 @@ local M = {
 
 
 function M.config()
-  local icons = {
-    ChevronRight = "",
-    -- ChevronRight = "",
-    Forward = "  ",
-  }
-
   local actions = require("telescope.actions")
   local fb_actions = require("telescope").extensions.file_browser.actions
 
   require("telescope").setup({
+
     defaults = {
-      prompt_prefix = icons.ChevronRight .. " ",
-      selection_caret = icons.Forward .. " ",
-      entry_prefix = "   ",
+      prompt_prefix = " ",
+      selection_caret = " ",
+      entry_prefix = " ",
       initial_mode = "normal",
       selection_strategy = "reset",
       path_display = { "smart" },
@@ -70,7 +66,6 @@ function M.config()
         i = {
           ["<C-n>"] = actions.cycle_history_next,
           ["<C-p>"] = actions.cycle_history_prev,
-
           ["<C-j>"] = actions.move_selection_next,
           ["<C-k>"] = actions.move_selection_previous,
         },
@@ -93,16 +88,6 @@ function M.config()
         },
       },
 
-      -- live_grep = {
-      --   initial_mode = "insert",
-      --   layout_strategy = "horizontal",
-      --   layout_config = {
-      --     width = 0.8,
-      --     height = { 0.8, max = 70 },
-      --   },
-      -- },
-
-      -- preview top
       live_grep = {
         initial_mode = "insert",
         layout_strategy = "vertical",
@@ -114,32 +99,23 @@ function M.config()
           prompt_position = "top",
           width = { 0.8, max = 70 },
         },
-        -- wrap_results = true,
         sorting_strategy = "ascending",
       },
 
       highlights = {
-        layout_strategy = "vertical",
+        theme = "dropdown",
         layout_config = {
-          vertical = {
-            preview_height = 0.1,
-            -- results_height = 0.7,
-          },
-          prompt_position = "top",
           width = { 0.8, max = 70 },
-          -- height = { 0.7, max = 70 },
+          height = { 0.5, max = 70 },
         },
-        sorting_strategy = "ascending",
       },
-
 
       buffers = {
         theme = "dropdown",
         previewer = false,
         initial_mode = "normal",
         layout_config = {
-          prompt_position = "top",
-          width = { 0.7, max = 70 },
+          width = { 0.5, max = 50 },
         },
         mappings = {
           i = {
@@ -180,60 +156,54 @@ function M.config()
         theme = "dropdown",
       },
     },
+
     extensions = {
+
       fzf = {
         fuzzy = true,                   -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
         override_file_sorter = true,    -- override the file sorter
         case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       },
+
       file_browser = {
+        theme = "dropdown",
         -- disables netrw and use telescope-file-browser in its place
-        hijack_netrw = true,
-        path = "%:p:h",
-        cwd = vim.fn.expand("%:p:h"),
+        -- hijack_netrw = true,
+        -- path = "%:p:h",
+        -- cwd = vim.fn.expand("%:p:h"),
         respect_gitignore = false,
         hidden = true,
         grouped = true,
         -- previewer = false,
-        initial_mode = "normal",
         layout_config = {
-          prompt_position = "top",
-          width = 0.8,
-          height = 0.8,
+          width = { 0.8, max = 70 },
+          height = 0.5,
         },
-
-        -- wrap_results = true,
-        layout_strategy = "horizontal",
-        sorting_strategy = "ascending",
-        -- winblend = 0,
         mappings = {
-          -- your custom insert mode mappings
           ["n"] = {
-            -- your custom normal mode mappings
             ["N"] = fb_actions.create,
             ["h"] = fb_actions.goto_parent_dir,
-            ["/"] = function()
-              vim.cmd("startinsert")
-            end,
-            ["<C-u>"] = function(prompt_bufnr)
-              for i = 1, 10 do
-                actions.move_selection_previous(prompt_bufnr)
-              end
-            end,
-            ["<C-d>"] = function(prompt_bufnr)
-              for i = 1, 10 do
-                actions.move_selection_next(prompt_bufnr)
-              end
-            end,
-            ["<PageUp>"] = actions.preview_scrolling_up,
-            ["<PageDown>"] = actions.preview_scrolling_down,
+            -- ["/"] = function()
+            --   vim.cmd("startinsert")
+            -- end,
+            -- ["<C-u>"] = function(prompt_bufnr)
+            --   for i = 1, 10 do
+            --     actions.move_selection_previous(prompt_bufnr)
+            --   end
+            -- end,
+            -- ["<C-d>"] = function(prompt_bufnr)
+            --   for i = 1, 10 do
+            --     actions.move_selection_next(prompt_bufnr)
+            --   end
+            -- end,
+            -- ["<C-f>"] = actions.preview_scrolling_down,
+            -- ["<C-b>"] = actions.preview_scrolling_up,
           },
         },
       },
     },
   })
-  -- require("telescope").load_extension("fzf")
   require("telescope").load_extension("file_browser")
 end
 

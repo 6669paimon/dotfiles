@@ -23,7 +23,6 @@ M.config = function()
       groups = {
         InclineNormal = {
           default = true,
-          -- group = "NormalFloat"
           group = "InclineNA"
         },
         InclineNormalNC = {

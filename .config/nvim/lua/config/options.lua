@@ -38,6 +38,8 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 
+opt.showtabline = 0
+
 -- Scroll
 opt.scrolloff = 8
 opt.sidescrolloff = 8
