@@ -16,8 +16,8 @@
     "custom/separator",
     "pulseaudio",
     "custom/separator",
-    "custom/clock",
-    // "clock",
+    // "custom/clock",
+    "clock",
     "custom/separator",
     "tray",
     "custom/power-menu"
@@ -152,20 +152,20 @@
     "on-click": "pavucontrol",
     "scroll-step": 5
   },
-  "custom/clock": {
-    "exec": "~/scripts/clock.sh",
-    "interval": 60,
-    "format": "{}"
-  },
-  // "clock": {
+  // "custom/clock": {
+  //   "exec": "~/scripts/clock.sh",
   //   "interval": 60,
-  //   "align": 0,
-  //   "rotate": 0,
-  //   "format": "{:%d %b, %H:%M}",
-  //   "format-alt": "{:%a %b %d, %G}",
-  //   "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-  //   "timezone": "Asia/Bangkok"
+  //   "format": "{}"
   // },
+  "clock": {
+    "interval": 60,
+    "align": 0,
+    "rotate": 0,
+    "format": "{:%d %b, %H:%M}",
+    "format-alt": "{:%a %b %d, %G}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    "timezone": "Asia/Bangkok"
+  },
   "custom/power-menu": {
     "format": "  ",
     // "format": " X",
