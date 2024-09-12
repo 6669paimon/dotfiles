@@ -89,18 +89,42 @@ map("n", "[b", "<CMD>bp<CR>", opts, { desc = "move previous buffer" })
 map("n", "]b", "<CMD>bn<CR>", opts, { desc = "move next buffer" })
 map("n", "<leader><leader>", "<C-^>", { noremap = true }, { desc = "Switch to latest buffer" })
 map("n", "<leader>dd", "<CMD>confirm bd<CR>", opts, { desc = "Close buffer" })
--- map("n", "<leader>da", "<CMD>confirm %bd|e#|bd#<CR>", opts, { desc = "Close all buffers except the current buffer" })
-map("n", "<leader>da",
-  function()
+vim.api.nvim_set_keymap("n", "<leader>da", "", {
+  noremap = true,
+  silent = true,
+  callback = function()
     local current_buf = vim.api.nvim_get_current_buf()
     local all_buf = vim.api.nvim_list_bufs()
     local closed_count = 0
+
+    local function is_regular_file(buf)
+      -- Check buftype
+      local buftype = vim.api.nvim_buf_get_option(buf, 'buftype')
+      if buftype ~= '' then
+        return false
+      end
+
+      -- Check filename
+      local bufname = vim.api.nvim_buf_get_name(buf)
+      if bufname == '' then
+        return false
+      end
+
+      -- Check if it's a normal file path
+      local stat = vim.loop.fs_stat(bufname)
+      if not stat or not stat.type == 'file' then
+        return false
+      end
+
+      return true
+    end
+
     for _, buf in ipairs(all_buf) do
-      if buf ~= current_buf and vim.api.nvim_buf_is_valid(buf) then
+      if buf ~= current_buf and vim.api.nvim_buf_is_valid(buf) and is_regular_file(buf) then
         local modified = vim.api.nvim_buf_get_option(buf, 'modified')
         if modified then
           local buf_name = vim.api.nvim_buf_get_name(buf)
-          local choice = vim.fn.confirm('Save change to "' .. buf_name .. '"?', "&Yes\n&No\n&Cancel", 1)
+          local choice = vim.fn.confirm('Save changes to "' .. buf_name .. '"?', "&Yes\n&No\n&Cancel", 1)
           if choice == 1 then -- Yes
             vim.api.nvim_buf_call(buf, function() vim.cmd('write') end)
             vim.api.nvim_buf_delete(buf, {})
@@ -120,12 +144,12 @@ map("n", "<leader>da",
 
     -- Show notification
     vim.defer_fn(function()
-      local msg = string.format("Close buffer(s): %d ", closed_count)
-      vim.notify(msg, vim.log.levels.INFO, { tetle = "Buffer Cleanup", timeout = 3000 })
+      local msg = string.format("Closed buffer(s): %d", closed_count)
+      vim.notify(msg, vim.log.levels.INFO, { title = "Buffer Cleanup", timeout = 3000 })
     end, 100)
   end,
-  { desc = "Close all buffers except the current buffer" })
-
+  desc = "Close all regular file buffers except the current buffer"
+})
 
 -- Quick compile and run
 -- python
