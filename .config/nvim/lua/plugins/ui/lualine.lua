@@ -2,32 +2,13 @@ local M = {
   "nvim-lualine/lualine.nvim",
 }
 
-local function extract_highlight_colors(color_group, scope)
-  local color = require('lualine.highlight').get_lualine_hl(color_group)
-  if not color then
-    if vim.fn.hlexists(color_group) == 0 then
-      return nil
-    end
-    color = vim.api.nvim_get_hl_by_name(color_group, true)
-    if color.background ~= nil then
-      color.bg = string.format('#%06x', color.background)
-      color.background = nil
-    end
-    if color.foreground ~= nil then
-      color.fg = string.format('#%06x', color.foreground)
-      color.foreground = nil
-    end
-    if color.special ~= nil then
-      color.sp = string.format('#%06x', color.special)
-      color.special = nil
-    end
+local function truncate_string(str, max_length)
+  if #str > max_length then
+    return string.sub(str, 1, max_length) .. "…"
+  else
+    return str
   end
-  if scope then
-    return color[scope]
-  end
-  return color
 end
-
 
 function M.config()
   local color = {
@@ -35,7 +16,6 @@ function M.config()
     bg1 = "#092033",
     fg = "#aad2ee",
     fg1 = "#b0ced9",
-    fg2 = "#618cb0",
     red = "#f73e3e",
     red1 = "#E48679",
   }
@@ -46,10 +26,6 @@ function M.config()
       c = { bg = color.bg, fg = color.fg },
       x = { bg = color.bg, fg = color.fg },
     },
-    -- insert = {
-    --   b = { bg = color.fg2, fg = color.bg },
-    --   c = { bg = color.bg, fg = color.fg },
-    -- },
     visual = {
       b = { bg = color.red, fg = color.bg },
       c = { bg = color.bg, fg = color.red1 },
@@ -62,6 +38,7 @@ function M.config()
     end,
   } ]]
 
+  local modules = require('lualine_require').lazy_require { utils = 'lualine.utils.utils' }
   local function icon_file()
     local filename = vim.fn.expand('%:t')
     local devicons = require('nvim-web-devicons')
@@ -73,7 +50,7 @@ function M.config()
       icon = ''
       icon_highlight_group = 'DevIconDefault'
     end
-    local icon_color = extract_highlight_colors(icon_highlight_group, 'fg')
+    local icon_color = modules.utils.extract_highlight_colors(icon_highlight_group, 'fg')
     vim.api.nvim_set_hl(0, icon_highlight_group, { fg = icon_color, bg = color.bg })
     if filename == "" then
       filename = "[No name]"
@@ -97,11 +74,19 @@ function M.config()
     else
       modified = ''
     end
+    -- local readonly
+    -- if vim.bo.readonly then
+    --   readonly = string.format('%%#lualine_c_visual# ')
+    -- else
+    --   readonly = ''
+    -- end
+
+    -- return modified .. filename
     return filename .. modified
   end
 
-  --[[ local function lsp_status()
-    local msg = "[No Active]"
+  local function lsp_status()
+    local msg = " [No active]"
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
@@ -110,11 +95,11 @@ function M.config()
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return "[" .. client.name .. "]"
+        return " " .. truncate_string(client.name, 8)
       end
     end
     return msg
-  end ]]
+  end
 
   local mode_icons = {
     "mode",
@@ -145,9 +130,9 @@ function M.config()
     symbols = { added = " ", modified = " ", removed = " " }
   }
 
-  -- local function shiftwidth()
-  --   return "ﲒ " .. vim.bo.shiftwidth
-  -- end
+  local function shiftwidth()
+    return "ﲒ " .. vim.bo.shiftwidth
+  end
 
   require("lualine").setup({
     options = {
@@ -161,7 +146,7 @@ function M.config()
       lualine_a = {},
       lualine_b = { mode_icons },
       lualine_c = { branch, diff },
-      lualine_x = { "diagnostics", icon_file, '%l:%c' },
+      lualine_x = { "diagnostics", icon_file, shiftwidth, lsp_status, '%l:%c' },
       -- lualine_x = { "diagnostics", "filename", '%l:%c' },
       -- lualine_x = { "diagnostics", lsp_status, shiftwidth, "filetype", '%l:%c' },
       lualine_y = { "progress" },
