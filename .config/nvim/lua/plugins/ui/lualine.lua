@@ -51,6 +51,7 @@ function M.config()
       icon_highlight_group = 'DevIconDefault'
     end
     local icon_color = modules.utils.extract_highlight_colors(icon_highlight_group, 'fg')
+    icon_highlight_group = icon_highlight_group .. "lualine"
     vim.api.nvim_set_hl(0, icon_highlight_group, { fg = icon_color, bg = color.bg })
     if filename == "" then
       filename = "[No name]"
