@@ -50,6 +50,11 @@ return {
           LuaLineDiffAdd     = { fg = "#768390", bg = "NONE" },
           LuaLineDiffChange  = { fg = "#768390", bg = "NONE" },
           LuaLineDiffDelete  = { fg = "#768390", bg = "NONE" },
+
+          GitSignsAdd        = { fg = "#539bf5" },
+          -- GitSignsAdd        = { fg = "#73BCD9" },
+
+
         }
       },
     })
