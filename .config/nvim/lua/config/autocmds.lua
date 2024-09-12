@@ -21,3 +21,12 @@ vim.cmd([[autocmd FileType * setlocal formatoptions-=cro]])
 vim.api.nvim_command("autocmd TermOpen * startinsert")
 vim.api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber")
 -- vim.api.nvim_command("autocmd TermOpen * setlocal signcolumn=no")
+
+-- vim.api.nvim_create_user_command("CloseBufferOrQuit", function()
+--   local listed = vim.fn.len(vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)'))
+--   if listed == 1 then
+--     vim.cmd('confirm quit')
+--   else
+--     vim.cmd('confirm bdelete')
+--   end
+-- end, {})

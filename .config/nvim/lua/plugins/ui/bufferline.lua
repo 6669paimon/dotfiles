@@ -12,8 +12,15 @@ return {
       options = {
 
         mode = "tabs",
-        show_buffer_close_icons = false,
+        show_buffer_close_icons = true,
         show_close_icon = false,
+        separator_style = { '|', '' },
+        always_show_bufferline = false,
+        -- enforce_regular_tabs = false | true,
+        -- auto_toggle_bufferline = true | false,
+        -- indicator = {
+        --   icon = '▊',
+        -- },
 
         offsets = {
           {
@@ -29,6 +36,7 @@ return {
       highlights = {
         indicator_selected = {
           fg = '#f73e3e',
+          -- fg = '#96d0ff',
         },
       },
     }

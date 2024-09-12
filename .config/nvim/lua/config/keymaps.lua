@@ -11,8 +11,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 map("n", "<Esc>", "<CMD>noh<CR>", opts, { desc = "Clear search highlights" })
+map("n", "<leader>x", "<CMD>qa<CR>", opts, { desc = "Cloas all file" })
 map("n", "<leader>q", "<CMD>confirm q<CR>", opts, { desc = "Close file" })
-map("n", "<leader>x", "<CMD>qa<CR>", opts, { desc = "Close all file" })
+map("n", "<leader>dd", "<CMD>confirm bd<CR>", opts, { desc = "Close buffer" })
+map("n", "<leader>da", "<CMD>%bd|e#|bd#<CR>", opts, { desc = "Close all buffers except the current buffer" })
+map("n", "<leader><leader>", "<C-^>", { noremap = true }, { desc = "Switch to latest buffer" })
 map("n", "<leader>w", "<CMD>w<CR>", opts, { desc = "Save file" })
 map("x", "p", '"_dP', { desc = "Visual paste, don't yank" })
 map("n", "db", 'vbd', { desc = "Delete a word backward" })
@@ -22,7 +25,8 @@ map("v", "J", ":m '>+1<CR>gv=gv", opts, { desc = "Visual move line down" })
 map("v", "K", ":m '<-2<CR>gv=gv", opts, { desc = "Visual move line up" })
 map("n", "<C-j>", "m`o<Esc>``", { desc = "Add line below" })
 map("n", "<C-k>", "m`O<Esc>``", { desc = "Add line above" })
-map("n", "J", "mzJ`z", { desc = "Delete line below" })
+-- map("n", "J", "mzJ`z", { desc = "Delete line below" })
+map("n", "J", "mzjdd`z", { desc = "Delete line below" })
 map("n", "K", "kdd", { desc = "Delete line above" })
 
 -- Center View
@@ -67,10 +71,6 @@ map("", "<Right>", "<nop>", opts)
 map("n", "[b", "<CMD>bprevious<CR>", opts, { desc = "move previous buffer" })
 map("n", "]b", "<CMD>bnext<CR>", opts, { desc = "move next buffer" })
 
--- Comment
--- map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
--- map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
-
 -- Split window
 map("n", "<leader>\\", "<CMD>split<CR>")
 map("n", "<leader>|", "<CMD>vsplit<CR>")
@@ -81,6 +81,7 @@ map("i", "<A-d>", "<Space><Esc>ce")
 
 -- Find/replace for the word under the cursor
 map("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map("n", "<leader>ss", '*N', opts, { desc = "Search current word" })
 
 -- New tab
 map("n", "<leader>te", "<CMD>tabedit<CR>")

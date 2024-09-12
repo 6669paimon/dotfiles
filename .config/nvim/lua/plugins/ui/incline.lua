@@ -46,14 +46,14 @@ M.config = function()
     --   end
     --   local modified = vim.bo[props.buf].modified
     --   return {
-    --     ' ',
+    --     -- ' ',
+    --     { '▊', guifg = "#aad2ee" }, ' ',
     --     filename,
     --     modified and { ' *', guifg = '#D94E4C', gui = 'bold' } or '',
     --     ' ',
-    --     -- guibg = '#092033',
-    --     -- guifg = '#aad2ee',
     --   }
     -- end,
+
     render = function(props)
       local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
       if filename == '' then
@@ -65,12 +65,12 @@ M.config = function()
         ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
         ' ',
         { filename, gui = modified and 'bold,italic' or 'bold' },
-        modified and { ' *', guifg = '#D94E4C', gui = 'bold' } or '',
+        modified and { ' ●', guifg = '#96d0ff', gui = 'bold' } or '',
+        -- modified and { ' *', guifg = '#D94E4C', gui = 'bold' } or '',
         ' ',
-        --     guibg = '#092033',
-        --     guifg = '#aad2ee',
       }
     end,
+
     window = {
       margin = {
         horizontal = 0,
