@@ -11,14 +11,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 map("n", "<Esc>", "<CMD>noh<CR>", opts, { desc = "Clear search highlights" })
-map("n", "<leader>x", "<CMD>qa<CR>", opts, { desc = "Cloas all file" })
+map("n", "<leader>x", "<CMD>confirm qa<CR>", opts, { desc = "Cloas all file" })
 map("n", "<leader>q", "<CMD>confirm q<CR>", opts, { desc = "Close file" })
-map("n", "<leader>dd", "<CMD>confirm bd<CR>", opts, { desc = "Close buffer" })
-map("n", "<leader>da", "<CMD>%bd|e#|bd#<CR>", opts, { desc = "Close all buffers except the current buffer" })
-map("n", "<leader><leader>", "<C-^>", { noremap = true }, { desc = "Switch to latest buffer" })
 map("n", "<leader>w", "<CMD>w<CR>", opts, { desc = "Save file" })
 map("x", "p", '"_dP', { desc = "Visual paste, don't yank" })
 map("n", "db", 'vbd', { desc = "Delete a word backward" })
+
 
 -- Move,Add,Delete line Up/Down current cursor
 map("v", "J", ":m '>+1<CR>gv=gv", opts, { desc = "Visual move line down" })
@@ -67,9 +65,6 @@ map("", "<Down>", "<nop>", opts)
 map("", "<Left>", "<nop>", opts)
 map("", "<Right>", "<nop>", opts)
 
--- Move next/previous buffer
-map("n", "[b", "<CMD>bprevious<CR>", opts, { desc = "move previous buffer" })
-map("n", "]b", "<CMD>bnext<CR>", opts, { desc = "move next buffer" })
 
 -- Split window
 map("n", "<leader>\\", "<CMD>split<CR>")
@@ -88,6 +83,48 @@ map("n", "<leader>te", "<CMD>tabedit<CR>")
 
 -- Terminal
 map("t", "<Esc>", "<C-\\><C-n>", opts)
+
+--  Buffer
+map("n", "[b", "<CMD>bp<CR>", opts, { desc = "move previous buffer" })
+map("n", "]b", "<CMD>bn<CR>", opts, { desc = "move next buffer" })
+map("n", "<leader><leader>", "<C-^>", { noremap = true }, { desc = "Switch to latest buffer" })
+map("n", "<leader>dd", "<CMD>confirm bd<CR>", opts, { desc = "Close buffer" })
+-- map("n", "<leader>da", "<CMD>confirm %bd|e#|bd#<CR>", opts, { desc = "Close all buffers except the current buffer" })
+map("n", "<leader>da",
+  function()
+    local current_buf = vim.api.nvim_get_current_buf()
+    local all_buf = vim.api.nvim_list_bufs()
+    local closed_count = 0
+    for _, buf in ipairs(all_buf) do
+      if buf ~= current_buf and vim.api.nvim_buf_is_valid(buf) then
+        local modified = vim.api.nvim_buf_get_option(buf, 'modified')
+        if modified then
+          local buf_name = vim.api.nvim_buf_get_name(buf)
+          local choice = vim.fn.confirm('Save change to "' .. buf_name .. '"?', "&Yes\n&No\n&Cancel", 1)
+          if choice == 1 then -- Yes
+            vim.api.nvim_buf_call(buf, function() vim.cmd('write') end)
+            vim.api.nvim_buf_delete(buf, {})
+            closed_count = closed_count + 1
+          elseif choice == 2 then -- No
+            vim.api.nvim_buf_delete(buf, { force = true })
+            closed_count = closed_count + 1
+          elseif choice == 3 then -- Cancel
+            return
+          end
+        else
+          vim.api.nvim_buf_delete(buf, {})
+          closed_count = closed_count + 1
+        end
+      end
+    end
+
+    -- Show notification
+    vim.defer_fn(function()
+      local msg = string.format("Close buffer(s): %d ", closed_count)
+      vim.notify(msg, vim.log.levels.INFO, { tetle = "Buffer Cleanup", timeout = 3000 })
+    end, 100)
+  end,
+  { desc = "Close all buffers except the current buffer" })
 
 
 -- Quick compile and run

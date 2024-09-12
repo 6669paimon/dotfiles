@@ -20,7 +20,7 @@ return {
         desc = "Harpoon | Add Mark",
       },
       {
-        "<leader>hh",
+        "<C-h>",
         function()
           local harpoon = require("harpoon")
           harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -28,14 +28,14 @@ return {
         desc = "Harpoon | Menu",
       },
       {
-        "<laeder>hn",
+        "]h",
         function()
           require("harpoon"):list():next()
         end,
         desc = "Harpoon | Next"
       },
       {
-        "<laeder>hp",
+        "[h",
         function()
           require("harpoon"):list():prev()
         end,

@@ -84,7 +84,7 @@ function M.config()
         find_command = { "rg", "--files", "--glob", "!**/{.git,node_modules}/*", "-L" },
         layout_config = {
           width = 0.8,
-          height = { 0.8, max = 70 }
+          height = { 0.7, max = 70 }
         },
       },
 
