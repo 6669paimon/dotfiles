@@ -43,8 +43,14 @@ window#waybar.hidden {
   margin-left: 8px;
 }
 
+/* #custom-logo { */
+/*   text-shadow: 0px 0px 6px #c4e5f2; */
+/*   color: #0965ba; */
+/*   margin: 0 20px 0 18px; */
+/* } */
+
 /* -----------------------------------------------------
- * Workspaces
+ * Workspaces 
  * ----------------------------------------------------- */
 
 #workspaces {
@@ -109,6 +115,13 @@ window#waybar.hidden {
   color: #0965ba;
   border-bottom: 1px solid #0965ba;
 }
+
+/* @keyframes blink {
+  to {
+    background-color: rgba(30, 34, 42, 0.5);
+    color: #abb2bf;
+  }
+} */
 
 tooltip {
   border-radius: 4px;

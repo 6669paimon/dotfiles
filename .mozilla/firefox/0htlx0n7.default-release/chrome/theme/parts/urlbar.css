@@ -30,8 +30,11 @@ toolbarspring {
 
 #urlbar[breakout][breakout-extend] {
   left: 0 !important;
-  top: 0 !important;
-  width: 100% !important;
+  right: 0 !important;
+  margin: 0 auto !important;
+  /* top: 0 !important; */
+  width: 99% !important;
+  background: var(--gnome-menu-background) !important;
   z-index: 5 !important;
 }
 

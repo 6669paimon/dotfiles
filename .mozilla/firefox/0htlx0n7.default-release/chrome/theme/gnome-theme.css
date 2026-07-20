@@ -9,6 +9,7 @@
 
 /* custom file */
 @import "parts/history.css";
+@import "parts/tab-hover-preview.css";
 
 @import "parts/buttons.css";
 @import "parts/buttons-fixes.css";

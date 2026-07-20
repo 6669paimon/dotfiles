@@ -1,0 +1,27 @@
+.tab-preview-content-interactive:not(:empty),
+.tab-preview-content-main {
+  background-color: var(--gnome-menu-background) !important;
+}
+
+.tab-preview-thumbnail-container {
+  width: 264px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  &.hide-thumbnail {
+    display: none;
+  }
+
+  @media (width < 640px) {
+    display: none;
+  }
+
+  >canvas {
+    display: block;
+    width: 100%;
+    animation: tab-hover-preview-fadein 0.2s ease;
+    border: 1px solid var(--gnome-menu-border-color) !important;
+    /* border-radius: var(--border-radius-medium); */
+    box-sizing: border-box;
+  }
+}

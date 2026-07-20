@@ -1,0 +1,327 @@
+-- Converted from the old hyprland.conf (hyprlang) syntax to the new
+-- Lua config format introduced in Hyprland 0.55.
+-- Reference: https://wiki.hypr.land/Configuring/Start/
+--
+-- All visuals (shadow, blur, colors, rounding, animations) and keybinds
+-- have been kept the same as your original config.
+
+------------------------
+---- ENV VARIABLES  ----
+------------------------
+-- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
+
+hl.env("LIBVA_DRIVER_NAME", "nvidia")
+hl.env("VDPAU_DRIVER", "nvidia")
+
+hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("GBM_BACKEND", "nvidia-drm")
+hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+
+-- test env
+hl.env("__NV_PRIME_RENDER_OFFLOAD", "1")
+hl.env("__GL_GSYNC_ALLOWED", "1")
+hl.env("__GL_VRR_ALLOWED", "1")
+hl.env("__VK_LAYER_NV_optimus", "NVIDIA_only")
+hl.env("NVD_BACKEND", "direct")
+hl.env("XDG_SESSION_DESKTOP", "Hyprland")
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+hl.env("GDK_BACKEND", "wayland")
+hl.env("SDL_VIDEODRIVER", "wayland")
+hl.env("CLUTTER_BACKEND", "wayland")
+hl.env("WLR_RENDER_ALLOW_SOFTWARE", "1")
+hl.env("NVIDIA_ANTI_FLICKER", "1")
+
+hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
+hl.env("MOZ_ENABLE_WAYLAND", "1")
+
+hl.env("NO_AT_BRIDGE", "1")
+
+-- QT specific
+hl.env("QT_QPA_PLATFORM", "wayland")
+hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
+hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct") -- change to qt6ct if you have that
+
+hl.env("XCURSOR_SIZE", "20")
+hl.env("XCURSOR_THEME", "McMojave")
+
+hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
+
+------------------------
+---- MONITORS       ----
+------------------------
+-- https://wiki.hypr.land/Configuring/Basics/Monitors/
+
+hl.monitor({ output = "", mode = "highres", position = "auto", scale = 1, cm = "srgb" })
+
+---------------------
+---- MY PROGRAMS ----
+---------------------
+
+local terminal = "alacritty"
+local fileManager = "thunar"
+local menu = "killall wofi || wofi --show drun"
+
+-------------------
+---- AUTOSTART ----
+-------------------
+-- https://wiki.hypr.land/Configuring/Basics/Autostart/
+
+hl.on("hyprland.start", function()
+    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.exec_cmd("awww-daemon & sleep 1 && awww img ~/Wallpaper/make.png")
+    hl.exec_cmd("waybar")
+end)
+
+-----------------------
+---- LOOK AND FEEL ----
+-----------------------
+-- https://wiki.hypr.land/Configuring/Basics/Variables/
+
+hl.config({
+    cursor = {
+        no_hardware_cursors = true,
+    },
+
+    general = {
+        gaps_in = 4,
+        gaps_out = 8,
+        border_size = 1,
+        col = {
+            active_border = "rgba(133c63ee)",
+            inactive_border = "rgba(08131aee)",
+        },
+        layout = "dwindle",
+        -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/
+        allow_tearing = false,
+    },
+
+    decoration = {
+        rounding = 3,
+
+        blur = {
+            enabled = true,
+            xray = true,
+            size = 5,
+            passes = 2,
+            noise = 0.05,
+            brightness = 0.9,
+        },
+
+        shadow = {
+            enabled = true,
+            range = 10,
+            render_power = 3,
+            color = "rgba(02070dee)",
+        },
+
+        -- special workspace dim
+        dim_special = 0.0,
+    },
+
+    animations = {
+        enabled = true,
+    },
+
+    -- dwindle:pseudotile was removed upstream in 0.55 (it did nothing),
+    -- so it's dropped here. The per-window pseudo-tile toggle (SUPER+P)
+    -- below still works exactly the same.
+    dwindle = {
+        preserve_split = true, -- you probably want this
+    },
+
+    misc = {
+        disable_hyprland_logo = true,
+    },
+})
+
+-- Animation curves & leaves
+-- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
+hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
+
+hl.animation({ leaf = "windows", enabled = true, speed = 7, bezier = "myBezier" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 7, bezier = "default", style = "popin 80%" })
+hl.animation({ leaf = "border", enabled = true, speed = 10, bezier = "default" })
+hl.animation({ leaf = "borderangle", enabled = true, speed = 8, bezier = "default" })
+hl.animation({ leaf = "fade", enabled = true, speed = 7, bezier = "default" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "default" })
+
+-- Note: `gestures.workspace_swipe` no longer exists as a config key in 0.55 —
+-- touchpad gestures are now opt-in via hl.gesture(). Since your original
+-- config had it set to "off" anyway, simply not defining any hl.gesture()
+-- reproduces the same behavior (no swipe gesture = disabled). If you ever
+-- want to re-enable it, e.g.:
+-- hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+
+-- Example per-device config
+-- hl.device({ name = "epic-mouse-v1", sensitivity = -0.5 })
+
+---------------
+---- INPUT ----
+---------------
+
+hl.config({
+    input = {
+        kb_layout = "us,th",
+        kb_variant = "",
+        kb_model = "",
+        kb_options = "grp:win_space_toggle,altwin:menu_win,ctrl:nocaps",
+        kb_rules = "",
+
+        follow_mouse = 1,
+
+        touchpad = {
+            natural_scroll = false,
+        },
+
+        sensitivity = 0.35, -- -1.0 - 1.0, 0 means no modification.
+    },
+})
+
+--------------------------------
+---- WINDOWS AND WORKSPACES ----
+--------------------------------
+-- https://wiki.hypr.land/Configuring/Basics/Window-Rules/
+
+local floatClasses = { "imv", "mpv", "Steam", "nwg-look", "pavucontrol-qt", "pavucontrol", "Waydroid" }
+for _, class in ipairs(floatClasses) do
+    hl.window_rule({ match = { class = "^(" .. class .. ")$" }, float = true })
+end
+
+hl.window_rule({ match = { class = "^(firefox)$" }, workspace = "2 silent", float = true, size = "1660 960" })
+-- hl.window_rule({ match = { class = "^(firefox)$" }, size = "1440 900" })
+-- hl.window_rule({ match = { class = "^(firefox)$" }, move = "550 50" })
+
+hl.window_rule({ match = { class = "^(thunar)$" }, float = true, size = "860 575", move = "550 50" })
+
+hl.window_rule({ match = { class = "^(google-chrome)$" }, workspace = "2 silent", border_size = 0 })
+
+hl.window_rule({ match = { class = "^(Chromium)$" }, workspace = "2 silent" })
+hl.window_rule({ match = { class = "^(chromium)$" }, workspace = "2 silent" })
+
+hl.window_rule({ match = { class = "^(Alacritty)$" }, float = true, size = "860 575", move = "550 50" })
+
+hl.window_rule({ match = { class = "^(kitty)$" }, float = true, size = "860 600", move = "550 100" })
+
+hl.window_rule({ match = { class = "^(google-chrome)$", title = "^(Open File)$" }, float = true })
+hl.window_rule({ match = { class = "^(google-chrome)$", title = "^(Save File)$" }, float = true })
+
+hl.window_rule({ match = { class = "^(thunar)$" }, opacity = "0.80 0.80" })
+hl.window_rule({ match = { class = "^(nwg-look)$" }, opacity = "0.80 0.80" })
+hl.window_rule({ match = { class = "^(pavucontrol)$" }, opacity = "0.80 0.80" })
+
+-- hl.layer_rule({ match = { namespace = "waybar" }, blur = true })
+-- hl.layer_rule({ match = { namespace = "wofi" }, blur = true })
+
+---------------------
+---- KEYBINDINGS ----
+---------------------
+-- https://wiki.hypr.land/Configuring/Basics/Binds/
+
+local mainMod = "SUPER"
+
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal)) -- note: [tile] tag from the old config is dropped, dispatcher no longer takes it inline
+hl.bind("CTRL + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + X", hl.dsp.window.close())
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exit())
+hl.bind(mainMod .. " + A", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo()) -- dwindle
+hl.bind(mainMod .. " + N", hl.dsp.layout("togglesplit")) -- dwindle
+
+-- Center the current window
+hl.bind(mainMod .. " + C", hl.dsp.window.center())
+
+-- Screenshots (hyprshot)
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -m window"))
+hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output"))
+hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region"))
+
+-- Full screen
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "set" }))
+hl.bind("F11", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(
+    "hyprctl dispatch movewindow r && hyprctl dispatch resizeactive 0 460 && hyprctl dispatch moveactive 0 -12"
+))
+
+-- Move focus with mainMod + arrow keys (H/J/K/L)
+hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
+
+-- Move windows with arrow keys
+hl.bind(mainMod .. " + left", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + up", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + down", hl.dsp.window.move({ direction = "down" }))
+
+-- Custom
+hl.bind("ALT + Tab", hl.dsp.window.cycle_next())
+hl.bind("ALT + Tab", hl.dsp.window.bring_to_top())
+
+-- Switch workspaces with mainMod + [0-9]
+-- Move active window to a workspace with mainMod + SHIFT + [0-9]
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = tostring(i) }))
+    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = tostring(i) }))
+end
+
+-- Special workspace (scratchpad)
+hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("~/.config/hypr/scripts/hide.sh s"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("~/.config/hypr/scripts/hide.sh h"))
+
+-- Scroll through existing workspaces with mainMod + scroll
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + F", hl.dsp.focus({ workspace = "+1" }))
+hl.bind(mainMod .. " + B", hl.dsp.focus({ workspace = "-1" }))
+
+-- Move/resize windows with mainMod + LMB/RMB and dragging
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Resize submap
+hl.define_submap("resize", function()
+    hl.bind("l", hl.dsp.window.resize({ x = 30, y = 0 }), { repeating = true })
+    hl.bind("h", hl.dsp.window.resize({ x = -30, y = 0 }), { repeating = true })
+    hl.bind("k", hl.dsp.window.resize({ x = 0, y = -30 }), { repeating = true })
+    hl.bind("j", hl.dsp.window.resize({ x = 0, y = 30 }), { repeating = true })
+    hl.bind("CTRL + C", hl.dsp.submap("default"))
+end)
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.submap("resize"))
+
+-- Move submap
+hl.define_submap("move", function()
+    hl.bind("l", hl.dsp.window.move({ x = 30, y = 0, relative = true }), { repeating = true })
+    hl.bind("h", hl.dsp.window.move({ x = -30, y = 0, relative = true }), { repeating = true })
+    hl.bind("k", hl.dsp.window.move({ x = 0, y = -30, relative = true }), { repeating = true })
+    hl.bind("j", hl.dsp.window.move({ x = 0, y = 30, relative = true }), { repeating = true })
+    hl.bind("CTRL + C", hl.dsp.submap("default"))
+end)
+hl.bind(mainMod .. " + W", hl.dsp.submap("move"))
+
+-- Media controls
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
+hl.bind("XF86AudioMedia", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), { locked = true })
+
+-- Audio controls
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pactl -- set-sink-volume 0 +5%"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pactl -- set-sink-volume 0 -5%"), { locked = true, repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ toggle"), { locked = true, repeating = true })
+
+-- Brightness controls
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set +5%"))
+
+-- Waybar reload
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"))

@@ -4,9 +4,10 @@
 
 /* Style menus */
 menupopup {
-  -moz-appearance: none !important;
+  /* -moz-appearance: none !important; */
   color: var(--gnome-window-color) !important;
   padding: 8px !important;
+
 }
 
 menu menupopup {
@@ -88,6 +89,10 @@ panel {
 #downloadsPanel-blockedSubview,
 #downloadsPanel-mainView {
   padding: var(--gnome-menu-padding) !important;
+}
+
+.panel-subview-body {
+  background-color: var(--gnome-menu-background) !important;
 }
 
 .panel-header,
@@ -348,4 +353,22 @@ menuseparator {
 
 menuseparator::before {
   display: none !important;
+}
+
+/* Custom */
+
+.searchmode-switcher-panel-list {
+  background-color: var(--gnome-menu-background) !important;
+}
+
+popupnotification {
+  background-color: var(--gnome-menu-background) !important;
+}
+
+
+:is(menupopup, panel):where(:not([type="arrow"])) {
+  --panel-background-color: var(--gnome-menu-background) !important;
+  /* --panel-text-color: var(--gnome-menu-color); */
+  --panel-border-color: var(--gnome-menu-border-color) !important;
+
 }

@@ -7,3 +7,15 @@
  * You can apply your own custom styles in that file. */
 
 @import "customChrome.css";
+
+/* @media (prefers-color-scheme: dark) { */
+/*   #nav-bar { */
+/*     background: red !important; */
+/*   } */
+/* } */
+/**/
+/* @media (prefers-color-scheme: light) { */
+/*   #nav-bar { */
+/*     background: blue !important; */
+/*   } */
+/* } */

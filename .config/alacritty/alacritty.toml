@@ -1,4 +1,3 @@
-import = ["/home/Arawan/.config/alacritty/color/github_dark_dimmed.toml"]
 # import = ["/home/Arawan/.config/alacritty/color/neofusion.toml"]
 # import = ["/home/Arawan/.dotfiles/.config/alacritty/color/custom.toml"]
 
@@ -55,4 +54,7 @@ blink_interval=500
 [colors]
 # cursor = {text="#00101d",cursor="#b0ced9"}
 cursor = {text="#00101d",cursor="#c4e5f2"}
+
+[general]
+import = ["/home/Arawan/.config/alacritty/color/github_dark_dimmed.toml"]
 
