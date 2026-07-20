@@ -17,6 +17,7 @@ alias frc="nvim ~/.dotfiles/.config/fish/config.fish"
 alias hrc="nvim ~/.dotfiles/.config/hypr/hyprland.conf"
 alias oo="cd /home/Arawan/Documents/Obsidian\ Vault/"
 alias activate="source venv/bin/activate.fish"
+alias hypr="uwsm start hyprland-uwsm.desktop"
 
 # === Editor === #
 set -gx EDITOR nvim

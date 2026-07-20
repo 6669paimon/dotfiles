@@ -103,12 +103,24 @@ function M.config()
       },
 
       highlights = {
-        theme = "dropdown",
+        layout_strategy = "vertical",
         layout_config = {
+          vertical = {
+            preview_height = 0.3,
+            results_height = 0.7,
+          },
+          prompt_position = "top",
           width = { 0.8, max = 70 },
-          height = { 0.5, max = 70 },
         },
+        sorting_strategy = "ascending",
       },
+      -- highlights = {
+      --   theme = "dropdown",
+      --   layout_config = {
+      --     width = { 0.8, max = 70 },
+      --     height = { 0.5, max = 70 },
+      --   },
+      -- },
 
       buffers = {
         theme = "dropdown",

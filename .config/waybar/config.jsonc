@@ -53,7 +53,7 @@
     ]
   },
   "disk": {
-    "path": "/",
+    "path": "/home",
     "interval": 20,
     "format": "󰋊   {percentage_used}%"
   },
@@ -141,7 +141,7 @@
     "format-disconnected": "󰖪 ",
     "tooltip-format": "{essid}",
     "tooltip-format-wifi": "   {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-    "on-click": "kitty nmtui"
+    "on-click": "networkmanager_dmenu"
   },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
