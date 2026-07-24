@@ -1,8 +1,7 @@
 return {
   "nvimdev/lspsaga.nvim",
+  event = "LspAttach", -- โหลดพร้อมตอน LSP attach เข้า buffer พอดี ไม่ถ่วง startup
   config = function()
-    local keymap = vim.keymap
-
     require("lspsaga").setup({
       ui = {
         border = "rounded",
@@ -24,11 +23,6 @@ return {
       -- implement = { enable = false },
     })
 
-    keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-    keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>")
-    keymap.set("n", "<leader>lo", "<cmd>Lspsaga outline<cr>")
-
-    local builtin = require("telescope.builtin")
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -37,21 +31,28 @@ return {
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
         local opts = { buffer = ev.buf }
-        vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<cr>", opts)
-        vim.keymap.set("n", "gr", builtin.lsp_references, opts)
+        -- ===== ใช้ lspsaga แทน vim.lsp.buf ตัวที่มี UI สวยกว่า =====
+        vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
+        vim.keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts) -- preview แบบ popup ไม่กระโดดไฟล์
+        vim.keymap.set("n", "gr", "<cmd>Lspsaga finder<CR>", opts)          -- reference + definition รวมในหน้าต่างเดียว
+        vim.keymap.set("n", "<leader>k", "<cmd>Lspsaga hover_doc<CR>", opts)
+        vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
+        vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+        vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+        vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+        vim.keymap.set("n", "<leader>lo", "<cmd>Lspsaga outline<CR>", opts) -- symbol outline สวยๆ
+
+        -- ===== format ยังใช้ native ตรงๆ ได้ ไม่ต้องผ่าน saga =====
+        vim.keymap.set("n", "<leader>fm", function()
+          vim.lsp.buf.format({ async = true })
+        end, opts)
+
+        -- คำสั่งเฉพาะ clangd
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client and client.name == "clangd" then
+          vim.keymap.set("n", "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", opts)
+        end
       end,
     })
-
-    vim.keymap.set("n", "<leader>k", "<cmd>Lspsaga hover_doc<cr>", { silent = true })
-
-    -- diagnostic signs icons
-    local signs = { Error = "", Warn = "", Hint = "󰌵", Info = "" }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-    end
-    -- Erro = "",warn = "",Hint = "󰌶",Info = ""
   end,
 }

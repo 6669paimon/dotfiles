@@ -1,5 +1,6 @@
 local M = {
-  "phaazon/hop.nvim",
+  'wsdjeg/hop.nvim',
+  version = "*",
 }
 
 function M.config()

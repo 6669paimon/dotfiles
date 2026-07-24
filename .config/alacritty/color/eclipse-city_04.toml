@@ -1,0 +1,87 @@
+# Eclipse City v6 — Alacritty theme
+# v5 was confirmed a good match for Neovim/Telescope/tmux, but the
+# user found it too muted next to waybar, which reads a bit brighter/
+# more saturated. This bumps blue/cyan saturation and lightness up
+# moderately — a midpoint between v4 (too vivid/periwinkle) and v5
+# (too muted) — while keeping the same near-black navy base and the
+# desaturated terracotta red/neutral magenta from v5.
+#
+# Usage: save as ~/.config/alacritty/themes/eclipse-city.toml
+# and import it from your alacritty.toml:
+#   [general]
+#   import = ["~/.config/alacritty/themes/eclipse-city.toml"]
+
+[colors.primary]
+background = '#040B15'
+# background = "#0a0e15"   # near-black navy — matches nvim/tmux/waybar bg
+foreground = "#d2dae6"   # brightened slightly from v5 for a crisper look
+dim_foreground = "#8b93a8"
+
+[colors.cursor]
+text   = "#0a0e15"
+cursor = "#5788b8"        # brighter steel-blue, more waybar-vivid than v5
+
+[colors.vi_mode_cursor]
+text   = "#0a0e15"
+cursor = "#bf7261"        # terracotta, slightly lifted
+
+[colors.search.matches]
+foreground = "#0a0e15"
+background = "#5788b8"
+
+[colors.search.focused_match]
+foreground = "#0a0e15"
+background = "#bf7261"
+
+[colors.hints.start]
+foreground = "#0a0e15"
+background = "#bf7261"
+
+[colors.hints.end]
+foreground = "#0a0e15"
+background = "#8b93a8"
+
+[colors.line_indicator]
+foreground = "None"
+background = "None"
+
+[colors.footer_bar]
+background = "#0f1420"
+foreground = "#d2dae6"
+
+[colors.selection]
+text       = "#0a0e15"
+background = "#234b6e"    # brightened from v5, still matches telescope highlight family
+
+# Normal colors
+[colors.normal]
+black   = "#0f1420"
+red     = "#bf7261"       # terracotta, slightly lifted from v5
+green   = "#84a891"
+yellow  = "#cba36a"
+blue    = "#5788b8"       # brighter steel-blue — more waybar-vivid than v5
+magenta = "#867ba3"
+cyan    = "#55a3a3"       # brighter muted teal
+white   = "#d2dae6"
+
+# Bright colors
+[colors.bright]
+black   = "#3c4456"
+red     = "#d6927f"
+green   = "#a3c7ae"
+yellow  = "#e2bd88"
+blue    = "#7cb0dc"
+magenta = "#a498c0"
+cyan    = "#7ccece"
+white   = "#eef3f9"
+
+# Dim colors
+[colors.dim]
+black   = "#0a0e15"
+red     = "#8a5346"
+green   = "#5c7a68"
+yellow  = "#93764c"
+blue    = "#3a6489"
+magenta = "#605878"
+cyan    = "#3a7676"
+white   = "#8b93a8"

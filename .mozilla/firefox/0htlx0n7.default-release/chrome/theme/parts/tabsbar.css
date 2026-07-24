@@ -584,9 +584,9 @@ tab {
 #TabsToolbar #firefox-view-button .toolbarbutton-icon {
   box-shadow: none !important;
   fill: var(--gnome-toolbar-icon-fill) !important;
-  height: 16px !important;
+  /* height: 16px !important; */
   opacity: 1 !important;
-  width: 16px !important;
+  /* width: 16px !important; */
 }
 
 :root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button)+#tabbrowser-tabs {

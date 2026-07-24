@@ -1,0 +1,88 @@
+# Eclipse City v5 — Alacritty theme
+# Recalibrated directly against the actual Neovim/Telescope/tmux
+# statusline colors visible in the reference screenshot — which the
+# user confirmed already look cohesive. The key fix here: the
+# window-border blue, the selected-row highlight, and the file-icon
+# teal in that UI are all LOW-SATURATION steel-blue/muted-teal, not
+# the vivid periwinkle blue used in v4. Desaturated blue/cyan across
+# the board so terminal output blends in instead of popping out.
+#
+# Usage: save as ~/.config/alacritty/themes/eclipse-city.toml
+# and import it from your alacritty.toml:
+#   [general]
+#   import = ["~/.config/alacritty/themes/eclipse-city.toml"]
+
+[colors.primary]
+background = '#040B15'
+# background = "#0a0e15"   # near-black navy — matches nvim/tmux/waybar bg
+foreground = "#c9d1de"   # muted off-white, matches nvim default text (not pure white)
+dim_foreground = "#838ba0"
+
+[colors.cursor]
+text   = "#0a0e15"
+cursor = "#4a7aa3"        # muted steel-blue — matches telescope window borders
+
+[colors.vi_mode_cursor]
+text   = "#0a0e15"
+cursor = "#b56a5a"        # muted terracotta, matches "local"/"function" keyword red
+
+[colors.search.matches]
+foreground = "#0a0e15"
+background = "#4a7aa3"
+
+[colors.search.focused_match]
+foreground = "#0a0e15"
+background = "#b56a5a"
+
+[colors.hints.start]
+foreground = "#0a0e15"
+background = "#b56a5a"
+
+[colors.hints.end]
+foreground = "#0a0e15"
+background = "#838ba0"
+
+[colors.line_indicator]
+foreground = "None"
+background = "None"
+
+[colors.footer_bar]
+background = "#0f1420"
+foreground = "#c9d1de"
+
+[colors.selection]
+text       = "#0a0e15"
+background = "#1e3a56"    # matches the selected-line highlight in telescope results
+
+# Normal colors
+[colors.normal]
+black   = "#0f1420"
+red     = "#b56a5a"       # muted terracotta — matches "local"/"function" keyword color
+green   = "#7a9c85"
+yellow  = "#c39a63"
+blue    = "#4a7aa3"       # muted steel-blue — matches telescope borders / statusline
+magenta = "#7d739a"       # kept neutral/desaturated, not a UI reference color
+cyan    = "#4a9494"       # muted teal — matches the file-icon accent in results
+white   = "#c9d1de"
+
+# Bright colors
+[colors.bright]
+black   = "#38404f"
+red     = "#cf8a7a"
+green   = "#98bda3"
+yellow  = "#dcb684"
+blue    = "#6fa0c4"
+magenta = "#9a90b3"
+cyan    = "#6cbcbc"
+white   = "#e5eaf2"
+
+# Dim colors
+[colors.dim]
+black   = "#0a0e15"
+red     = "#7f4a3f"
+green   = "#556f5d"
+yellow  = "#8a6d47"
+blue    = "#325a78"
+magenta = "#584f6d"
+cyan    = "#326868"
+white   = "#838ba0"

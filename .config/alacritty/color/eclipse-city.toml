@@ -1,0 +1,88 @@
+# Eclipse City v3 — Alacritty theme
+# Recalibrated to match the actual system-wide accent seen across
+# Thunar (folder icons, selected sidebar row), waybar, Firefox chrome,
+# and the Neovim statusline: a near-black navy background with a single
+# muted teal/cyan accent used consistently everywhere, and soft off-white
+# text. The purple/grey seen in Firefox's new-tab widgets is a stock
+# Firefox default (not part of the custom theme), so it's intentionally
+# NOT used as the reference color here — magenta is kept desaturated
+# and neutral instead of matching it.
+#
+# Usage: save as ~/.config/alacritty/themes/eclipse-city.toml
+# and import it from your alacritty.toml:
+#   [general]
+#   import = ["~/.config/alacritty/themes/eclipse-city.toml"]
+
+[colors.primary]
+background = "#0b0e15"   # near-black navy — matches Thunar/waybar/Firefox chrome bg
+foreground = "#dee4ee"   # soft off-white, matches Firefox/Thunar body text
+dim_foreground = "#8b93a3"
+
+[colors.cursor]
+text   = "#0b0e15"
+cursor = "#4fb0c4"        # the system-wide teal accent (Thunar icons, nvim branch icon)
+
+[colors.vi_mode_cursor]
+text   = "#0b0e15"
+cursor = "#c96b5e"        # muted coral, secondary accent from wallpaper city glow
+
+[colors.search.matches]
+foreground = "#0b0e15"
+background = "#4fb0c4"
+
+[colors.search.focused_match]
+foreground = "#0b0e15"
+background = "#c96b5e"
+
+[colors.hints.start]
+foreground = "#0b0e15"
+background = "#c96b5e"
+
+[colors.hints.end]
+foreground = "#0b0e15"
+background = "#8b93a3"
+
+[colors.line_indicator]
+foreground = "None"
+background = "None"
+
+[colors.footer_bar]
+background = "#10141e"
+foreground = "#dee4ee"
+
+[colors.selection]
+text       = "#0b0e15"
+background = "#2c4f66"    # matches Thunar's selected-sidebar-row blue
+
+# Normal colors
+[colors.normal]
+black   = "#10141e"
+red     = "#c96b5e"       # muted coral, softened to match desaturated UI (not neon)
+green   = "#7fa88c"
+yellow  = "#d3a05e"
+blue    = "#4a93ab"       # teal-blue — the recurring system accent
+magenta = "#8a7ba3"       # kept neutral/desaturated on purpose (see note above)
+cyan    = "#4fb0c4"       # brighter teal, matches folder icons / status accent
+white   = "#ced6e2"
+
+# Bright colors
+[colors.bright]
+black   = "#3a4353"
+red     = "#dc8a7e"
+green   = "#a0c7ac"
+yellow  = "#e6ba82"
+blue    = "#74b8cc"
+magenta = "#a99bc0"
+cyan    = "#7ecbdd"
+white   = "#eef2f8"
+
+# Dim colors
+[colors.dim]
+black   = "#0b0e15"
+red     = "#8f4a41"
+green   = "#5c7a66"
+yellow  = "#8f7043"
+blue    = "#35697a"
+magenta = "#5f5470"
+cyan    = "#35747f"
+white   = "#8b93a3"

@@ -189,6 +189,17 @@ for _, class in ipairs(floatClasses) do
   hl.window_rule({ match = { class = "^(" .. class .. ")$" }, float = true })
 end
 
+hl.window_rule({
+  name        = "ueberzugpp-overlay",
+  match       = { title = "^ueberzugpp_.*" },
+  float       = true,
+  border_size = 0,
+  no_blur     = true,
+  no_anim     = true,
+  no_focus    = true,
+  pin         = true,
+})
+
 hl.window_rule({ match = { class = "^(firefox)$" }, workspace = "2 silent", float = true, size = "1660 960" })
 -- hl.window_rule({ match = { class = "^(firefox)$" }, size = "1440 900" })
 -- hl.window_rule({ match = { class = "^(firefox)$" }, move = "550 50" })

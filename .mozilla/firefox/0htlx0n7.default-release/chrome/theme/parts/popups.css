@@ -372,3 +372,7 @@ popupnotification {
   --panel-border-color: var(--gnome-menu-border-color) !important;
 
 }
+
+#downloadsPanel-mainView {
+  background-color: var(--gnome-menu-background) !important;
+}

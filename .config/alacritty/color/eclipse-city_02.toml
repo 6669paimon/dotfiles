@@ -1,0 +1,87 @@
+# Eclipse City v4 — Alacritty theme
+# Reference sources: the Hyprland wallpaper (deep blue night skyline),
+# waybar, the GTK theme (Thunar chrome), and Firefox's browser chrome —
+# all of which lean toward true BLUE, not teal/cyan. The teal tone in
+# Thunar's folder icons was only incidentally compatible, not the
+# actual reference, so the primary accent here is shifted to blue.
+# Magenta stays neutral/desaturated on purpose — the grey/purple in
+# Firefox's new-tab widgets is a stock default, not part of the theme.
+#
+# Usage: save as ~/.config/alacritty/themes/eclipse-city.toml
+# and import it from your alacritty.toml:
+#   [general]
+#   import = ["~/.config/alacritty/themes/eclipse-city.toml"]
+
+[colors.primary]
+background = "#0a0e17"   # near-black navy — wallpaper sky / waybar / chrome bg
+foreground = "#d8e0ee"   # soft blue-white text
+dim_foreground = "#8994a8"
+
+[colors.cursor]
+text   = "#0a0e17"
+cursor = "#5c8fd6"        # true blue — the system-wide accent (skyline, waybar, chrome)
+
+[colors.vi_mode_cursor]
+text   = "#0a0e17"
+cursor = "#c96b5e"        # muted coral, secondary accent from wallpaper city glow
+
+[colors.search.matches]
+foreground = "#0a0e17"
+background = "#5c8fd6"
+
+[colors.search.focused_match]
+foreground = "#0a0e17"
+background = "#c96b5e"
+
+[colors.hints.start]
+foreground = "#0a0e17"
+background = "#c96b5e"
+
+[colors.hints.end]
+foreground = "#0a0e17"
+background = "#8994a8"
+
+[colors.line_indicator]
+foreground = "None"
+background = "None"
+
+[colors.footer_bar]
+background = "#10141f"
+foreground = "#d8e0ee"
+
+[colors.selection]
+text       = "#0a0e17"
+background = "#233f66"    # deep blue, matches selected-row / active-state blue
+
+# Normal colors
+[colors.normal]
+black   = "#10141f"
+red     = "#c96b5e"       # muted coral, softened to match desaturated UI
+green   = "#7fa88c"
+yellow  = "#d3a05e"
+blue    = "#5c8fd6"       # true blue — dominant system accent
+magenta = "#8a7ba3"       # kept neutral/desaturated on purpose (see note above)
+cyan    = "#5aa8d6"       # blue-leaning cyan, not teal/green-shifted
+white   = "#ced6e2"
+
+# Bright colors
+[colors.bright]
+black   = "#3a4353"
+red     = "#dc8a7e"
+green   = "#a0c7ac"
+yellow  = "#e6ba82"
+blue    = "#84b2ec"
+magenta = "#a99bc0"
+cyan    = "#87c5ec"
+white   = "#eef2f8"
+
+# Dim colors
+[colors.dim]
+black   = "#0a0e17"
+red     = "#8f4a41"
+green   = "#5c7a66"
+yellow  = "#8f7043"
+blue    = "#3a5f8f"
+magenta = "#5f5470"
+cyan    = "#38708f"
+white   = "#8994a8"
