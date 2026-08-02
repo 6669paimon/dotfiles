@@ -35,7 +35,6 @@ return {
           "--background-index", -- index ทั้งโปรเจกต์ตอนเปิด
           "--clang-tidy",       -- เปิด linter ในตัว
           "--completion-style=detailed",
-          "--style=file",
           "--fallback-style=llvm",
           "--function-arg-placeholders",
           "--header-insertion=iwyu", -- auto insert #include ที่จำเป็น

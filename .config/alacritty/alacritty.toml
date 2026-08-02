@@ -54,10 +54,4 @@ blink_interval=500
 cursor = {text="#00101d",cursor="#c4e5f2"}
 
 [general]
-# import = ["/home/Arawan/.dotfiles/.config/alacritty/color/eclipse-city_04.toml"]
 import = ["/home/Arawan/.dotfiles/.config/alacritty/color/eclipse-city_03.toml"]
-# import = ["/home/Arawan/.dotfiles/.config/alacritty/color/eclipse-city_02.toml"]
-# import = ["/home/Arawan/.dotfiles/.config/alacritty/color/eclipse-city.toml"]
-# import = ["/home/Arawan/.config/alacritty/color/github_dark_dimmed.toml"]
-# import = ["/home/Arawan/.config/alacritty/color/neofusion.toml"]
-# import = ["/home/Arawan/.dotfiles/.config/alacritty/color/custom.toml"]

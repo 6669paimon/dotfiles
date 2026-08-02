@@ -1,34 +1,16 @@
 local M = {
   "nvim-tree/nvim-tree.lua",
   event = "VeryLazy",
+  keys = {
+    { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle nvim-tree" },
+  },
 }
-
 
 function M.config()
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
 
-  local api = require("nvim-tree.api")
-  vim.keymap.set("n", "<leader>e", api.tree.toggle)
-
-  local function my_on_attach(bufnr)
-    local function opts(desc)
-      return {
-        desc = "nvim-tree: " .. desc,
-        buffer = bufnr,
-        noremap = true,
-        silent = true,
-        nowait = true,
-      }
-    end
-
-    -- default mappings
-    api.config.mappings.default_on_attach(bufnr)
-
-    -- custom mappings
-    vim.keymap.set("n", "<leader>e", api.tree.toggle, opts("Toggle"))
-    vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
-  end
+  vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle nvim-tree' })
 
   require("nvim-tree").setup({
     hijack_netrw = false,
@@ -37,7 +19,6 @@ function M.config()
       width = 24,
       preserve_window_proportions = true,
     },
-    on_attach = my_on_attach,
     renderer = {
       add_trailing = false,
       group_empty = false,

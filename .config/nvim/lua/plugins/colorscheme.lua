@@ -44,7 +44,8 @@ return {
 
           DiagnosticSignInfo = { fg = "#61affa" },
 
-          NvimTreeFolderIcon = { fg = "#539bf5" },
+          -- NvimTreeFolderIcon = { fg = "#539bf5" },
+          NvimTreeFolderIcon = { fg = "#4a7aa3" },
           NvimTreeCursorLine = { bg = "#124066" },
 
           LuaLineDiffAdd     = { fg = "#768390", bg = "NONE" },
