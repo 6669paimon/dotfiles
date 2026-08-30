@@ -23,6 +23,15 @@ set scroll-step 100
 set default-bg "#03121c"
 set default-fg "#aad2ee"
 
+#set default-bg "#1E1E1E"
+#set default-fg "#D4D4D4"
+
+#set default-bg "#1A1D23"
+#set default-fg "#C9D1D9"
+
+#set default-bg "#1A1A1A"
+#set default-fg "#E0E0E0"
+
 set statusbar-bg "#03121c"
 set statusbar-fg "#73BCD9"
 # set statusbar-bg "#092033"
@@ -53,11 +62,26 @@ set notification-fg "#000000"
 set recolor "true"
 # set recolor-lightcolor "#000000"
 # set recolor-lightcolor "#020d14"
+
+# Arawan
+#set recolor-lightcolor "#03121c"
+#set recolor-darkcolor "#a5c2cc"
+
+#set recolor-lightcolor "#1E1E1E"
+#set recolor-darkcolor "#D4D4D4"
+
+#set recolor-darkcolor "#1E1E1E"
+#set recolor-lightcolor "#D4D4D4"
+
+#set recolor-lightcolor "#1A1D23"
+#set recolor-darkcolor "#C9D1D9"
+
 set recolor-lightcolor "#03121c"
-set recolor-darkcolor "#a5c2cc"
+set recolor-darkcolor "#C9D1D9"
+
 # set recolor-darkcolor "#c4e5f2"
 # set recolor-darkcolor "#E0E0E0"
 set recolor-reverse-video "true"
-set recolor-keephue "true"
+set recolor-keephue "false"
 
 set render-loading "false"
