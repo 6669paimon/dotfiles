@@ -4,6 +4,7 @@
 
 # Open document in fit-width mode by default
 set adjust-open "best-fit"
+#set adjust-open "width"
 
 # One page per row by default
 set pages-per-row 1
@@ -13,75 +14,63 @@ set font "CaskaydiaCove Nerd Font 12"
 # copy selection to system clipboard
 set selection-clipboard clipboard 
 
+map <C-b> toggle_statusbar
+
 #stop at page boundries
 set scroll-page-aware "true"
 set smooth-scroll "true"
 set scroll-full-overlap 0.01
 set scroll-step 100
 
-#setup dark theme
-set default-bg "#03121c"
-set default-fg "#aad2ee"
-
-#set default-bg "#1E1E1E"
-#set default-fg "#D4D4D4"
-
-#set default-bg "#1A1D23"
-#set default-fg "#C9D1D9"
-
-#set default-bg "#1A1A1A"
-#set default-fg "#E0E0E0"
-
-set statusbar-bg "#03121c"
-set statusbar-fg "#73BCD9"
-# set statusbar-bg "#092033"
-# set statusbar-fg "#73BCD9"
-
-set inputbar-bg "#092033"
-set inputbar-fg "#73BCD9"
-
-set notification-error-bg "#fd5e3a"
-set notification-error-fg "#000000"
-
-set notification-warning-bg "#fd5e3a"
-set notification-warning-fg "#000000"
-
-# set highlight-color "#fd5e3a"
-# set highlight-active-color "#000000"
-
-set completion-highlight-fg "#000000"
-set completion-highlight-bg "#fd5e3a"
-
-set completion-bg "#020d14"
-# set completion-bg "#01080d"
-set completion-fg "#aad2ee"
-
-set notification-bg "#fd5e3a"
-set notification-fg "#000000"
 
 set recolor "true"
-# set recolor-lightcolor "#000000"
-# set recolor-lightcolor "#020d14"
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+#set render-loading "false"
 
-# Arawan
-#set recolor-lightcolor "#03121c"
-#set recolor-darkcolor "#a5c2cc"
 
-#set recolor-lightcolor "#1E1E1E"
-#set recolor-darkcolor "#D4D4D4"
-
-#set recolor-darkcolor "#1E1E1E"
-#set recolor-lightcolor "#D4D4D4"
-
-#set recolor-lightcolor "#1A1D23"
-#set recolor-darkcolor "#C9D1D9"
-
+#=============================#
+#       Dark blue theme       #
+#=============================#
+set default-bg "#010a10"
+set default-fg "#C9D1D9"
 set recolor-lightcolor "#03121c"
 set recolor-darkcolor "#C9D1D9"
 
-# set recolor-darkcolor "#c4e5f2"
-# set recolor-darkcolor "#E0E0E0"
-set recolor-reverse-video "true"
-set recolor-keephue "false"
+set highlight-color "#3B6E8F80"          # ผลค้นหา
+set highlight-active-color "#E3B34180"   # ผลค้นหาที่เลือกอยู่
 
-set render-loading "false"
+# ---------- Notification ----------
+set notification-bg          "#0b1e2b"
+set notification-fg          "#C9D1D9"
+set notification-error-bg    "#3a1418"
+set notification-error-fg    "#ff8b8b"
+set notification-warning-bg  "#3a2e12"
+set notification-warning-fg  "#E3B341"
+
+# ---------- Completion (เมนูเติมคำเวลาพิมพ์ :) ----------
+set completion-bg            "#0b1e2b"
+set completion-fg            "#C9D1D9"
+set completion-group-bg      "#08171f"
+set completion-group-fg      "#6CB6D9"
+set completion-highlight-bg  "#3B6E8F"
+set completion-highlight-fg  "#ffffff"
+
+# ---------- Statusbar / Inputbar ----------
+set statusbar-bg             "#0b1e2b"
+set statusbar-fg             "#9AA7B4"
+set inputbar-bg              "#0b1e2b"
+set inputbar-fg              "#C9D1D9"
+
+# ---------- Index (สารบัญ กด Tab) ----------
+set index-bg                 "#03121c"
+set index-fg                 "#C9D1D9"
+set index-active-bg          "#3B6E8F"
+set index-active-fg          "#ffffff"
+
+# ---------- Loading ----------
+set render-loading-bg        "#03121c"
+set render-loading-fg        "#9AA7B4"
+
+
+

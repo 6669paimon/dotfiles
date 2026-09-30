@@ -13,11 +13,29 @@
     border-bottom: 1px solid var(--gnome-border-color) !important;
   }
 
+  .zLSRge {
+    border: 1px solid var(--gnome-border-color) !important;
+  }
+
+  .VHFyob .CvDJxb {
+    background-color: var(--gnome-tabbar-tab-active-background) !important;
+  }
+
+  .RDmXvc {
+    background-image: linear-gradient(transparent 0px, var(--gnome-tabbar-tab-active-background) 52px, var(--gnome-window-background) 80px) !important;
+  }
+
+  .zNsLfb {
+    background-color: var(--gnome-window-background) !important;
+
+  }
+
   .Lu57id,
   .BaegVc:hover {
     background-color: var(--gnome-tabbar-tab-active-background) !important;
     border: 1px solid var(--gnome-border-color) !important;
   }
+
 
   a {
     color: var(--gnome-window-color) !important;

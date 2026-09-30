@@ -1,5 +1,5 @@
--- Converted from the old hyprland.conf (hyprlang) syntax to the new
--- Lua config format introduced in Hyprland 0.55.
+-- converted from the old hyprland.conf (hyprlang) syntax to the new
+-- lua config format introduced in hyprland 0.55.
 -- Reference: https://wiki.hypr.land/Configuring/Start/
 --
 -- All visuals (shadow, blur, colors, rounding, animations) and keybinds
@@ -200,28 +200,82 @@ hl.window_rule({
   pin         = true,
 })
 
-hl.window_rule({ match = { class = "^(firefox)$" }, workspace = "2 silent", float = true, size = "1660 960" })
+hl.window_rule({
+  match = { class = "^(firefox)$" },
+  workspace = "2 silent",
+  float = true,
+  size = "1660 960",
+})
 -- hl.window_rule({ match = { class = "^(firefox)$" }, size = "1440 900" })
 -- hl.window_rule({ match = { class = "^(firefox)$" }, move = "550 50" })
 
-hl.window_rule({ match = { class = "^(thunar)$" }, float = true, size = "860 575", move = "550 50" })
+hl.window_rule({
+  match = { class = "^(org.pwmt.zathura)$" },
+  float = true,
+  size = "1050 1050",
+  center = true,
+})
 
-hl.window_rule({ match = { class = "^(google-chrome)$" }, workspace = "2 silent", border_size = 0 })
+hl.window_rule({
+  match = { class = "^(thunar)$" },
+  float = true,
+  size = "860 575",
+  move = "550 50",
+})
 
-hl.window_rule({ match = { class = "^(Chromium)$" }, workspace = "2 silent" })
-hl.window_rule({ match = { class = "^(chromium)$" }, workspace = "2 silent" })
+hl.window_rule({
+  match = { class = "^(google-chrome)$" },
+  workspace = "2 silent",
+  border_size = 0,
+})
 
-hl.window_rule({ match = { class = "^(Alacritty)$" }, float = true, size = "860 575", move = "550 50" })
+hl.window_rule({
+  match = { class = "^(Chromium)$" },
+  workspace = "2 silent",
+})
 
-hl.window_rule({ match = { class = "^(kitty)$" }, float = true, size = "860 600", move = "550 100" })
+hl.window_rule({
+  match = { class = "^(chromium)$" },
+  workspace = "2 silent",
+})
 
-hl.window_rule({ match = { class = "^(google-chrome)$", title = "^(Open File)$" }, float = true })
-hl.window_rule({ match = { class = "^(google-chrome)$", title = "^(Save File)$" }, float = true })
+hl.window_rule({
+  match = { class = "^(Alacritty)$" },
+  float = true,
+  size = "860 575",
+  move = "550 50",
+})
 
-hl.window_rule({ match = { class = "^(thunar)$" }, opacity = "0.80 0.80" })
+hl.window_rule({
+  match = { class = "^(kitty)$" },
+  float = true,
+  size = "860 600",
+  move = "550 100",
+})
+
+hl.window_rule({
+  match = { class = "^(google-chrome)$", title = "^(Open File)$" },
+  float = true,
+})
+
+hl.window_rule({
+  match = { class = "^(google-chrome)$", title = "^(Save File)$" },
+  float = true,
+})
+
+hl.window_rule({
+  match = { class = "^(thunar)$" },
+  opacity = "0.80 0.80",
+})
 -- hl.window_rule({ match = { class = "^(firefox)$" }, opacity = "0.80 0.80" })
-hl.window_rule({ match = { class = "^(nwg-look)$" }, opacity = "0.80 0.80" })
-hl.window_rule({ match = { class = "^(pavucontrol)$" }, opacity = "0.80 0.80" })
+hl.window_rule({
+  match = { class = "^(nwg-look)$" },
+  opacity = "0.80 0.80",
+})
+hl.window_rule({
+  match = { class = "^(pavucontrol)$" },
+  opacity = "0.80 0.80",
+})
 
 -- hl.layer_rule({ match = { namespace = "waybar" }, blur = true })
 -- hl.layer_rule({ match = { namespace = "wofi" }, blur = true })
@@ -292,8 +346,8 @@ end
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
-hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("~/.config/hypr/scripts/hide.sh s"))
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("~/.config/hypr/scripts/hide.sh h"))
+-- Toggle window border
+hl.bind(mainMod .. "+ SHIFT + G", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle-border.sh"))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
