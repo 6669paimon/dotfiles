@@ -132,12 +132,12 @@ hl.config({
 -- Animations
 hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
 
-hl.animation({ leaf = "windows",     enabled = true, speed = 7,  bezier = "myBezier" })
-hl.animation({ leaf = "windowsOut",  enabled = true, speed = 7,  bezier = "default", style = "popin 80%" })
-hl.animation({ leaf = "border",      enabled = true, speed = 10, bezier = "default" })
-hl.animation({ leaf = "borderangle", enabled = true, speed = 8,  bezier = "default" })
-hl.animation({ leaf = "fade",        enabled = true, speed = 7,  bezier = "default" })
-hl.animation({ leaf = "workspaces",  enabled = true, speed = 2,  bezier = "default" })
+hl.animation({ leaf = "windows", enabled = true, speed = 7, bezier = "myBezier" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 7, bezier = "default", style = "popin 80%" })
+hl.animation({ leaf = "border", enabled = true, speed = 10, bezier = "default" })
+hl.animation({ leaf = "borderangle", enabled = true, speed = 8, bezier = "default" })
+hl.animation({ leaf = "fade", enabled = true, speed = 7, bezier = "default" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "default" })
 
 -- Touchpad gestures ปิดอยู่ (ไม่มี hl.gesture() = ไม่มี swipe)
 -- เปิดใช้: hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
@@ -179,27 +179,45 @@ hl.window_rule({
 -- Terminals
 hl.window_rule({
   match = { class = "^(Alacritty)$" },
-  float = true, size = "860 575", move = "550 50",
+  float = true,
+  size = "860 575",
+  move = "550 50",
 })
 hl.window_rule({
   match = { class = "^(kitty)$" },
-  float = true, size = "860 600", move = "550 100",
+  float = true,
+  size = "860 600",
+  move = "550 100",
 })
 
 -- File manager
 hl.window_rule({
-  match = { class = "^(thunar)$" },
-  float = true, size = "860 575", move = "550 50", opacity = "0.80 0.80",
+  match = { class = "^([Tt]hunar)$" },
+  float = true,
+  size = "860 575",
+  move = "550 50",
+  opacity = "0.80 0.80",
+})
+
+hl.window_rule({
+  match = { class = "^(xarchiver)$" },
+  float = true,
+  size = "860 575",
+  move = "550 50",
+  opacity = "0.80 0.80",
 })
 
 -- Browsers
 hl.window_rule({
   match = { class = "^(firefox)$" },
-  workspace = "2 silent", float = true, size = "1660 960",
+  workspace = "2 silent",
+  float = true,
+  size = "1660 960",
 })
 hl.window_rule({
   match = { class = "^(google-chrome)$" },
-  workspace = "2 silent", border_size = 0,
+  workspace = "2 silent",
+  border_size = 0,
 })
 hl.window_rule({
   match = { class = "^([Cc]hromium)$" },
@@ -213,11 +231,15 @@ hl.window_rule({
 -- Documents / notes
 hl.window_rule({
   match = { class = "^(org.pwmt.zathura)$" },
-  float = true, size = "1050 1050", center = true,
+  float = true,
+  size = "1050 1050",
+  center = true,
 })
 hl.window_rule({
   match = { class = "^(md.obsidian.Obsidian)$" },
-  float = true, size = "1050 1050", center = true,
+  float = true,
+  size = "1050 1050",
+  center = true,
 })
 
 -- Translucent utilities
@@ -247,14 +269,14 @@ local mainMod = "SUPER"
 
 -- [CHANGED] ค่าและฟังก์ชันกลางสำหรับ "คอลัมน์ชิดขวา" ใช้ร่วมกันระหว่าง SUPER+Return และ SUPER+SHIFT+L
 -- แก้ที่นี่ที่เดียว ทั้งสองคีย์จะเปลี่ยนตาม
-local BAR_TOP = 32      -- ความสูง waybar ด้านบน (px) ดูจาก: hyprctl monitors (reserved)
-local GAP     = 8       -- เท่ากับ general.gaps_out
-local TERM_W  = 860     -- ความกว้างของ terminal ที่เปิดใหม่ (px)
+local BAR_TOP = 24  -- ความสูง waybar ด้านบน (px) ดูจาก: hyprctl monitors (reserved)
+local GAP     = 8   -- เท่ากับ general.gaps_out
+local TERM_W  = 860 -- ความกว้างของ terminal ที่เปิดใหม่ (px)
 
 -- คืนค่าตำแหน่งและขนาด (x, y, w, h) ของหน้าต่างที่ชิดขวาและสูงพอดีจอ
 local function rightColumn(width)
   local okM, mon = pcall(hl.get_active_monitor)
-  local sw = (okM and mon and mon.width)  or 1920   -- ค่าสำรองถ้าอ่านขนาดจอไม่ได้
+  local sw = (okM and mon and mon.width) or 1920 -- ค่าสำรองถ้าอ่านขนาดจอไม่ได้
   local sh = (okM and mon and mon.height) or 1080
   return {
     x = sw - width - GAP,
@@ -275,15 +297,16 @@ hl.bind(mainMod .. " + Return", function()
     move  = { g.x, g.y },
   }))
 end)
-hl.bind("CTRL + Return",        hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + R",      hl.dsp.exec_cmd(menu))
+hl.bind("CTRL + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 
 -- Window management
 hl.bind(mainMod .. " + X", hl.dsp.window.close())
 hl.bind(mainMod .. " + A", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + C", hl.dsp.window.center())
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())        -- dwindle
-hl.bind(mainMod .. " + N", hl.dsp.layout("togglesplit"))  -- dwindle
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())       -- dwindle
+hl.bind(mainMod .. " + N", hl.dsp.layout("togglesplit")) -- dwindle
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exit())
 
 -- [CHANGED] เดิม bind ALT+Tab ซ้ำสองครั้ง (อันหลังทับอันแรก) รวมเป็นฟังก์ชันเดียว
@@ -321,34 +344,34 @@ hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 
 -- Move window (arrow keys)
-hl.bind(mainMod .. " + left",  hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + left", hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.window.move({ direction = "right" }))
-hl.bind(mainMod .. " + up",    hl.dsp.window.move({ direction = "up" }))
-hl.bind(mainMod .. " + down",  hl.dsp.window.move({ direction = "down" }))
+hl.bind(mainMod .. " + up", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + down", hl.dsp.window.move({ direction = "down" }))
 
 -- Workspaces 1-10 (key 0 = workspace 10)
 for i = 1, 10 do
   local key = i % 10
-  hl.bind(mainMod .. " + " .. key,           hl.dsp.focus({ workspace = tostring(i) }))
-  hl.bind(mainMod .. " + SHIFT + " .. key,   hl.dsp.window.move({ workspace = tostring(i) }))
+  hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = tostring(i) }))
+  hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = tostring(i) }))
 end
 
 hl.bind(mainMod .. " + F", hl.dsp.focus({ workspace = "+1" }))
 hl.bind(mainMod .. " + B", hl.dsp.focus({ workspace = "-1" }))
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Scratchpad
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Mouse drag / resize
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Screenshots (hyprshot)
-hl.bind("Print",                       hl.dsp.exec_cmd("hyprshot -m output"))
-hl.bind(mainMod .. " + Print",         hl.dsp.exec_cmd("hyprshot -m window"))
+hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output"))
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -m window"))
 hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region"))
 
 -- Utilities
@@ -358,34 +381,34 @@ hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"))
 
 -- Submap: resize (SUPER+SHIFT+R)
 hl.define_submap("resize", function()
-  hl.bind("l", hl.dsp.window.resize({ x = 30,  y = 0,   relative = true }), { repeating = true })
-  hl.bind("h", hl.dsp.window.resize({ x = -30, y = 0,   relative = true }), { repeating = true })
-  hl.bind("k", hl.dsp.window.resize({ x = 0,   y = -30, relative = true }), { repeating = true })
-  hl.bind("j", hl.dsp.window.resize({ x = 0,   y = 30,  relative = true }), { repeating = true })
+  hl.bind("l", hl.dsp.window.resize({ x = 30, y = 0, relative = true }), { repeating = true })
+  hl.bind("h", hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true })
+  hl.bind("k", hl.dsp.window.resize({ x = 0, y = -30, relative = true }), { repeating = true })
+  hl.bind("j", hl.dsp.window.resize({ x = 0, y = 30, relative = true }), { repeating = true })
   hl.bind("CTRL + C", hl.dsp.submap("reset"))
-  hl.bind("Escape",   hl.dsp.submap("reset"))
-  hl.bind("q",        hl.dsp.submap("reset"))
+  hl.bind("Escape", hl.dsp.submap("reset"))
+  hl.bind("q", hl.dsp.submap("reset"))
 end)
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.submap("resize"))
 
 -- Submap: move (SUPER+W)
 hl.define_submap("move", function()
-  hl.bind("l", hl.dsp.window.move({ x = 30,  y = 0,   relative = true }), { repeating = true })
-  hl.bind("h", hl.dsp.window.move({ x = -30, y = 0,   relative = true }), { repeating = true })
-  hl.bind("k", hl.dsp.window.move({ x = 0,   y = -30, relative = true }), { repeating = true })
-  hl.bind("j", hl.dsp.window.move({ x = 0,   y = 30,  relative = true }), { repeating = true })
+  hl.bind("l", hl.dsp.window.move({ x = 30, y = 0, relative = true }), { repeating = true })
+  hl.bind("h", hl.dsp.window.move({ x = -30, y = 0, relative = true }), { repeating = true })
+  hl.bind("k", hl.dsp.window.move({ x = 0, y = -30, relative = true }), { repeating = true })
+  hl.bind("j", hl.dsp.window.move({ x = 0, y = 30, relative = true }), { repeating = true })
   hl.bind("CTRL + C", hl.dsp.submap("reset"))
-  hl.bind("Escape",   hl.dsp.submap("reset"))
-  hl.bind("q",        hl.dsp.submap("reset"))
+  hl.bind("Escape", hl.dsp.submap("reset"))
+  hl.bind("q", hl.dsp.submap("reset"))
 end)
 hl.bind(mainMod .. " + W", hl.dsp.submap("move"))
 
 -- Media
-hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"))
-hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"))
-hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"))
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 hl.bind("XF86AudioMedia", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioStop",  hl.dsp.exec_cmd("playerctl stop"),       { locked = true })
+hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), { locked = true })
 
 -- Volume
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pactl -- set-sink-volume 0 +5%"),
@@ -397,4 +420,9 @@ hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ tog
 
 -- Brightness
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"))
-hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("brightnessctl set +5%"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set +5%"))
+
+-- Power profiles
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("powerprofilesctl set performance"))
+hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("powerprofilesctl set balanced"))
+hl.bind(mainMod .. " + ALT + P", hl.dsp.exec_cmd("powerprofilesctl set power-saver"))

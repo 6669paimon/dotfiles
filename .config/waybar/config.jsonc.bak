@@ -16,16 +16,14 @@
     "custom/separator",
     "pulseaudio",
     "custom/separator",
-    // "custom/clock",
     "clock",
     "custom/separator",
     "tray",
     "custom/power-menu"
   ],
-  "custom/separator": {
-    "format": "╷",
-    "tooltip": false
-  },
+  // ---------------------------------------------------------------
+  // Left: workspaces + system stats group
+  // ---------------------------------------------------------------
   "hyprland/workspaces": {
     "on-click": "activate",
     "active-only": false,
@@ -39,38 +37,6 @@
     "persistent-workspaces": {
       "*": 5
     }
-  },
-  "disk": {
-    "format": "󰋊  {percentage_used}%",
-    "interval": 20,
-    "path": "/"
-  },
-  "memory": {
-    "format": "  {}%",
-    // "format": "   {}%",
-    "tooltip-format": "{used}/{total} GiB",
-    "interval": 5
-  },
-  "cpu": {
-    "format": "󰍛  {usage}%",
-    // "format": "   {usage}%",
-    // "format": "   {usage}%",
-    "interval": 5
-  },
-  "temperature": {
-    "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
-    "input-filename": "temp1_input",
-    "critical-threshold": 80,
-    "interval": 2,
-    "format": "{icon} {temperatureC}°C",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
-    "tooltip": false
   },
   "group/processing": {
     "orientation": "inherit",
@@ -86,9 +52,42 @@
       "custom/separator"
     ]
   },
+  "disk": {
+    "path": "/home",
+    "interval": 20,
+    "format": "󰋊   {percentage_used}%"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "   {}%",
+    "tooltip-format": "{used}/{total} GiB"
+  },
+  "temperature": {
+    "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+    "input-filename": "temp1_input",
+    "critical-threshold": 80,
+    "interval": 2,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ],
+    "tooltip": false
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛   {usage}%"
+  },
+  // ---------------------------------------------------------------
+  // Center: active window title
+  // ---------------------------------------------------------------
   "hyprland/window": {
     "format": "{}",
     "max-length": 50,
+    "separate-outputs": true,
     "rewrite": {
       "(.*) - Brave": "$1",
       "(.*) - Chromium": "$1",
@@ -96,8 +95,19 @@
       "(.*) - Brave Search": "$1",
       "(.*) - Outlook": "$1",
       "(.*) Microsoft Teams": "$1"
-    },
-    "separate-outputs": true
+    }
+  },
+  // ---------------------------------------------------------------
+  // Right: language, battery, network, audio, clock, tray, power
+  // ---------------------------------------------------------------
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": " ",
+    "format-th": " 🇹🇭  "
+  },
+  "custom/separator": {
+    "format": "╷",
+    "tooltip": false
   },
   "battery": {
     "interval": 60,
@@ -115,36 +125,36 @@
     "format-plugged": "  {capacity}%",
     "format-full": "{icon}  Full",
     "format-alt": "{icon}  {time}",
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ],
     "format-time": "{H}h {M}min",
+    "format-icons": [
+      "  ",
+      "  ",
+      "  ",
+      "  ",
+      "  "
+    ],
     "tooltip": true
   },
   "network": {
-    "format-wifi": "   {ifname}",
+    "format-wifi": "    {ifname}",
     "format-ethernet": "󰈁 ",
-    "format-disconnected": "󰖪",
+    "format-disconnected": "󰖪 ",
     "tooltip-format": "{essid}",
     "tooltip-format-wifi": "   {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-    "on-click": "kitty nmtui"
+    "on-click": "alacritty nmtui"
   },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
-    "format-muted": "󰖁",
+    "format-muted": "󰖁 ",
     "format-icons": {
       "headphone": "  ",
       "hands-free": "  ",
       "headset": "  ",
       "phone": " ",
       "portable": " ",
-      "car": " ",
+      "car": "  ",
       "default": [
-        "",
+        " ",
         " ",
         " "
       ]
@@ -152,35 +162,22 @@
     "on-click": "pavucontrol",
     "scroll-step": 5
   },
-  // "custom/clock": {
-  //   "exec": "~/scripts/clock.sh",
-  //   "interval": 60,
-  //   "format": "{}"
-  // },
   "clock": {
     "interval": 60,
     "align": 0,
     "rotate": 0,
+    "timezone": "Asia/Bangkok",
     "format": "{:%d %b, %H:%M}",
     "format-alt": "{:%a %b %d, %G}",
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-    "timezone": "Asia/Bangkok"
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
   },
-  "custom/power-menu": {
-    "format": "  ",
-    // "format": " X",
-    "on-click": "wlogout",
-    "tooltip": false
-  },
-  "hyprland/language": {
-    "format": "{}",
-    "format-en": " ",
-    // "format-en": " 🇺🇸  ",
-    "format-th": " 🇹🇭  "
-  },
-  // System tray
   "tray": {
     "icon-size": 18,
     "spacing": 10
+  },
+  "custom/power-menu": {
+    "format": "  ",
+    "on-click": "wlogout",
+    "tooltip": false
   }
 }

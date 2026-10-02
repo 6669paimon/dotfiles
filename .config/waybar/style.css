@@ -1,6 +1,9 @@
 * {
   font-family: "SF Pro Display", "Iosevka Nerd Font";
   font-size: 17px;
+  /* font-family: "Orbitron", "JetBrainsMono Nerd Font"; */
+  /* font-size: 15px; */
+  /* font-weight: 500; */
   color: rgba(196, 229, 242, 0.8);
 }
 
@@ -20,6 +23,7 @@ window#waybar.hidden {
 #custom-clock,
 #clock {
   font-weight: bold;
+  /* font-weight: 800; */
 }
 
 #cpu,
