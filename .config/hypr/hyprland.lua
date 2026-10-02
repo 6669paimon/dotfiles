@@ -245,8 +245,36 @@ hl.window_rule({
 
 local mainMod = "SUPER"
 
+-- [CHANGED] ค่าและฟังก์ชันกลางสำหรับ "คอลัมน์ชิดขวา" ใช้ร่วมกันระหว่าง SUPER+Return และ SUPER+SHIFT+L
+-- แก้ที่นี่ที่เดียว ทั้งสองคีย์จะเปลี่ยนตาม
+local BAR_TOP = 32      -- ความสูง waybar ด้านบน (px) ดูจาก: hyprctl monitors (reserved)
+local GAP     = 8       -- เท่ากับ general.gaps_out
+local TERM_W  = 860     -- ความกว้างของ terminal ที่เปิดใหม่ (px)
+
+-- คืนค่าตำแหน่งและขนาด (x, y, w, h) ของหน้าต่างที่ชิดขวาและสูงพอดีจอ
+local function rightColumn(width)
+  local okM, mon = pcall(hl.get_active_monitor)
+  local sw = (okM and mon and mon.width)  or 1920   -- ค่าสำรองถ้าอ่านขนาดจอไม่ได้
+  local sh = (okM and mon and mon.height) or 1080
+  return {
+    x = sw - width - GAP,
+    y = BAR_TOP + GAP,
+    w = width,
+    h = sh - BAR_TOP - 2 * GAP,
+  }
+end
+
 -- Apps
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+-- [CHANGED] เปิด terminal พร้อมขนาด/ตำแหน่งเดียวกับ SUPER+SHIFT+L (ชิดขวา สูงพอดีจอ)
+-- ใช้ rules ของ exec_cmd: float + size + move
+hl.bind(mainMod .. " + Return", function()
+  local g = rightColumn(TERM_W)
+  hl.dispatch(hl.dsp.exec_cmd(terminal, {
+    float = true,
+    size  = { g.w, g.h },
+    move  = { g.x, g.y },
+  }))
+end)
 hl.bind("CTRL + Return",        hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + R",      hl.dsp.exec_cmd(menu))
 
@@ -272,32 +300,18 @@ hl.bind("F11", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle"
 -- เดิมใช้ resize/move แบบ relative จึงโตเพิ่มทุกครั้งที่กด และตำแหน่งเพี้ยนตามขนาดเดิม
 -- ตอนนี้ใช้ค่าสัมบูรณ์ (relative = false) กดกี่ครั้งผลก็เท่าเดิม
 hl.bind(mainMod .. " + SHIFT + L", function()
-  -- ปรับให้ตรงกับเครื่อง (ดู reserved top จาก: hyprctl monitors)
-  local BAR_TOP = 32           -- ความสูง waybar ด้านบน (px)
-  local GAP     = 8            -- เท่ากับ general.gaps_out
-  local FALLBACK_W, FALLBACK_H = 1920, 1080   -- ใช้เมื่ออ่านขนาดจอไม่ได้
-  local FALLBACK_WIN_W = 860                  -- ใช้เมื่ออ่านความกว้างหน้าต่างไม่ได้
-
-  local okM, mon = pcall(hl.get_active_monitor)
-  local sw = (okM and mon and mon.width)  or FALLBACK_W
-  local sh = (okM and mon and mon.height) or FALLBACK_H
-
-  -- อ่านความกว้างปัจจุบันของหน้าต่าง (คงความกว้างเดิมไว้)
-  local ww = FALLBACK_WIN_W
+  -- อ่านความกว้างปัจจุบันของหน้าต่าง (คงความกว้างเดิมไว้ ถ้าอ่านไม่ได้ใช้ TERM_W)
+  local ww = TERM_W
   local okW, win = pcall(hl.get_active_window)
   if okW and win and type(win.size) == "table" then
     ww = win.size.x or win.size[1] or ww
   end
+  local g = rightColumn(ww)
 
-  local h = sh - BAR_TOP - 2 * GAP
-  local x = sw - ww - GAP
-  local y = BAR_TOP + GAP
-
-  -- [CHANGED] ใช้ action = "enable" (ค่าที่เอกสารระบุ: toggle / enable / disable)
-  -- เดิมใช้ "set" ซึ่งไม่ตรงกับเอกสาร อาจถูกตีเป็น toggle แล้วสลับหน้าต่างที่ float อยู่ให้กลายเป็น tile
+  -- ใช้ action = "enable" (ค่าที่เอกสารระบุ: toggle / enable / disable)
   hl.dispatch(hl.dsp.window.float({ action = "enable" }))
-  hl.dispatch(hl.dsp.window.resize({ x = ww, y = h, relative = false }))
-  hl.dispatch(hl.dsp.window.move({ x = x, y = y, relative = false }))
+  hl.dispatch(hl.dsp.window.resize({ x = g.w, y = g.h, relative = false }))
+  hl.dispatch(hl.dsp.window.move({ x = g.x, y = g.y, relative = false }))
 end)
 
 -- Focus (vim keys)
