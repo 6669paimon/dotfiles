@@ -256,8 +256,8 @@ hl.window_rule({
   border_size = 0,
   no_blur     = true,
   no_anim     = true,
-  no_focus    = true,
-  pin         = true,
+  -- no_focus    = true,
+  -- pin         = true,
 })
 
 

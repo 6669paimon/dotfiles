@@ -19,6 +19,8 @@ alias oo="cd /home/Arawan/Documents/Obsidian\ Vault/"
 alias activate="source venv/bin/activate.fish"
 alias hypr="uwsm start hyprland-uwsm.desktop"
 
+fish_add_path -m ~/.local/bin
+
 # === Editor === #
 set -gx EDITOR nvim
 
