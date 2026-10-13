@@ -21,12 +21,35 @@ toolbarspring {
   box-shadow: none !important;
 }
 
+.urlbar {
+  box-shadow: none !important;
+}
+
 #urlbar-background {
   box-shadow: var(--gnome-entry-box-shadow) !important;
   border: 0 !important;
   border-radius: 8px !important;
   background: transparent !important;
 }
+
+.urlbar-background {
+  /* display: block; */
+  /* position: absolute; */
+  /* inset: 0; */
+  /* border-radius: var(--urlbar-background-border-radius); */
+  /* background-color: var(--urlbar-background-color); */
+  /* background-clip: border-box; */
+
+  box-shadow: var(--gnome-entry-box-shadow) !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.urlbar-input-container {
+  border-radius: 8px !important;
+}
+
 
 #urlbar[breakout][breakout-extend] {
   left: 0 !important;
@@ -125,6 +148,25 @@ toolbarspring {
   [sponsored]):is(:hover, [selected])>.urlbarView-row-inner>.urlbarView-no-wrap {
   max-width: calc(96% - 2 * (var(--urlbarView-favicon-width) + (6px + 2px))) !important;
 }
+
+.urlbarView-background {
+  box-shadow: 0 0 0px 0 var(--chrome-box-shadow) !important;
+}
+
+.button-background {
+  &[type~="muted"] {
+    button:hover>& {
+      background-color: var(--gnome-hover-color) !important;
+    }
+  }
+
+  &.labelled {
+    gap: var(--space-small);
+    background: transparent !important;
+  }
+}
+
+
 
 /* Search engines buttons */
 .search-one-offs {

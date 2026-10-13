@@ -168,6 +168,7 @@ panel {
 /* Panel header */
 .panel-header {
   position: relative !important;
+  /* background-color: var(--gnome-menu-background) !important; */
 }
 
 /* Panel footer */
@@ -375,4 +376,37 @@ popupnotification {
 
 #downloadsPanel-mainView {
   background-color: var(--gnome-menu-background) !important;
+}
+
+.translations-panel-view {
+  background: var(--gnome-menu-background) !important;
+}
+
+menupopup,
+panel {
+  --panel-border-color: var(--gnome-menu-border-color) !important;
+  --panel-background: var(--gnome-menu-background) !important;
+  --panel-border-radius: 8px !important;
+  --arrowpanel-border-color: var(--gnome-menu-border-color) !important;
+  --arrowpanel-background: var(--gnome-menu-background) !important;
+}
+
+/* menupopup { */
+/*   -moz-appearance: none !important; */
+/*   appearance: none !important; */
+/*   border: 1px solid var(--gnome-menu-border-color) !important; */
+/*   background: var(--gnome-menu-background) !important; */
+/* } */
+
+/* panel แบบ arrow (เมนูแฮมเบอร์เกอร์ ฯลฯ) */
+panel[type="arrow"] {
+  -moz-appearance: none !important;
+  appearance: none !important;
+  --panel-border-color: var(--gnome-menu-border-color) !important;
+  --panel-background: var(--gnome-menu-background) !important;
+  --panel-border-radius: 8px !important;
+}
+
+panelview {
+  background: var(--gnome-menu-background) !important;
 }

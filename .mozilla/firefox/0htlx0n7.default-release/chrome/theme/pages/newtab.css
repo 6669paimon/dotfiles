@@ -28,11 +28,11 @@
   }
 
   /* ปรับแต่งสีของไอคอน shortcut เมื่อ Hover */
-  .top-site-outer:hover {
-    background-color: var(--gnome-hover-color) !important;
-    /* background-color: transparent !important; */
-    border: 1px solid var(--gnome-border-color) !important;
-  }
+  /* .top-site-outer:hover { */
+  /*   background-color: var(--gnome-hover-color) !important; */
+  /* background-color: transparent !important; */
+  /*   border: 1px solid var(--gnome-border-color) !important; */
+  /* } */
 
   /* ปรับแต่งสีของข้อความในไอคอน shortcut เมื่อ Hover */
   /* .top-site-outer:hover .top-site-title { */
@@ -51,10 +51,15 @@
     border-radius: 50% !important;
   }
 
-  /* .top-site-outer .tile:hover { */
-  /*   background-color: var(--gnome-hover-color) !important; */
-  /*   border: 1px solid var(--gnome-border-color) !important; */
-  /* } */
+  .top-site-outer .tile:hover {
+    /* background-color: var(--gnome-hover-color) !important; */
+    border: 1px solid var(--gnome-border-color) !important;
+    box-shadow: 0 0 5px #125a9e !important;
+    /* box-shadow: 0 0 5px #00bfff !important; */
+    /* box-shadow: 0 0 5px #00d9ff, 0 0 12px #00d9ff !important; */
+    /* box-shadow: 0 0 5px #00eaff, 0 0 15px #00eaff, 0 0 30px #008cff !important; */
+    /* box-shadow: 0 0 3px #00f0ff, 0 0 10px #00f0ff, 0 0 25px #008cff, 0 0 50px #0055ff !important; */
+  }
 
   .top-site-outer .title {
     color: var(--gnome-window-color) !important;
